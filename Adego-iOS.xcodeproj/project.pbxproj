@@ -11,7 +11,6 @@
 		8598F9E22BC0361100132DE6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8598F9E12BC0361100132DE6 /* ContentView.swift */; };
 		8598F9E42BC0361200132DE6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8598F9E32BC0361200132DE6 /* Assets.xcassets */; };
 		8598F9E72BC0361200132DE6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8598F9E62BC0361200132DE6 /* Preview Assets.xcassets */; };
-		8598F9EF2BC0366F00132DE6 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 8598F9EE2BC0366F00132DE6 /* ComposableArchitecture */; };
 		8598F9F22BC0372300132DE6 /* LinkNavigator in Frameworks */ = {isa = PBXBuildFile; productRef = 8598F9F12BC0372300132DE6 /* LinkNavigator */; };
 		8598F9F92BC03D3700132DE6 /* AppDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8598F9F82BC03D3700132DE6 /* AppDependency.swift */; };
 		8598F9FC2BC03D6B00132DE6 /* AppRouterGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8598F9FB2BC03D6B00132DE6 /* AppRouterGroup.swift */; };
@@ -26,6 +25,12 @@
 		85FBAB462BC1AA94008CFC1B /* SetNameRouteBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FBAB452BC1AA94008CFC1B /* SetNameRouteBuilder.swift */; };
 		85FBAB482BC1AA9C008CFC1B /* SetNameCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FBAB472BC1AA9C008CFC1B /* SetNameCore.swift */; };
 		85FBAB4A2BC1AAA4008CFC1B /* SetNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FBAB492BC1AAA4008CFC1B /* SetNameView.swift */; };
+		85FBAB4D2BC1AF2D008CFC1B /* SetProfileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FBAB4C2BC1AF2D008CFC1B /* SetProfileImageView.swift */; };
+		85FBAB4F2BC1AF57008CFC1B /* SetProfileImageSideEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FBAB4E2BC1AF57008CFC1B /* SetProfileImageSideEffect.swift */; };
+		85FBAB512BC1AF76008CFC1B /* SetProfileImageCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FBAB502BC1AF76008CFC1B /* SetProfileImageCore.swift */; };
+		85FBAB532BC1AF84008CFC1B /* SetProfileImageRouteBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FBAB522BC1AF84008CFC1B /* SetProfileImageRouteBuilder.swift */; };
+		85FBAB562BC1B110008CFC1B /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FBAB552BC1B110008CFC1B /* View.swift */; };
+		85FBAB5A2BC1B8DB008CFC1B /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 85FBAB592BC1B8DB008CFC1B /* ComposableArchitecture */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +52,11 @@
 		85FBAB452BC1AA94008CFC1B /* SetNameRouteBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetNameRouteBuilder.swift; sourceTree = "<group>"; };
 		85FBAB472BC1AA9C008CFC1B /* SetNameCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetNameCore.swift; sourceTree = "<group>"; };
 		85FBAB492BC1AAA4008CFC1B /* SetNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetNameView.swift; sourceTree = "<group>"; };
+		85FBAB4C2BC1AF2D008CFC1B /* SetProfileImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetProfileImageView.swift; sourceTree = "<group>"; };
+		85FBAB4E2BC1AF57008CFC1B /* SetProfileImageSideEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetProfileImageSideEffect.swift; sourceTree = "<group>"; };
+		85FBAB502BC1AF76008CFC1B /* SetProfileImageCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetProfileImageCore.swift; sourceTree = "<group>"; };
+		85FBAB522BC1AF84008CFC1B /* SetProfileImageRouteBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetProfileImageRouteBuilder.swift; sourceTree = "<group>"; };
+		85FBAB552BC1B110008CFC1B /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,8 +64,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				85FBAB5A2BC1B8DB008CFC1B /* ComposableArchitecture in Frameworks */,
 				8598F9F22BC0372300132DE6 /* LinkNavigator in Frameworks */,
-				8598F9EF2BC0366F00132DE6 /* ComposableArchitecture in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -67,6 +77,7 @@
 			children = (
 				8598F9DE2BC0361100132DE6 /* Adego-iOS */,
 				8598F9DD2BC0361100132DE6 /* Products */,
+				85FBAB582BC1B8DB008CFC1B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -119,6 +130,7 @@
 		8598F9F62BC0381100132DE6 /* Feature */ = {
 			isa = PBXGroup;
 			children = (
+				85FBAB542BC1B103008CFC1B /* Extension */,
 				8598F9F72BC03D2D00132DE6 /* Dependency */,
 				8598FA032BC03EC400132DE6 /* Auth */,
 				8598FA022BC03EB300132DE6 /* Main */,
@@ -148,6 +160,7 @@
 			children = (
 				85FBAB352BC0433F008CFC1B /* Signin */,
 				85FBAB422BC1AA6A008CFC1B /* SetName */,
+				85FBAB4B2BC1AF10008CFC1B /* SetProfileImage */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -174,6 +187,32 @@
 			path = SetName;
 			sourceTree = "<group>";
 		};
+		85FBAB4B2BC1AF10008CFC1B /* SetProfileImage */ = {
+			isa = PBXGroup;
+			children = (
+				85FBAB4C2BC1AF2D008CFC1B /* SetProfileImageView.swift */,
+				85FBAB502BC1AF76008CFC1B /* SetProfileImageCore.swift */,
+				85FBAB522BC1AF84008CFC1B /* SetProfileImageRouteBuilder.swift */,
+				85FBAB4E2BC1AF57008CFC1B /* SetProfileImageSideEffect.swift */,
+			);
+			path = SetProfileImage;
+			sourceTree = "<group>";
+		};
+		85FBAB542BC1B103008CFC1B /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				85FBAB552BC1B110008CFC1B /* View.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		85FBAB582BC1B8DB008CFC1B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -191,8 +230,8 @@
 			);
 			name = "Adego-iOS";
 			packageProductDependencies = (
-				8598F9EE2BC0366F00132DE6 /* ComposableArchitecture */,
 				8598F9F12BC0372300132DE6 /* LinkNavigator */,
+				85FBAB592BC1B8DB008CFC1B /* ComposableArchitecture */,
 			);
 			productName = "Adego-iOS";
 			productReference = 8598F9DC2BC0361100132DE6 /* Adego-iOS.app */;
@@ -252,6 +291,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				85FBAB532BC1AF84008CFC1B /* SetProfileImageRouteBuilder.swift in Sources */,
+				85FBAB4D2BC1AF2D008CFC1B /* SetProfileImageView.swift in Sources */,
 				8598FA002BC03D9C00132DE6 /* AppDelegate.swift in Sources */,
 				85FBAB382BC045CE008CFC1B /* MainView.swift in Sources */,
 				85FBAB3D2BC1A7EB008CFC1B /* SigninCore.swift in Sources */,
@@ -260,7 +301,10 @@
 				8598F9E22BC0361100132DE6 /* ContentView.swift in Sources */,
 				85FBAB442BC1AA83008CFC1B /* SetNameSideEffect.swift in Sources */,
 				8598F9FE2BC03D8400132DE6 /* AppSideEffect.swift in Sources */,
+				85FBAB512BC1AF76008CFC1B /* SetProfileImageCore.swift in Sources */,
 				85FBAB462BC1AA94008CFC1B /* SetNameRouteBuilder.swift in Sources */,
+				85FBAB562BC1B110008CFC1B /* View.swift in Sources */,
+				85FBAB4F2BC1AF57008CFC1B /* SetProfileImageSideEffect.swift in Sources */,
 				8598F9F92BC03D3700132DE6 /* AppDependency.swift in Sources */,
 				85FBAB3F2BC1A7F5008CFC1B /* SigninRouteBuilder.swift in Sources */,
 				8598F9FC2BC03D6B00132DE6 /* AppRouterGroup.swift in Sources */,
@@ -493,15 +537,15 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		8598F9EE2BC0366F00132DE6 /* ComposableArchitecture */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 8598F9ED2BC0366F00132DE6 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
-			productName = ComposableArchitecture;
-		};
 		8598F9F12BC0372300132DE6 /* LinkNavigator */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 8598F9F02BC0372300132DE6 /* XCRemoteSwiftPackageReference "LinkNavigator" */;
 			productName = LinkNavigator;
+		};
+		85FBAB592BC1B8DB008CFC1B /* ComposableArchitecture */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8598F9ED2BC0366F00132DE6 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
+			productName = ComposableArchitecture;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

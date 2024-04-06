@@ -1,5 +1,5 @@
 //
-//  SetNameCore.swift
+//  SetProfileImageCore.swift
 //  Adego-iOS
 //
 //  Created by 최시훈 on 4/7/24.
@@ -8,8 +8,8 @@
 import ComposableArchitecture
 
 @Reducer
-struct SetNameCore: Reducer {
-    @Dependency(\.sideEffect.setName) private var sideEffect
+struct SetProfileImageCore: Reducer {
+    @Dependency(\.sideEffect.setProfileImage) private var sideEffect
     
     @ObservableState
     struct State: Equatable {

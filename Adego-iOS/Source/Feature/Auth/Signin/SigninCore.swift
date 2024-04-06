@@ -7,9 +7,11 @@
 
 import ComposableArchitecture
 
+@Reducer
 struct SigninCore: Reducer {
     @Dependency(\.sideEffect.signin) private var sideEffect
     
+    @ObservableState
     struct State: Equatable {
         
     }

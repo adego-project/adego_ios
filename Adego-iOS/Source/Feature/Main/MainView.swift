@@ -5,7 +5,7 @@
 //  Created by 최시훈 on 4/5/24.
 //
 
-import Foundation
+import SwiftUI
 
 struct MainView: View {
     var body: some View {

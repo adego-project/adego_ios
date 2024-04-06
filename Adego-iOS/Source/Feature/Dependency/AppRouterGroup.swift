@@ -10,8 +10,10 @@ import LinkNavigator
 struct AppRouterGroup {
   var routers: [RouteBuilder] {
     [
-        SigninRouteBuilder()
-        SetNameRouteBuilder()
+        SigninRouteBuilder(),
+        SetNameRouteBuilder(),
+        SetProfileImageRouteBuilder()
+        
     ]
   }
 }

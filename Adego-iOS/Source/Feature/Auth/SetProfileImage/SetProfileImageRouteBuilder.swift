@@ -1,5 +1,5 @@
 //
-//  SigninRouteBuilder.swift
+//  SetProfileImageRouteBuilder.swift
 //  Adego-iOS
 //
 //  Created by 최시훈 on 4/7/24.
@@ -7,20 +7,19 @@
 
 import LinkNavigator
 
-struct SigninRouteBuilder: RouteBuilder {
+struct SetProfileImageRouteBuilder: RouteBuilder {
     
-    var matchPath: String { "signin" }
+    var matchPath: String { "setProfileImage" }
     
     var build: (LinkNavigatorType, [String: String], DependencyType) -> MatchingViewController? {
         { _, items, _ in
             WrappingController(matchPath: matchPath) {
-                SigninView(
+                SetProfileImageView(
                     store: .init(
-                        initialState: SigninCore.State(),
+                        initialState: SetProfileImageCore.State(),
                         reducer: {
-                            SigninCore()
+                            SetProfileImageCore()
                         }))
-                .background(.black)
             }
         }
     }

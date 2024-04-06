@@ -15,7 +15,6 @@ struct SetNameRouteBuilder: RouteBuilder {
         { _, items, _ in
             WrappingController(matchPath: matchPath) {
                 SetNameView(
-                    selection: .constant(0),
                     store: .init(
                         initialState: SetNameCore.State(),
                         reducer: {

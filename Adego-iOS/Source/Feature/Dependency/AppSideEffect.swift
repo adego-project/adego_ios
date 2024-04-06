@@ -24,12 +24,18 @@ public struct AppSideEffect: DependencyKey {
     // SideEffect 추가
     let linkNavigator: LinkNavigatorType
     let signin: SigninSideEffect
+    let setName: SetNameSideEffect
+    let setProfileImage: SetProfileImageSideEffect
     
     public static var liveValue: AppSideEffect {
         .init(
             // SideEffectLive 추가
             linkNavigator: navigator,
-            signin: SigninSideEffectLive(navigator: navigator)
+            signin: SigninSideEffectLive(navigator: navigator),
+            setName: SetNameSideEffectLive(navigator: navigator),
+            setProfileImage: SetProfileImageSideEffectLive(navigator: navigator)
+
+            
 
         )
     }
