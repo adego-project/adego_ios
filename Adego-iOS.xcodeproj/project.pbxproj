@@ -17,6 +17,15 @@
 		8598F9FC2BC03D6B00132DE6 /* AppRouterGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8598F9FB2BC03D6B00132DE6 /* AppRouterGroup.swift */; };
 		8598F9FE2BC03D8400132DE6 /* AppSideEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8598F9FD2BC03D8400132DE6 /* AppSideEffect.swift */; };
 		8598FA002BC03D9C00132DE6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8598F9FF2BC03D9C00132DE6 /* AppDelegate.swift */; };
+		85FBAB342BC0433E008CFC1B /* SigninView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FBAB332BC0433E008CFC1B /* SigninView.swift */; };
+		85FBAB382BC045CE008CFC1B /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FBAB372BC045CE008CFC1B /* MainView.swift */; };
+		85FBAB3D2BC1A7EB008CFC1B /* SigninCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FBAB3C2BC1A7EB008CFC1B /* SigninCore.swift */; };
+		85FBAB3F2BC1A7F5008CFC1B /* SigninRouteBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FBAB3E2BC1A7F5008CFC1B /* SigninRouteBuilder.swift */; };
+		85FBAB412BC1A806008CFC1B /* SigninSideEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FBAB402BC1A806008CFC1B /* SigninSideEffect.swift */; };
+		85FBAB442BC1AA83008CFC1B /* SetNameSideEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FBAB432BC1AA83008CFC1B /* SetNameSideEffect.swift */; };
+		85FBAB462BC1AA94008CFC1B /* SetNameRouteBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FBAB452BC1AA94008CFC1B /* SetNameRouteBuilder.swift */; };
+		85FBAB482BC1AA9C008CFC1B /* SetNameCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FBAB472BC1AA9C008CFC1B /* SetNameCore.swift */; };
+		85FBAB4A2BC1AAA4008CFC1B /* SetNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FBAB492BC1AAA4008CFC1B /* SetNameView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +38,15 @@
 		8598F9FB2BC03D6B00132DE6 /* AppRouterGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouterGroup.swift; sourceTree = "<group>"; };
 		8598F9FD2BC03D8400132DE6 /* AppSideEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSideEffect.swift; sourceTree = "<group>"; };
 		8598F9FF2BC03D9C00132DE6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		85FBAB332BC0433E008CFC1B /* SigninView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SigninView.swift; path = "Adego-iOS/Source/Feature/Auth/Signin/SigninView.swift"; sourceTree = SOURCE_ROOT; };
+		85FBAB372BC045CE008CFC1B /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MainView.swift; path = "Adego-iOS/Source/Feature/Main/MainView.swift"; sourceTree = SOURCE_ROOT; };
+		85FBAB3C2BC1A7EB008CFC1B /* SigninCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninCore.swift; sourceTree = "<group>"; };
+		85FBAB3E2BC1A7F5008CFC1B /* SigninRouteBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninRouteBuilder.swift; sourceTree = "<group>"; };
+		85FBAB402BC1A806008CFC1B /* SigninSideEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninSideEffect.swift; sourceTree = "<group>"; };
+		85FBAB432BC1AA83008CFC1B /* SetNameSideEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetNameSideEffect.swift; sourceTree = "<group>"; };
+		85FBAB452BC1AA94008CFC1B /* SetNameRouteBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetNameRouteBuilder.swift; sourceTree = "<group>"; };
+		85FBAB472BC1AA9C008CFC1B /* SetNameCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetNameCore.swift; sourceTree = "<group>"; };
+		85FBAB492BC1AAA4008CFC1B /* SetNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetNameView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,7 +120,6 @@
 			isa = PBXGroup;
 			children = (
 				8598F9F72BC03D2D00132DE6 /* Dependency */,
-				8598FA042BC03F2B00132DE6 /* OnBoarding */,
 				8598FA032BC03EC400132DE6 /* Auth */,
 				8598FA022BC03EB300132DE6 /* Main */,
 			);
@@ -121,6 +138,7 @@
 		8598FA022BC03EB300132DE6 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				85FBAB372BC045CE008CFC1B /* MainView.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -128,15 +146,32 @@
 		8598FA032BC03EC400132DE6 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
+				85FBAB352BC0433F008CFC1B /* Signin */,
+				85FBAB422BC1AA6A008CFC1B /* SetName */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
 		};
-		8598FA042BC03F2B00132DE6 /* OnBoarding */ = {
+		85FBAB352BC0433F008CFC1B /* Signin */ = {
 			isa = PBXGroup;
 			children = (
+				85FBAB332BC0433E008CFC1B /* SigninView.swift */,
+				85FBAB3C2BC1A7EB008CFC1B /* SigninCore.swift */,
+				85FBAB3E2BC1A7F5008CFC1B /* SigninRouteBuilder.swift */,
+				85FBAB402BC1A806008CFC1B /* SigninSideEffect.swift */,
 			);
-			path = OnBoarding;
+			path = Signin;
+			sourceTree = "<group>";
+		};
+		85FBAB422BC1AA6A008CFC1B /* SetName */ = {
+			isa = PBXGroup;
+			children = (
+				85FBAB492BC1AAA4008CFC1B /* SetNameView.swift */,
+				85FBAB472BC1AA9C008CFC1B /* SetNameCore.swift */,
+				85FBAB452BC1AA94008CFC1B /* SetNameRouteBuilder.swift */,
+				85FBAB432BC1AA83008CFC1B /* SetNameSideEffect.swift */,
+			);
+			path = SetName;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -218,10 +253,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				8598FA002BC03D9C00132DE6 /* AppDelegate.swift in Sources */,
+				85FBAB382BC045CE008CFC1B /* MainView.swift in Sources */,
+				85FBAB3D2BC1A7EB008CFC1B /* SigninCore.swift in Sources */,
+				85FBAB4A2BC1AAA4008CFC1B /* SetNameView.swift in Sources */,
+				85FBAB412BC1A806008CFC1B /* SigninSideEffect.swift in Sources */,
 				8598F9E22BC0361100132DE6 /* ContentView.swift in Sources */,
+				85FBAB442BC1AA83008CFC1B /* SetNameSideEffect.swift in Sources */,
 				8598F9FE2BC03D8400132DE6 /* AppSideEffect.swift in Sources */,
+				85FBAB462BC1AA94008CFC1B /* SetNameRouteBuilder.swift in Sources */,
 				8598F9F92BC03D3700132DE6 /* AppDependency.swift in Sources */,
+				85FBAB3F2BC1A7F5008CFC1B /* SigninRouteBuilder.swift in Sources */,
 				8598F9FC2BC03D6B00132DE6 /* AppRouterGroup.swift in Sources */,
+				85FBAB342BC0433E008CFC1B /* SigninView.swift in Sources */,
+				85FBAB482BC1AA9C008CFC1B /* SetNameCore.swift in Sources */,
 				8598F9E02BC0361100132DE6 /* Adego_iOSApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

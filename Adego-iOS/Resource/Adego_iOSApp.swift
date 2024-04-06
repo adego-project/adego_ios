@@ -24,7 +24,7 @@ struct Adego_iOSApp: App {
         var body: some Scene {
             WindowGroup {
                 navigator
-                    .launch(paths: ["onBoarding"],
+                    .launch(paths: ["signin"],
                             items: [:])
                     .ignoresSafeArea(edges: .all)
             }

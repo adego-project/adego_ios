@@ -10,7 +10,8 @@ import LinkNavigator
 struct AppRouterGroup {
   var routers: [RouteBuilder] {
     [
-      // 나중에 추가
+        SigninRouteBuilder()
+        SetNameRouteBuilder()
     ]
   }
 }

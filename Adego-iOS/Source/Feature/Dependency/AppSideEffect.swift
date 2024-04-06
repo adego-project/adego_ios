@@ -21,11 +21,15 @@ private var navigator: LinkNavigatorType = LinkNavigator(
 
 public struct AppSideEffect: DependencyKey {
     
+    // SideEffect 추가
     let linkNavigator: LinkNavigatorType
+    let signin: SigninSideEffect
     
     public static var liveValue: AppSideEffect {
         .init(
-            linkNavigator: navigator
+            // SideEffectLive 추가
+            linkNavigator: navigator,
+            signin: SigninSideEffectLive(navigator: navigator)
 
         )
     }
