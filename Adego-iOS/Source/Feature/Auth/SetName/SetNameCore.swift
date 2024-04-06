@@ -9,7 +9,6 @@ import ComposableArchitecture
 
 @Reducer
 struct SetNameCore: Reducer {
-    @Dependency(\.sideEffect.setName) private var sideEffect
     
     @ObservableState
     struct State: Equatable {

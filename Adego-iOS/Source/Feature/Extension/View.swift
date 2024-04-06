@@ -7,28 +7,22 @@
 
 import SwiftUI
 
-//struct BlackBackground: ViewModifier {
-//    func body(content: Content) -> some View {
-//        content
-//            .background(Color.black)
-//    }
-//}
-//
-//extension View {
-//    func blackBackground() -> some View {
-//        self.modifier(BlackBackground())
-//    }
-//}
-//
-//@resultBuilder
-//struct BlackBackgroundBuilder {
-//    static func buildBlock<Content>(_ content: Content) -> some View where Content: View {
-//        content.blackBackground()
-//    }
-//}
-//
-//extension View {
-//    static func buildBlock<Content>(_ content: Content) -> some View where Content: View {
-//        BlackBackgroundBuilder.buildBlock(content)
-//    }
-//}
+struct BlackBackground: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .background(Color.black)
+    }
+}
+
+extension View {
+    func blackBackground() -> some View {
+        self.modifier(BlackBackground())
+    }
+}
+
+@resultBuilder
+struct BlackBackgroundBuilder {
+    static func buildBlock<Content>(_ content: Content) -> some View where Content: View {
+        content
+    }
+}

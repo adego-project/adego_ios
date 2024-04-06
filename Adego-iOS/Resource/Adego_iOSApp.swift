@@ -6,27 +6,16 @@
 //
 
 import SwiftUI
-import LinkNavigator
 import ComposableArchitecture
 
 @main
 struct Adego_iOSApp: App {
-    @Dependency(\.sideEffect) var sideEffect
-        
-        
-        // MARK: App
-        var navigator: LinkNavigator {
-            sideEffect.linkNavigator as! LinkNavigator
-        }
-        @UIApplicationDelegateAdaptor(AppDelegate.self) private var appDelegate
-        
-        
         var body: some Scene {
             WindowGroup {
-                navigator
-                    .launch(paths: ["signin"],
-                            items: [:])
-                    .ignoresSafeArea(edges: .all)
+                SigninView(store: Store(initialState: SigninCore.State()) {
+                    SigninCore()
+                })
             }
+            
         }
 }

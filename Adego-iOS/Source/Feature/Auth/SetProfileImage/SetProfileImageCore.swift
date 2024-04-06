@@ -9,7 +9,6 @@ import ComposableArchitecture
 
 @Reducer
 struct SetProfileImageCore: Reducer {
-    @Dependency(\.sideEffect.setProfileImage) private var sideEffect
     
     @ObservableState
     struct State: Equatable {

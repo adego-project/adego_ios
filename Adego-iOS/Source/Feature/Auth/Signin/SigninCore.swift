@@ -9,15 +9,15 @@ import ComposableArchitecture
 
 @Reducer
 struct SigninCore: Reducer {
-    @Dependency(\.sideEffect.signin) private var sideEffect
     
     @ObservableState
     struct State: Equatable {
-        
+        var isKaKaoLogin: Bool = false
+        var isAppleLogin: Bool = false
     }
     
     enum Action: Equatable {
-        
+        func kakaoLogin
     }
     
     func reduce(into state: inout State, action: Action) -> Effect<Action> {

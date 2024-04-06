@@ -12,8 +12,20 @@ struct SigninView: View {
     let store: StoreOf<SigninCore>
     
     var body: some View {
-        Image("AdegoMainLogo")
-            .background(.yellow)
+        NavigationStack {
+            ZStack {
+                Color.black
+                
+                VStack {
+                    Image("AdegoMainLogo")
+                    
+                    Button {
+                        
+                    }
+                }
+            }
+            .ignoresSafeArea(.all)
+        }
     }
 }
 
