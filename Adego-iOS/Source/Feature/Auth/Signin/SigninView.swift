@@ -9,22 +9,29 @@ import SwiftUI
 import ComposableArchitecture
 
 struct SigninView: View {
-    let store: StoreOf<SigninCore>
+    @Perception.Bindable var store: StoreOf<SigninCore>
     
     var body: some View {
-        NavigationStack {
-            ZStack {
-                Color.black
+        WithPerceptionTracking {
+            VStack {
+                Image("AdegoMainLogo")
                 
-                VStack {
-                    Image("AdegoMainLogo")
-                    
-                    Button {
-                        
-                    }
+                Spacer()
+                
+                Button {
+                    store.send(.navigateToSetName)
+                } label: {
+                    Image("AppleLoginImage")
                 }
+                
+                Button {
+                    store.send(.kakaoLogin)
+                } label: {
+                    Image("KakaoTalkLoginImage")
+                }
+                .padding(.bottom, 44)
             }
-            .ignoresSafeArea(.all)
+            .padding(.top, 285)
         }
     }
 }
