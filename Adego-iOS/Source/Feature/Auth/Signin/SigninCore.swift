@@ -9,21 +9,36 @@ import ComposableArchitecture
 
 @Reducer
 struct SigninCore: Reducer {
-    
+    @Dependency(\.flow) var flow
+
     @ObservableState
     struct State: Equatable {
-        var isKaKaoLogin: Bool = false
-        var isAppleLogin: Bool = false
+        
     }
     
-    enum Action: Equatable {
-        func kakaoLogin
+    enum Action {
+        case navigateToSetName
+        case kakaoLogin
     }
     
-    func reduce(into state: inout State, action: Action) -> Effect<Action> {
-        let newState = state
-        switch action {
-            
+    var body: some ReducerOf<Self> {
+        Reduce { state, action in
+            switch action {
+            case .navigateToSetName:
+                flow.push(
+                    SetNameView(
+                        store: Store(
+                            initialState: SetNameCore.State()
+                        ) {
+                            SetNameCore()
+                        }
+                    )
+                )
+                return .none
+            case .kakaoLogin:
+                
+                return .none
+            }
         }
     }
     // MARK: - func
