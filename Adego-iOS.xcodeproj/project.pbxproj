@@ -18,6 +18,8 @@
 		8598F9E42BC0361200132DE6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8598F9E32BC0361200132DE6 /* Assets.xcassets */; };
 		8598F9E72BC0361200132DE6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8598F9E62BC0361200132DE6 /* Preview Assets.xcassets */; };
 		85ADC23A2BC682BB008E947E /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85ADC2392BC682BB008E947E /* Alert.swift */; };
+		85ADC23E2BC6FA3D008E947E /* PromisePreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85ADC23D2BC6FA3D008E947E /* PromisePreviewView.swift */; };
+		85ADC2402BC6FD08008E947E /* PromisePreviewCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85ADC23F2BC6FD08008E947E /* PromisePreviewCore.swift */; };
 		85FBAB342BC0433E008CFC1B /* SigninView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FBAB332BC0433E008CFC1B /* SigninView.swift */; };
 		85FBAB382BC045CE008CFC1B /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FBAB372BC045CE008CFC1B /* MainView.swift */; };
 		85FBAB3D2BC1A7EB008CFC1B /* SigninCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FBAB3C2BC1A7EB008CFC1B /* SigninCore.swift */; };
@@ -51,6 +53,8 @@
 		8598F9E32BC0361200132DE6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8598F9E62BC0361200132DE6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		85ADC2392BC682BB008E947E /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
+		85ADC23D2BC6FA3D008E947E /* PromisePreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromisePreviewView.swift; sourceTree = "<group>"; };
+		85ADC23F2BC6FD08008E947E /* PromisePreviewCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromisePreviewCore.swift; sourceTree = "<group>"; };
 		85FBAB332BC0433E008CFC1B /* SigninView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SigninView.swift; path = "Adego-iOS/Source/Feature/Auth/Signin/SigninView.swift"; sourceTree = SOURCE_ROOT; };
 		85FBAB372BC045CE008CFC1B /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MainView.swift; path = "Adego-iOS/Source/Feature/Main/MainView.swift"; sourceTree = SOURCE_ROOT; };
 		85FBAB3C2BC1A7EB008CFC1B /* SigninCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninCore.swift; sourceTree = "<group>"; };
@@ -94,6 +98,8 @@
 			isa = PBXGroup;
 			children = (
 				85424FEA2BC508B7007A429D /* MapAnnotationView.swift */,
+				85ADC23D2BC6FA3D008E947E /* PromisePreviewView.swift */,
+				85ADC23F2BC6FD08008E947E /* PromisePreviewCore.swift */,
 				85424FED2BC50A60007A429D /* Location.swift */,
 			);
 			path = Map;
@@ -354,6 +360,8 @@
 				85424FE72BC4DCDB007A429D /* ImagePickerView.swift in Sources */,
 				85FBAB482BC1AA9C008CFC1B /* SetNameCore.swift in Sources */,
 				857E49382BC4CF84007E3ABC /* Text.swift in Sources */,
+				85ADC2402BC6FD08008E947E /* PromisePreviewCore.swift in Sources */,
+				85ADC23E2BC6FA3D008E947E /* PromisePreviewView.swift in Sources */,
 				8598F9E02BC0361100132DE6 /* Adego_iOSApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -509,6 +517,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -546,6 +555,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

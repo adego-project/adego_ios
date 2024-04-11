@@ -6,16 +6,40 @@
 //
 
 import SwiftUI
+import FlowKit
 import ComposableArchitecture
+
+struct FlowDependency: DependencyKey {
+    static var liveValue: FlowProvider {
+        FlowProvider(
+            rootView: SigninView(
+                store: Store(
+                    initialState: SigninCore.State()
+                ) {
+                    SigninCore()
+                }
+            )
+        ) { rootView in
+            CustomNavigationBarController(rootViewController: rootView)
+        }
+    }
+}
+
+extension DependencyValues {
+    var flow: FlowProvider {
+        get { self[FlowDependency.self] }
+        set { self[FlowDependency.self] = newValue }
+    }
+}
 
 @main
 struct Adego_iOSApp: App {
-        var body: some Scene {
-            WindowGroup {
-                SigninView(store: Store(initialState: SigninCore.State()) {
-                    SigninCore()
-                })
-            }
-            
+    @Dependency(\.flow) var flow
+    var body: some Scene {
+        WindowGroup {
+            flow.present()
+                .ignoresSafeArea()
+                .navigationBarHidden(true)
         }
+    }
 }
