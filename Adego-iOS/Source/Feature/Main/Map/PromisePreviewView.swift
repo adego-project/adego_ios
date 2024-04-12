@@ -22,22 +22,22 @@ struct PromisePreviewView: View {
                         .font(.wantedSans(14))
                         .foregroundStyle(.gray70)
                         .padding(.bottom, -8)
-
+                    
                     Text(store.promiseTitle)
                         .font(.wantedSans(24))
                         .foregroundStyle(.gray100)
-
+                    
                     makeInfo("calendar", caption: store.promiseDay)
-
+                    
                     makeInfo("clock", caption: store.promiseTime)
-
+                    
                     makeInfo("distance", caption: store.promiseLocation)
-
+                    
                 }
                 .padding(.horizontal, 20)
-
+                
                 makeNotificationButton
-               
+                
             }
             .frame(maxWidth: .infinity, maxHeight: 260)
             .background(.black)
@@ -45,7 +45,7 @@ struct PromisePreviewView: View {
                 RoundedRectangle(cornerRadius: 8)
             )
             .padding(.horizontal, 20)
-
+            
         }
     }
 }
@@ -94,19 +94,10 @@ extension PromisePreviewView {
                         Image(systemName: "square.and.arrow.up")
                             .frame(width: 24, height: 24)
                             .foregroundStyle(.white)
-                        
                     }
                     .frame(width: 56, height: 56)
-                    .background(.gray20)
+                    .buttonStyle(CustomStrokeRoundedButtonStyle())
                 }
-                .clipShape(
-                    RoundedRectangle(cornerRadius: 8)
-                )
-                .overlay(
-                    RoundedRectangle(cornerRadius: 8)
-                        .stroke()
-                        .foregroundStyle(.gray30)
-                )
             } else {
                 Button {
                     store.isPromiseValid.toggle()
@@ -115,8 +106,10 @@ extension PromisePreviewView {
                         .foregroundStyle(.gray10)
                         .frame(width: 319, height: 56)
                         .background(.white)
+                        .buttonStyle(CustomStrokeRoundedButtonStyle())
                 }
                 .clipShape(RoundedRectangle(cornerRadius: 8))
+                
             }
         }
         .animation(.easeInOut, value: store.isPromiseValid)
