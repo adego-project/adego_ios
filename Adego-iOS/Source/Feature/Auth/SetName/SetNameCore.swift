@@ -14,7 +14,7 @@ struct SetNameCore: Reducer {
     @ObservableState
     struct State: Equatable {
         var isFormValid: Bool = false
-        var stringLength: Int = 0
+        var nameLength: Int = 0
         var name: String = ""
         
         public init() {}
