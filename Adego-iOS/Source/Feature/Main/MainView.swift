@@ -46,6 +46,8 @@ struct MainView: View {
                     store.send(.findCurrentLocation)
                 }
                 VStack {
+                    header
+                    
                     Spacer()
                     
                     locationsPreviewStack
@@ -53,6 +55,36 @@ struct MainView: View {
             }
         }
     }
+}
+
+extension MainView {
+    private var header: some View {
+        HStack {
+            Button {
+                store.send(.navigateToCreateView)
+                print("1")
+            } label: {
+                Image("Union")
+                    .resizable()
+                    .frame(width: 28, height: 28)
+            }
+            
+            Spacer()
+            
+            Button {
+                store.send(.navigateToSettingView)    
+                print("2")
+            } label: {
+                Image(systemName: "gearshape")
+                    .resizable()
+                    .frame(width: 18, height: 18)
+            }
+            .buttonStyle(CustomStrokeRoundedButtonStyle())
+
+        }
+        .padding(.horizontal, 16)
+    }
+    
     private var locationsPreviewStack: some View {
         ZStack {
             ForEach(locations) { location in
