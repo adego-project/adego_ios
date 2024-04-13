@@ -53,14 +53,9 @@ struct SetProfileImageView: View {
                     store.send(.createAccount)
                 } label: {
                     Text("생성하기 \(Image(systemName: "arrow.right"))")
-                        .font(.wantedSans(weight: .midium))
-                        .foregroundStyle(.gray10)
-                        .frame(width: 343, height: 56)
-                        .background(.gray100)
+                       
                 }
-                .clipShape(
-                    RoundedRectangle(cornerRadius: 8)
-                )
+                .buttonStyle(CustomWhiteRoundedButton())
                 .padding(.bottom, 10)
                 
             }
