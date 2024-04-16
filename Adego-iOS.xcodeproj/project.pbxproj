@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		850702DC2BCCD82600E3E820 /* Locations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850702DB2BCCD82600E3E820 /* Locations.swift */; };
+		850702DE2BCDF47800E3E820 /* CustomInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850702DD2BCDF47800E3E820 /* CustomInfoView.swift */; };
+		850702E32BCE2F5700E3E820 /* SendNotificiationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850702E22BCE2F5700E3E820 /* SendNotificiationView.swift */; };
+		850702E62BCE2F8700E3E820 /* SendNotificationCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850702E52BCE2F8700E3E820 /* SendNotificationCore.swift */; };
+		850702E92BCE4CBB00E3E820 /* WrappingHStack in Frameworks */ = {isa = PBXBuildFile; productRef = 850702E82BCE4CBB00E3E820 /* WrappingHStack */; };
+		850702EB2BCE4D6B00E3E820 /* SendUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850702EA2BCE4D6B00E3E820 /* SendUser.swift */; };
+		850702EF2BCE91C800E3E820 /* InvitedAppointmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850702EE2BCE91C800E3E820 /* InvitedAppointmentView.swift */; };
+		850702F22BCE91F200E3E820 /* InvitedAppointmentCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850702F12BCE91F200E3E820 /* InvitedAppointmentCore.swift */; };
 		85424FE72BC4DCDB007A429D /* ImagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85424FE62BC4DCDB007A429D /* ImagePickerView.swift */; };
 		85424FE92BC50108007A429D /* MainCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85424FE82BC50108007A429D /* MainCore.swift */; };
 		85424FEB2BC508B7007A429D /* MapAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85424FEA2BC508B7007A429D /* MapAnnotationView.swift */; };
@@ -20,6 +28,26 @@
 		85ADC23A2BC682BB008E947E /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85ADC2392BC682BB008E947E /* Alert.swift */; };
 		85ADC23E2BC6FA3D008E947E /* PromisePreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85ADC23D2BC6FA3D008E947E /* PromisePreviewView.swift */; };
 		85ADC2402BC6FD08008E947E /* PromisePreviewCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85ADC23F2BC6FD08008E947E /* PromisePreviewCore.swift */; };
+		85ADC24B2BC8BDD0008E947E /* CustomStrokeRoundedButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85ADC24A2BC8BDD0008E947E /* CustomStrokeRoundedButtonStyle.swift */; };
+		85ADC2502BC8BF37008E947E /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85ADC24F2BC8BF37008E947E /* SettingView.swift */; };
+		85ADC2522BC8BF46008E947E /* CreatePromiseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85ADC2512BC8BF46008E947E /* CreatePromiseView.swift */; };
+		85ADC2542BC8BF70008E947E /* SettingCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85ADC2532BC8BF70008E947E /* SettingCore.swift */; };
+		85ADC2562BC8BF95008E947E /* CreatePromiseCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85ADC2552BC8BF95008E947E /* CreatePromiseCore.swift */; };
+		85ADC2582BC8C129008E947E /* CustomWhiteRoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85ADC2572BC8C129008E947E /* CustomWhiteRoundedButton.swift */; };
+		85ADC25A2BC8C56A008E947E /* CustomInputTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85ADC2592BC8C56A008E947E /* CustomInputTextFieldView.swift */; };
+		85ADC2602BCAFC22008E947E /* EditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85ADC25F2BCAFC22008E947E /* EditView.swift */; };
+		85ADC2622BCAFC2B008E947E /* EditCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85ADC2612BCAFC2B008E947E /* EditCore.swift */; };
+		85ADC2682BCB0A87008E947E /* SelectDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85ADC2672BCB0A87008E947E /* SelectDayView.swift */; };
+		85ADC26A2BCB0A8E008E947E /* SelectDayCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85ADC2692BCB0A8E008E947E /* SelectDayCore.swift */; };
+		85ADC26C2BCB0BDD008E947E /* SelectTimeTimeCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85ADC26B2BCB0BDD008E947E /* SelectTimeTimeCore.swift */; };
+		85ADC26F2BCB0C0C008E947E /* SelectTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85ADC26E2BCB0C0C008E947E /* SelectTimeView.swift */; };
+		85ADC2712BCB1034008E947E /* SelectLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85ADC2702BCB1034008E947E /* SelectLocationView.swift */; };
+		85ADC2732BCB1044008E947E /* SelectLocationCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85ADC2722BCB1044008E947E /* SelectLocationCore.swift */; };
+		85ADC2752BCB1054008E947E /* CreatePromiseCompleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85ADC2742BCB1054008E947E /* CreatePromiseCompleteView.swift */; };
+		85ADC2772BCB105E008E947E /* CreatePromiseCompleteCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85ADC2762BCB105E008E947E /* CreatePromiseCompleteCore.swift */; };
+		85ADC27A2BCB17F6008E947E /* WhiteTitleText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85ADC2792BCB17F6008E947E /* WhiteTitleText.swift */; };
+		85ADC27C2BCB20EC008E947E /* CustomTimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85ADC27B2BCB20EC008E947E /* CustomTimePicker.swift */; };
+		85ADC2802BCC31B4008E947E /* CreatePromiseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85ADC27F2BCC31B4008E947E /* CreatePromiseButton.swift */; };
 		85FBAB342BC0433E008CFC1B /* SigninView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FBAB332BC0433E008CFC1B /* SigninView.swift */; };
 		85FBAB382BC045CE008CFC1B /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FBAB372BC045CE008CFC1B /* MainView.swift */; };
 		85FBAB3D2BC1A7EB008CFC1B /* SigninCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FBAB3C2BC1A7EB008CFC1B /* SigninCore.swift */; };
@@ -41,6 +69,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		850702DB2BCCD82600E3E820 /* Locations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Locations.swift; sourceTree = "<group>"; };
+		850702DD2BCDF47800E3E820 /* CustomInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomInfoView.swift; sourceTree = "<group>"; };
+		850702E22BCE2F5700E3E820 /* SendNotificiationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendNotificiationView.swift; sourceTree = "<group>"; };
+		850702E52BCE2F8700E3E820 /* SendNotificationCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendNotificationCore.swift; sourceTree = "<group>"; };
+		850702EA2BCE4D6B00E3E820 /* SendUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendUser.swift; sourceTree = "<group>"; };
+		850702EE2BCE91C800E3E820 /* InvitedAppointmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitedAppointmentView.swift; sourceTree = "<group>"; };
+		850702F12BCE91F200E3E820 /* InvitedAppointmentCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitedAppointmentCore.swift; sourceTree = "<group>"; };
 		85424FE62BC4DCDB007A429D /* ImagePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerView.swift; sourceTree = "<group>"; };
 		85424FE82BC50108007A429D /* MainCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCore.swift; sourceTree = "<group>"; };
 		85424FEA2BC508B7007A429D /* MapAnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapAnnotationView.swift; sourceTree = "<group>"; };
@@ -55,6 +90,26 @@
 		85ADC2392BC682BB008E947E /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		85ADC23D2BC6FA3D008E947E /* PromisePreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromisePreviewView.swift; sourceTree = "<group>"; };
 		85ADC23F2BC6FD08008E947E /* PromisePreviewCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromisePreviewCore.swift; sourceTree = "<group>"; };
+		85ADC24A2BC8BDD0008E947E /* CustomStrokeRoundedButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStrokeRoundedButtonStyle.swift; sourceTree = "<group>"; };
+		85ADC24F2BC8BF37008E947E /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
+		85ADC2512BC8BF46008E947E /* CreatePromiseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePromiseView.swift; sourceTree = "<group>"; };
+		85ADC2532BC8BF70008E947E /* SettingCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCore.swift; sourceTree = "<group>"; };
+		85ADC2552BC8BF95008E947E /* CreatePromiseCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePromiseCore.swift; sourceTree = "<group>"; };
+		85ADC2572BC8C129008E947E /* CustomWhiteRoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomWhiteRoundedButton.swift; sourceTree = "<group>"; };
+		85ADC2592BC8C56A008E947E /* CustomInputTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomInputTextFieldView.swift; sourceTree = "<group>"; };
+		85ADC25F2BCAFC22008E947E /* EditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditView.swift; sourceTree = "<group>"; };
+		85ADC2612BCAFC2B008E947E /* EditCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCore.swift; sourceTree = "<group>"; };
+		85ADC2672BCB0A87008E947E /* SelectDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectDayView.swift; sourceTree = "<group>"; };
+		85ADC2692BCB0A8E008E947E /* SelectDayCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectDayCore.swift; sourceTree = "<group>"; };
+		85ADC26B2BCB0BDD008E947E /* SelectTimeTimeCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectTimeTimeCore.swift; sourceTree = "<group>"; };
+		85ADC26E2BCB0C0C008E947E /* SelectTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectTimeView.swift; sourceTree = "<group>"; };
+		85ADC2702BCB1034008E947E /* SelectLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectLocationView.swift; sourceTree = "<group>"; };
+		85ADC2722BCB1044008E947E /* SelectLocationCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectLocationCore.swift; sourceTree = "<group>"; };
+		85ADC2742BCB1054008E947E /* CreatePromiseCompleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePromiseCompleteView.swift; sourceTree = "<group>"; };
+		85ADC2762BCB105E008E947E /* CreatePromiseCompleteCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePromiseCompleteCore.swift; sourceTree = "<group>"; };
+		85ADC2792BCB17F6008E947E /* WhiteTitleText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhiteTitleText.swift; sourceTree = "<group>"; };
+		85ADC27B2BCB20EC008E947E /* CustomTimePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTimePicker.swift; sourceTree = "<group>"; };
+		85ADC27F2BCC31B4008E947E /* CreatePromiseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePromiseButton.swift; sourceTree = "<group>"; };
 		85FBAB332BC0433E008CFC1B /* SigninView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SigninView.swift; path = "Adego-iOS/Source/Feature/Auth/Signin/SigninView.swift"; sourceTree = SOURCE_ROOT; };
 		85FBAB372BC045CE008CFC1B /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MainView.swift; path = "Adego-iOS/Source/Feature/Main/MainView.swift"; sourceTree = SOURCE_ROOT; };
 		85FBAB3C2BC1A7EB008CFC1B /* SigninCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninCore.swift; sourceTree = "<group>"; };
@@ -79,6 +134,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				85FBAB682BC2DF93008CFC1B /* ComposableArchitecture in Frameworks */,
+				850702E92BCE4CBB00E3E820 /* WrappingHStack in Frameworks */,
 				85FBAB6E2BC2E3EC008CFC1B /* FlowKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -86,6 +142,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		850702E12BCE2F3C00E3E820 /* SendNotification */ = {
+			isa = PBXGroup;
+			children = (
+				850702E22BCE2F5700E3E820 /* SendNotificiationView.swift */,
+				850702E52BCE2F8700E3E820 /* SendNotificationCore.swift */,
+				850702EA2BCE4D6B00E3E820 /* SendUser.swift */,
+			);
+			path = SendNotification;
+			sourceTree = "<group>";
+		};
+		850702ED2BCE904D00E3E820 /* InvitedAppointMent */ = {
+			isa = PBXGroup;
+			children = (
+				850702EE2BCE91C800E3E820 /* InvitedAppointmentView.swift */,
+				850702F12BCE91F200E3E820 /* InvitedAppointmentCore.swift */,
+			);
+			path = InvitedAppointMent;
+			sourceTree = "<group>";
+		};
+		850702F32BCE9BEB00E3E820 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
+			sourceTree = "<group>";
+		};
 		85424FE52BC4DCC7007A429D /* Sub */ = {
 			isa = PBXGroup;
 			children = (
@@ -98,8 +180,6 @@
 			isa = PBXGroup;
 			children = (
 				85424FEA2BC508B7007A429D /* MapAnnotationView.swift */,
-				85ADC23D2BC6FA3D008E947E /* PromisePreviewView.swift */,
-				85ADC23F2BC6FD08008E947E /* PromisePreviewCore.swift */,
 				85424FED2BC50A60007A429D /* Location.swift */,
 			);
 			path = Map;
@@ -162,6 +242,7 @@
 		8598F9F62BC0381100132DE6 /* Feature */ = {
 			isa = PBXGroup;
 			children = (
+				85ADC24C2BC8BDDA008E947E /* Style */,
 				85FBAB5D2BC1C343008CFC1B /* Components */,
 				85FBAB542BC1B103008CFC1B /* Extension */,
 				8598FA032BC03EC400132DE6 /* Auth */,
@@ -175,7 +256,12 @@
 			children = (
 				85FBAB372BC045CE008CFC1B /* MainView.swift */,
 				85424FE82BC50108007A429D /* MainCore.swift */,
+				850702E12BCE2F3C00E3E820 /* SendNotification */,
+				85ADC2782BCB10FB008E947E /* PromisePreview */,
 				85424FEC2BC508B8007A429D /* Map */,
+				850702ED2BCE904D00E3E820 /* InvitedAppointMent */,
+				85ADC24D2BC8BEFA008E947E /* CreatePromise */,
+				85ADC24E2BC8BF09008E947E /* Setting */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -188,6 +274,95 @@
 				85FBAB4B2BC1AF10008CFC1B /* SetProfileImage */,
 			);
 			path = Auth;
+			sourceTree = "<group>";
+		};
+		85ADC24C2BC8BDDA008E947E /* Style */ = {
+			isa = PBXGroup;
+			children = (
+				85ADC24A2BC8BDD0008E947E /* CustomStrokeRoundedButtonStyle.swift */,
+				85ADC2572BC8C129008E947E /* CustomWhiteRoundedButton.swift */,
+			);
+			path = Style;
+			sourceTree = "<group>";
+		};
+		85ADC24D2BC8BEFA008E947E /* CreatePromise */ = {
+			isa = PBXGroup;
+			children = (
+				85ADC2512BC8BF46008E947E /* CreatePromiseView.swift */,
+				85ADC2552BC8BF95008E947E /* CreatePromiseCore.swift */,
+				85ADC2632BCB0A12008E947E /* Day */,
+				85ADC2642BCB0A2E008E947E /* Time */,
+				85ADC2652BCB0A3D008E947E /* Location */,
+				85ADC2662BCB0A40008E947E /* CreateComplete */,
+			);
+			path = CreatePromise;
+			sourceTree = "<group>";
+		};
+		85ADC24E2BC8BF09008E947E /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				85ADC24F2BC8BF37008E947E /* SettingView.swift */,
+				85ADC2532BC8BF70008E947E /* SettingCore.swift */,
+				85ADC25E2BCAFC17008E947E /* Edit */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		85ADC25E2BCAFC17008E947E /* Edit */ = {
+			isa = PBXGroup;
+			children = (
+				85ADC25F2BCAFC22008E947E /* EditView.swift */,
+				85ADC2612BCAFC2B008E947E /* EditCore.swift */,
+			);
+			path = Edit;
+			sourceTree = "<group>";
+		};
+		85ADC2632BCB0A12008E947E /* Day */ = {
+			isa = PBXGroup;
+			children = (
+				85ADC2672BCB0A87008E947E /* SelectDayView.swift */,
+				85ADC2692BCB0A8E008E947E /* SelectDayCore.swift */,
+			);
+			path = Day;
+			sourceTree = "<group>";
+		};
+		85ADC2642BCB0A2E008E947E /* Time */ = {
+			isa = PBXGroup;
+			children = (
+				85ADC26E2BCB0C0C008E947E /* SelectTimeView.swift */,
+				85ADC26B2BCB0BDD008E947E /* SelectTimeTimeCore.swift */,
+			);
+			path = Time;
+			sourceTree = "<group>";
+		};
+		85ADC2652BCB0A3D008E947E /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				85ADC2702BCB1034008E947E /* SelectLocationView.swift */,
+				85ADC2722BCB1044008E947E /* SelectLocationCore.swift */,
+				850702DB2BCCD82600E3E820 /* Locations.swift */,
+			);
+			path = Location;
+			sourceTree = "<group>";
+		};
+		85ADC2662BCB0A40008E947E /* CreateComplete */ = {
+			isa = PBXGroup;
+			children = (
+				850702F32BCE9BEB00E3E820 /* New Group */,
+				85ADC2742BCB1054008E947E /* CreatePromiseCompleteView.swift */,
+				85ADC2762BCB105E008E947E /* CreatePromiseCompleteCore.swift */,
+			);
+			path = CreateComplete;
+			sourceTree = "<group>";
+		};
+		85ADC2782BCB10FB008E947E /* PromisePreview */ = {
+			isa = PBXGroup;
+			children = (
+				85ADC23D2BC6FA3D008E947E /* PromisePreviewView.swift */,
+				85ADC23F2BC6FD08008E947E /* PromisePreviewCore.swift */,
+			);
+			name = PromisePreview;
+			path = Map/PromisePreview;
 			sourceTree = "<group>";
 		};
 		85FBAB352BC0433F008CFC1B /* Signin */ = {
@@ -239,7 +414,12 @@
 		85FBAB5D2BC1C343008CFC1B /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				85ADC2792BCB17F6008E947E /* WhiteTitleText.swift */,
 				85FBAB6F2BC2E75A008CFC1B /* CustomBackButton.swift */,
+				85ADC2592BC8C56A008E947E /* CustomInputTextFieldView.swift */,
+				85ADC27B2BCB20EC008E947E /* CustomTimePicker.swift */,
+				85ADC27F2BCC31B4008E947E /* CreatePromiseButton.swift */,
+				850702DD2BCDF47800E3E820 /* CustomInfoView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -277,6 +457,7 @@
 			packageProductDependencies = (
 				85FBAB672BC2DF93008CFC1B /* ComposableArchitecture */,
 				85FBAB6D2BC2E3EC008CFC1B /* FlowKit */,
+				850702E82BCE4CBB00E3E820 /* WrappingHStack */,
 			);
 			productName = "Adego-iOS";
 			productReference = 8598F9DC2BC0361100132DE6 /* Adego-iOS.app */;
@@ -309,6 +490,7 @@
 			packageReferences = (
 				85FBAB662BC2DF93008CFC1B /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
 				85FBAB6C2BC2E3EC008CFC1B /* XCRemoteSwiftPackageReference "FlowKit" */,
+				850702E72BCE4CBB00E3E820 /* XCRemoteSwiftPackageReference "WrappingHStack" */,
 			);
 			productRefGroup = 8598F9DD2BC0361100132DE6 /* Products */;
 			projectDirPath = "";
@@ -344,25 +526,52 @@
 			buildActionMask = 2147483647;
 			files = (
 				85ADC23A2BC682BB008E947E /* Alert.swift in Sources */,
+				85ADC26C2BCB0BDD008E947E /* SelectTimeTimeCore.swift in Sources */,
+				85ADC24B2BC8BDD0008E947E /* CustomStrokeRoundedButtonStyle.swift in Sources */,
 				85FBAB4D2BC1AF2D008CFC1B /* SetProfileImageView.swift in Sources */,
+				85ADC2562BC8BF95008E947E /* CreatePromiseCore.swift in Sources */,
+				85ADC27C2BCB20EC008E947E /* CustomTimePicker.swift in Sources */,
 				85424FEB2BC508B7007A429D /* MapAnnotationView.swift in Sources */,
+				850702E62BCE2F8700E3E820 /* SendNotificationCore.swift in Sources */,
 				85424FEE2BC50A60007A429D /* Location.swift in Sources */,
+				85ADC2732BCB1044008E947E /* SelectLocationCore.swift in Sources */,
+				850702EB2BCE4D6B00E3E820 /* SendUser.swift in Sources */,
+				85ADC2772BCB105E008E947E /* CreatePromiseCompleteCore.swift in Sources */,
+				850702DC2BCCD82600E3E820 /* Locations.swift in Sources */,
 				85FBAB8B2BC3D772008CFC1B /* Font.swift in Sources */,
 				85FBAB702BC2E75A008CFC1B /* CustomBackButton.swift in Sources */,
 				85FBAB382BC045CE008CFC1B /* MainView.swift in Sources */,
+				850702E32BCE2F5700E3E820 /* SendNotificiationView.swift in Sources */,
 				85FBAB3D2BC1A7EB008CFC1B /* SigninCore.swift in Sources */,
+				85ADC26A2BCB0A8E008E947E /* SelectDayCore.swift in Sources */,
 				85424FF02BC655FA007A429D /* MKCoordinateRegion.swift in Sources */,
+				85ADC2622BCAFC2B008E947E /* EditCore.swift in Sources */,
 				85FBAB4A2BC1AAA4008CFC1B /* SetNameView.swift in Sources */,
+				85ADC27A2BCB17F6008E947E /* WhiteTitleText.swift in Sources */,
+				85ADC2542BC8BF70008E947E /* SettingCore.swift in Sources */,
+				850702DE2BCDF47800E3E820 /* CustomInfoView.swift in Sources */,
+				850702EF2BCE91C800E3E820 /* InvitedAppointmentView.swift in Sources */,
 				8598F9E22BC0361100132DE6 /* ContentView.swift in Sources */,
+				85ADC2582BC8C129008E947E /* CustomWhiteRoundedButton.swift in Sources */,
 				85424FE92BC50108007A429D /* MainCore.swift in Sources */,
 				85FBAB512BC1AF76008CFC1B /* SetProfileImageCore.swift in Sources */,
+				85ADC2682BCB0A87008E947E /* SelectDayView.swift in Sources */,
 				85FBAB342BC0433E008CFC1B /* SigninView.swift in Sources */,
+				85ADC2752BCB1054008E947E /* CreatePromiseCompleteView.swift in Sources */,
+				85ADC26F2BCB0C0C008E947E /* SelectTimeView.swift in Sources */,
+				85ADC2602BCAFC22008E947E /* EditView.swift in Sources */,
 				85424FE72BC4DCDB007A429D /* ImagePickerView.swift in Sources */,
 				85FBAB482BC1AA9C008CFC1B /* SetNameCore.swift in Sources */,
+				85ADC25A2BC8C56A008E947E /* CustomInputTextFieldView.swift in Sources */,
+				850702F22BCE91F200E3E820 /* InvitedAppointmentCore.swift in Sources */,
 				857E49382BC4CF84007E3ABC /* Text.swift in Sources */,
 				85ADC2402BC6FD08008E947E /* PromisePreviewCore.swift in Sources */,
 				85ADC23E2BC6FA3D008E947E /* PromisePreviewView.swift in Sources */,
 				8598F9E02BC0361100132DE6 /* Adego_iOSApp.swift in Sources */,
+				85ADC2802BCC31B4008E947E /* CreatePromiseButton.swift in Sources */,
+				85ADC2712BCB1034008E947E /* SelectLocationView.swift in Sources */,
+				85ADC2502BC8BF37008E947E /* SettingView.swift in Sources */,
+				85ADC2522BC8BF46008E947E /* CreatePromiseView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -594,6 +803,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		850702E72BCE4CBB00E3E820 /* XCRemoteSwiftPackageReference "WrappingHStack" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/dkk/WrappingHStack.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.2.11;
+			};
+		};
 		85FBAB662BC2DF93008CFC1B /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/pointfreeco/swift-composable-architecture";
@@ -613,6 +830,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		850702E82BCE4CBB00E3E820 /* WrappingHStack */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 850702E72BCE4CBB00E3E820 /* XCRemoteSwiftPackageReference "WrappingHStack" */;
+			productName = WrappingHStack;
+		};
 		85FBAB672BC2DF93008CFC1B /* ComposableArchitecture */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 85FBAB662BC2DF93008CFC1B /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
