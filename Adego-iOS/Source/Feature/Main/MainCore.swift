@@ -29,6 +29,8 @@ struct MainCore: Reducer {
         case findCurrentLocation
         case updateMapRegion(Location?)
         case getUserAnnotationInfoMation
+        case navigateToCreateView
+        case navigateToSettingView
         case view(View)
     }
     
@@ -44,15 +46,40 @@ struct MainCore: Reducer {
             case .findCurrentLocation:
                 startTask()
                 return .none
+                
             case let .updateMapRegion(location):
                 guard let location = location else { return .none }
                 state.mapRegion = MKCoordinateRegion(
                     center: location.coordinates,
                     span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1))
                 return .none
+                
             case .getUserAnnotationInfoMation:
                 print("UserAnnotationInfo 가져오는 코드 작성")
                 return .none
+                
+            case .navigateToCreateView:
+                flow.push(
+                    SendNotificationView(
+                        store: Store(initialState: SendNotificationCore.State()
+                                    ) {
+                                        SendNotificationCore()
+                                    }
+                    )
+                )
+                return .none
+                
+            case .navigateToSettingView:
+                flow.push(
+                    SettingView(
+                        store: Store(initialState: SettingCore.State()
+                                    ) {
+                                        SettingCore()
+                                    }
+                    )
+                )
+                return .none
+                
             case .view(.binding):
                 return .none
             }
