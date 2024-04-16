@@ -13,17 +13,24 @@ struct CustomInputTextFieldView: View {
     let placeholder: String
     
     var body: some View {
-        Text(text)
-            .foregroundStyle(.gray60)
-            .padding(.top, 40)
-        
-        TextField("",
-                  text: input,
-                  prompt: Text(placeholder)
-                    .placeholderStyle()
-        )
+        VStack(alignment: .leading) {
+            Text(text)
+                .foregroundStyle(.gray60)
+                .padding(.top, 40)
+            
+            TextField("",
+                      text: input,
+                      prompt: Text(placeholder)
+                .placeholderStyle()
+            )
             .frame(width: 343)
             .padding(.top, 4)
-            .foregroundStyle(.gray100)   
+            .foregroundStyle(.gray100)
+            
+            Rectangle()
+                .frame(width: 343, height: 1)
+                .foregroundStyle(.gray60)
+            
+        }
     }
 }
