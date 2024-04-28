@@ -45,6 +45,7 @@ struct MainView: View {
                 .onAppear {
                     store.send(.findCurrentLocation)
                 }
+                
                 VStack {
                     header
                     
@@ -104,6 +105,7 @@ extension MainView {
             .onAppear {
                 print("locationsPreviewStack")
             }
+            .navigationBarHidden(true)
         }
     }
 }

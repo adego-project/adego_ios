@@ -61,7 +61,8 @@ struct MainCore: Reducer {
             case .navigateToCreateView:
                 flow.push(
                     SendNotificationView(
-                        store: Store(initialState: SendNotificationCore.State()
+                        store: Store(
+                            initialState: SendNotificationCore.State()
                                     ) {
                                         SendNotificationCore()
                                     }
@@ -72,7 +73,8 @@ struct MainCore: Reducer {
             case .navigateToSettingView:
                 flow.push(
                     SettingView(
-                        store: Store(initialState: SettingCore.State()
+                        store: Store(
+                            initialState: SettingCore.State()
                                     ) {
                                         SettingCore()
                                     }
