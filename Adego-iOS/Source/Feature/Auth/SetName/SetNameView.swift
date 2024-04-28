@@ -20,10 +20,9 @@ struct SetNameView: View {
     var body: some View {
         WithPerceptionTracking {
             VStack(alignment: .leading) {
-                Text("본인의 이름을 정해주세요")
-                    .font(.wantedSans(24, weight: .regular))
-                    .foregroundStyle(.white)
-                    .padding(.top, 76)
+                WhiteTitleText(
+                    title: "본인의 이름을 정해주세요"
+                )
                 
                 CustomInputTextFieldView(
                     text: "사용자 이름 (\(store.nameLength)/8)",
@@ -31,10 +30,7 @@ struct SetNameView: View {
                     placeholder: "전화번호를 입력해주세요"
                 )
                 
-                Rectangle()
-                    .frame(width: 343, height: 1)
-                    .foregroundStyle(.gray60)
-                
+              
                 Spacer()
                 
                 Button {
@@ -46,6 +42,8 @@ struct SetNameView: View {
                 .padding(.bottom, 10)
                 
             }
+            .navigationBarBackButtonHidden(false)
+
         }
         //        .toolbar(content: {
         //            ToolbarItem(placement: .navigationBarLeading) {
