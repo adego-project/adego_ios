@@ -8,7 +8,6 @@
 import SwiftUI
 import ComposableArchitecture
 
-@ViewAction(for: PromisePreviewCore.self)
 struct PromisePreviewView: View {
     @Perception.Bindable var store: StoreOf<PromisePreviewCore>
     
@@ -54,42 +53,55 @@ extension PromisePreviewView {
     private var makeNotificationButton: some View {
         HStack {
             if store.isPromiseValid {
-                Button {
-                    store.isPromiseValid.toggle()
-                } label: {
-                    Text(store.promiseTimeRemaingUntil)
-                        .foregroundStyle(.white)
-                        .frame(width: 259, height: 56)
-                        .background(.gray30)
-                }
-                .clipShape(RoundedRectangle(cornerRadius: 8))
-                
-                Button {
-                    
-                } label: {
-                    VStack {
-                        Image(systemName: "square.and.arrow.up")
-                            .frame(width: 24, height: 24)
-                            .foregroundStyle(.white)
-                    }
-                    .frame(width: 56, height: 56)
-                    .buttonStyle(CustomStrokeRoundedButtonStyle())
-                }
+                shereButton
             } else {
-                Button {
-                    store.isPromiseValid.toggle()
-                } label: {
-                    Text("알림 울리러 가기 \(Image(systemName: "arrow.right"))")
-                        .foregroundStyle(.gray10)
-                        .frame(width: 319, height: 56)
-                        .background(.white)
-                        .buttonStyle(CustomStrokeRoundedButtonStyle())
-                }
-                .clipShape(RoundedRectangle(cornerRadius: 8))
-                
+                sendNotificationViewButton
             }
         }
         .animation(.easeInOut, value: store.isPromiseValid)
+    }
+    
+    private var shereButton: some View {
+        Button {
+            store.isPromiseValid.toggle()
+        } label: {
+            Text(store.promiseTimeRemaingUntil)
+                .foregroundStyle(.white)
+                .frame(width: 259, height: 56)
+                .background(.gray30)
+        }
+        .clipShape(
+            RoundedRectangle(cornerRadius: 8)
+        )
+
+        return Button {
+            
+        } label: {
+            VStack {
+                Image(systemName: "square.and.arrow.up")
+                    .frame(width: 24, height: 24)
+                    .foregroundStyle(.white)
+            }
+            .frame(width: 56, height: 56)
+            .buttonStyle(CustomStrokeRoundedButtonStyle())
+        }
+    }
+
+    
+    private var sendNotificationViewButton: some View{
+        Button {
+            store.isPromiseValid.toggle()
+            store.send(.navigateToSendNotificationView)
+        } label: {
+            Text("알림 울리러 가기 \(Image(systemName: "arrow.right"))")
+                .foregroundStyle(.gray10)
+                .frame(width: 319, height: 56)
+                .background(.white)
+        }
+        .buttonStyle(CustomStrokeRoundedButtonStyle())
+        .clipShape(
+            RoundedRectangle(cornerRadius: 8)
+        )
     }
 }
 
