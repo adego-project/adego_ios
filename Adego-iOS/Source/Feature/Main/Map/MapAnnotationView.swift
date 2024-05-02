@@ -10,7 +10,7 @@ import SwiftUI
 import MapKit
 
 struct MapAnnotationView: View {
-    let imageURL: String = "https://wallpapers.com/images/high/intense-harimau-walking-on-grass-m7h2k7q1z815w5zk.webp"
+    let imageURL: String = ""
     
     var body: some View {
         VStack(spacing: 0) {
@@ -21,15 +21,12 @@ struct MapAnnotationView: View {
                 Image(systemName: "person.fill")
                     .resizable()
             }
+            .clipShape(Circle())
         }
         .scaledToFit()
-        .frame(width: 30, height: 30)
-        .font(.headline)
+        .frame(width: 40, height: 40)
         .foregroundColor(.white)
-        .padding(6)
-        .clipShape(Circle())
-        
-
+        .padding(2)
     }
 }
 
