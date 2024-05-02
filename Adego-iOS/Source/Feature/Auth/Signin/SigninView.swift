@@ -32,12 +32,18 @@ struct SigninView: View {
                 .padding(.bottom, 44)
             }
             .padding(.top, 285)
+            .navigationBarBackButtonHidden(true)
+            
         }
     }
 }
 
 #Preview {
-    SigninView(store: Store(initialState: SigninCore.State()) {
-        SigninCore()
-    })
+    SigninView(
+        store: Store(
+            initialState: SigninCore.State()
+        ) {
+            SigninCore()
+        }
+    )
 }
