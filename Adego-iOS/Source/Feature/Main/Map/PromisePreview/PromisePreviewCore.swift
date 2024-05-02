@@ -9,7 +9,6 @@ import ComposableArchitecture
 
 @Reducer
 struct PromisePreviewCore: Reducer {
-    @Dependency(\.flow) var flow
     
     @ObservableState
     struct State: Equatable {
@@ -22,7 +21,7 @@ struct PromisePreviewCore: Reducer {
     }
     
     enum Action: ViewAction {
-        
+        case navigateToSendNotificationView
         case view(View)
     }
     
@@ -31,11 +30,23 @@ struct PromisePreviewCore: Reducer {
         case binding(BindingAction<State>)
     }
     
+    @Dependency(\.flow) var flow
+    
     var body: some ReducerOf<Self> {
         BindingReducer(action: \.view)
         Reduce { state, action in
             switch action {
-                
+            case .navigateToSendNotificationView:
+                flow.push(
+                    SendNotificationView(
+                        store: Store(
+                            initialState: SendNotificationCore.State()
+                        ) {
+                            SendNotificationCore()
+                        }
+                    )
+                )
+                return .none
             case .view(.binding):
                 return .none
             }
