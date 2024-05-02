@@ -25,7 +25,7 @@ struct MainCore: Reducer {
         }
     }
     
-    enum Action: ViewAction {
+    enum Action {
         case findCurrentLocation
         case updateMapRegion(Location?)
         case getUserAnnotationInfoMation
@@ -35,7 +35,7 @@ struct MainCore: Reducer {
     }
     
     @CasePathable
-    public enum View: BindableAction, Sendable {
+    public enum View: BindableAction {
         case binding(BindingAction<State>)
     }
     
@@ -51,21 +51,24 @@ struct MainCore: Reducer {
                 guard let location = location else { return .none }
                 state.mapRegion = MKCoordinateRegion(
                     center: location.coordinates,
-                    span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1))
+                    span: MKCoordinateSpan(
+                        latitudeDelta: 0.1, longitudeDelta: 0.1
+                    )
+                )
                 return .none
                 
             case .getUserAnnotationInfoMation:
-                print("UserAnnotationInfo 가져오는 코드 작성")
+            //    UserAnnotationInfo 가져오는 코드 작성
                 return .none
                 
             case .navigateToCreateView:
                 flow.push(
-                    SendNotificationView(
+                    CreatePromiseView(
                         store: Store(
-                            initialState: SendNotificationCore.State()
-                                    ) {
-                                        SendNotificationCore()
-                                    }
+                            initialState: CreatePromiseCore.State()
+                        ) {
+                            CreatePromiseCore()
+                        }
                     )
                 )
                 return .none
@@ -75,9 +78,9 @@ struct MainCore: Reducer {
                     SettingView(
                         store: Store(
                             initialState: SettingCore.State()
-                                    ) {
-                                        SettingCore()
-                                    }
+                        ) {
+                            SettingCore()
+                        }
                     )
                 )
                 return .none
@@ -96,7 +99,8 @@ struct MainCore: Reducer {
                     getCurrentLocation()
                 case .denied:
                     DispatchQueue.main.async {
-                        UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
+                        UIApplication.shared.open(
+                            URL(string: UIApplication.openSettingsURLString)!)
                     }
                 case .restricted, .notDetermined:
                     locationManager.requestWhenInUseAuthorization()
@@ -115,7 +119,10 @@ struct MainCore: Reducer {
                 
                 state.mapRegion = MKCoordinateRegion(
                     center: coordinate,
-                    span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1))
+                    span: MKCoordinateSpan(
+                        latitudeDelta: 0.1, longitudeDelta: 0.1
+                    )
+                )
             }
         }
     }

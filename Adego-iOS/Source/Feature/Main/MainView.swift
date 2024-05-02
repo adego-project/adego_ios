@@ -9,9 +9,8 @@ import SwiftUI
 import MapKit
 import ComposableArchitecture
 
-@ViewAction(for: MainCore.self)
 struct MainView: View {
-    @Perception.Bindable var store: StoreOf<MainCore>
+    @Perception.Bindable private var store: StoreOf<MainCore>
     
     init(store: StoreOf<MainCore>) {
         self.store = store
@@ -32,8 +31,8 @@ struct MainView: View {
                             )
                             .overlay(
                                 Circle()
-                                .stroke()
-                                .foregroundStyle(.gray80)
+                                    .stroke()
+                                    .foregroundStyle(.gray80)
                             )
                             .onTapGesture {
                                 store.send(.updateMapRegion(location))
@@ -51,7 +50,7 @@ struct MainView: View {
                     
                     Spacer()
                     
-                    locationsPreviewStack
+                    promisePreviewStack
                 }
             }
         }
@@ -61,32 +60,26 @@ struct MainView: View {
 extension MainView {
     private var header: some View {
         HStack {
-            Button {
-                store.send(.navigateToCreateView)
-                print("1")
-            } label: {
-                Image("Union")
-                    .resizable()
-                    .frame(width: 28, height: 28)
-            }
+            Image("Union")
+                .resizable()
+                .frame(width: 28, height: 28)
             
             Spacer()
             
             Button {
-                store.send(.navigateToSettingView)    
-                print("2")
+                store.send(.navigateToSettingView)
             } label: {
                 Image(systemName: "gearshape")
                     .resizable()
                     .frame(width: 18, height: 18)
             }
             .buttonStyle(CustomStrokeRoundedButtonStyle())
-
+            
         }
         .padding(.horizontal, 16)
     }
     
-    private var locationsPreviewStack: some View {
+    private var promisePreviewStack: some View {
         ZStack {
             ForEach(locations) { location in
                 PromisePreviewView(
@@ -101,9 +94,6 @@ extension MainView {
                         removal: .move(edge: .leading)
                     )
                 )
-            }
-            .onAppear {
-                print("locationsPreviewStack")
             }
             .navigationBarHidden(true)
         }
