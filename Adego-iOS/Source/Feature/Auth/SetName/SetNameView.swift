@@ -8,14 +8,8 @@
 import SwiftUI
 import ComposableArchitecture
 
-@ViewAction(for: SetNameCore.self)
 struct SetNameView: View {
     @Perception.Bindable var store: StoreOf<SetNameCore>
-    
-    public init(store: StoreOf<SetNameCore>) {
-        self.store = store
-    }
-    
     
     var body: some View {
         WithPerceptionTracking {
@@ -23,14 +17,27 @@ struct SetNameView: View {
                 WhiteTitleText(
                     title: "본인의 이름을 정해주세요"
                 )
-                
+
                 CustomInputTextFieldView(
                     text: "사용자 이름 (\(store.nameLength)/8)",
                     input: $store.name,
-                    placeholder: "전화번호를 입력해주세요"
+                    placeholder: "사용자 이름을 입력해주세요",
+                    isFormValid: store.isFormValid
                 )
+                .onChange(of: store.nameLength) { newValue in
+                                   print("isFormValid:", store.isFormValid)
+                                   print("nameLength:", store.nameLength)
+                                   print("name:", store.name)
+                               }
                 
-              
+                if store.isFormValid {
+                    Text("글자가 너무 길어요.")
+                        .font(.wantedSans())
+                        .foregroundStyle(.red)
+                        .padding(.top, 10)
+                        .animation(.easeInOut, value: store.isFormValid)
+                }
+                
                 Spacer()
                 
                 Button {
@@ -40,10 +47,10 @@ struct SetNameView: View {
                 }
                 .buttonStyle(CustomWhiteRoundedButton())
                 .padding(.bottom, 10)
+                .disabled(store.isFormValid ? true : false)
                 
             }
             .navigationBarBackButtonHidden(false)
-
         }
         //        .toolbar(content: {
         //            ToolbarItem(placement: .navigationBarLeading) {
@@ -60,7 +67,11 @@ struct SetNameView: View {
 }
 
 #Preview {
-    SetNameView(store: Store(initialState: SetNameCore.State()) {
+    SetNameView(
+        store: Store(
+            initialState: SetNameCore.State()
+        ) {
         SetNameCore()
-    })
+    }
+    )
 }
