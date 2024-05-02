@@ -6,24 +6,35 @@
 //
 
 import ComposableArchitecture
+import FlowKit
 
 @Reducer
 struct SetNameCore: Reducer {
-    @Dependency(\.flow) var flow
     
     @ObservableState
     struct State: Equatable {
         var isFormValid: Bool = false
-        var nameLength: Int = 0
-        var name: String = ""
-        
-        public init() {}
+        var name: String = "" {
+            didSet {
+                nameLength = name.count
+            }
+        }
+        var nameLength: Int = 0 {
+            didSet {	
+                if nameLength < 8 {
+                    isFormValid = false
+                } else {
+                    isFormValid = true
+                }
+                print(isFormValid)
+            }
+        }
     }
     
     enum Action: ViewAction {
         case navigateToSetProfileImage
         case view(View)
-
+        
     }
     
     @CasePathable
@@ -32,6 +43,8 @@ struct SetNameCore: Reducer {
     }
     
     public init() {}
+    
+    @Dependency(\.flow) var flow
     
     var body: some Reducer<State, Action> {
         BindingReducer(action: \.view)
@@ -49,11 +62,12 @@ struct SetNameCore: Reducer {
                 )
                 return .none
             case .view(.binding):
-                state.isFormValid = !state.name.isEmpty
                 return .none
             }
         }
     }
     // MARK: - func
-    
+    func checkName(text: String) {
+        
+    }
 }
