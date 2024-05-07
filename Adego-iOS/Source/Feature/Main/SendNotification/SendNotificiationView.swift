@@ -9,9 +9,9 @@ import SwiftUI
 import ComposableArchitecture
 import WrappingHStack
 
-@ViewAction(for: SendNotificationCore)
 struct SendNotificationView: View {
     @Perception.Bindable var store: StoreOf<SendNotificationCore>
+    
     var body: some View {
         WithPerceptionTracking {
             VStack {
@@ -28,41 +28,51 @@ struct SendNotificationView: View {
                     .padding(.leading, 16)
                     .frame(maxWidth: .infinity, alignment: .leading)
                 
-                
-                userList
+                sendNotificationList(data: store.userName)
             }
+            .navigationBarHidden(false)
         }
     }
 }
 
 extension SendNotificationView {
-    private var userList: some View {
+    private func sendNotificationList(data: [SendUser]) -> some View {
         ScrollView {
-            WrappingHStack(store.userName) { index in
-                    Button {
-                        
-                    } label: {
-                        VStack {
+            WrappingHStack(data.indices) { index in
+                Button {
+                    
+                } label: {
+                    VStack {
+                        AsyncImage(url: URL(string: store.imageUrl)) { image in
+                            image
+                                .resizable()
+                        } placeholder: {
                             Image(systemName: "person.fill")
                                 .resizable()
-                                .frame(width: 40, height: 40)
-                                .background(.gray60)
-                            
-                                .clipShape(Circle())
-                            
-                            Text("알파 메일 최시훈")
-                                .font(.wantedSans(14))
-                                .foregroundStyle(.gray80)
+                                .foregroundStyle(.gray100)
                         }
-                        .frame(width: 167.5, height: 64)
+                        .frame(width: 40, height: 40)
+                        .background(.gray60)
+                        .overlay(data[index].num == 1 ? Color.gray.opacity(0.6) : .clear)
+                        .clipShape(Circle())
+
+                        
+                        Text("알파 메일 최시훈")
+                            .font(.wantedSans(14))
+                            .foregroundStyle(data[index].num == 1 ? .gray40 : .gray60)
+
                     }
-                    .frame(maxWidth: .infinity, alignment: .topLeading)
-                    .padding(.vertical, 16)
+                    .frame(width: 167.5, height: 64)
+                }
+                .frame(maxWidth: .infinity, alignment: .topLeading)
+                .padding(.vertical, 16)
             }
         }
         .padding(.horizontal, 16)
     }
 }
+
+
 
 #Preview {
     SendNotificationView(
