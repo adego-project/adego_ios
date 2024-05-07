@@ -8,58 +8,59 @@
 import SwiftUI
 import ComposableArchitecture
 
-@ViewAction(for: InvitedAppointmentCore)
 struct InvitedAppointmentView: View {
     @Perception.Bindable var store: StoreOf<InvitedAppointmentCore>
+    
     var body: some View {
-        WhiteTitleText(
-            title: "약속에 초대됐어요.\n하단카드를 통해 확인하세요."
-        )
-        .lineSpacing(10)
-        .frame(maxWidth: .infinity, alignment: .topLeading)
-        .padding(.leading, 16)
-        
-        VStack {
-            profileImage
+        WithPerceptionTracking {
+            WhiteTitleText(
+                title: "약속에 초대됐어요.\n하단카드를 통해 확인하세요."
+            )
+            .lineSpacing(10)
+            .frame(maxWidth: .infinity, alignment: .topLeading)
+            .padding(.leading, 16)
             
-            Text("\(store.name)님이 초대했어요.")
-                .font(.wantedSans(14))
-                .foregroundStyle(.gray80)
-        }
-        .padding(.top, 24)
-        .padding(.bottom, 16)
-        
-        inviteCard
-        
-        Spacer()
-        
-        HStack(alignment: .top, spacing: 4) {
-            Button {
-                store.send(.declineInvitation)
-            } label: {
-                Text("\(Image("Block")) 초대 거부하기")
-                    .font(.wantedSans(weight: .regular))
-                    .foregroundStyle(.gray100)
-                    .multilineTextAlignment(.center)
+            VStack {
+                profileImage
+                
+                Text("\(store.name)님이 초대했어요.")
+                    .font(.wantedSans(14))
+                    .foregroundStyle(.gray80)
             }
-        }
-        .padding(.leading, 16)
-        .padding(.trailing, 20)
-        .padding(.vertical, 12)
-        .background(.gray20)
-        .clipShape(
-            RoundedRectangle(cornerRadius: 100)
-        )
-        .overlay(
-            RoundedRectangle(cornerRadius: 100)
-                .inset(by: 0.5)
-                .stroke(.gray30, lineWidth: 1)
-        )
-        .padding(.bottom, 10)
-        
-        acceptInbitationButton
+            .padding(.top, 24)
+            .padding(.bottom, 16)
+            
+            inviteCard
+            
+            Spacer()
+            
+            HStack(alignment: .top, spacing: 4) {
+                Button {
+                    store.send(.declineInvitation)
+                } label: {
+                    Text("\(Image("Block")) 초대 거부하기")
+                        .font(.wantedSans(weight: .regular))
+                        .foregroundStyle(.gray100)
+                        .multilineTextAlignment(.center)
+                }
+            }
+            .padding(.leading, 16)
+            .padding(.trailing, 20)
+            .padding(.vertical, 12)
+            .background(.gray20)
+            .clipShape(
+                RoundedRectangle(cornerRadius: 100)
+            )
+            .overlay(
+                RoundedRectangle(cornerRadius: 100)
+                    .inset(by: 0.5)
+                    .stroke(.gray30, lineWidth: 1)
+            )
             .padding(.bottom, 10)
-        
+            
+            acceptInbitationButton
+                .padding(.bottom, 10)
+        }
     }
 }
 
@@ -100,7 +101,6 @@ extension InvitedAppointmentView {
                 .stroke(.gray30, lineWidth: 1)
         )
     }
-    
     
     private var acceptInbitationButton: AnyView {
         if store.isAppointment {
