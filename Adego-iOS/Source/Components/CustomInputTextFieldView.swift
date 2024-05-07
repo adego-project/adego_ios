@@ -16,6 +16,7 @@ struct CustomInputTextFieldView: View {
     var body: some View {
         VStack(alignment: .leading) {
             Text(text)
+                .font(.wantedSans())
                 .foregroundStyle(isFormValid ? .red : .gray60)
                 .padding(.top, 40)
             
@@ -24,14 +25,13 @@ struct CustomInputTextFieldView: View {
                       prompt: Text(placeholder)
                 .placeholderStyle()
             )
+            .foregroundStyle(isFormValid ? .red : .gray100)
             .frame(width: 343)
             .padding(.top, 4)
-            .foregroundStyle(isFormValid ? .red : .gray100)
             
             Rectangle()
                 .frame(width: 343, height: 1)
                 .foregroundStyle(isFormValid ? .red : .gray100)
-
         }
     }
 }
