@@ -19,13 +19,15 @@
 		85424FE92BC50108007A429D /* MainCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85424FE82BC50108007A429D /* MainCore.swift */; };
 		85424FEB2BC508B7007A429D /* MapAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85424FEA2BC508B7007A429D /* MapAnnotationView.swift */; };
 		85424FEE2BC50A60007A429D /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85424FED2BC50A60007A429D /* Location.swift */; };
-		85424FF02BC655FA007A429D /* MKCoordinateRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85424FEF2BC655FA007A429D /* MKCoordinateRegion.swift */; };
-		857E49382BC4CF84007E3ABC /* Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857E49372BC4CF84007E3ABC /* Text.swift */; };
+		857E49382BC4CF84007E3ABC /* Text+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857E49372BC4CF84007E3ABC /* Text+Ext.swift */; };
 		8598F9E02BC0361100132DE6 /* Adego_iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8598F9DF2BC0361100132DE6 /* Adego_iOSApp.swift */; };
 		8598F9E22BC0361100132DE6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8598F9E12BC0361100132DE6 /* ContentView.swift */; };
 		8598F9E42BC0361200132DE6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8598F9E32BC0361200132DE6 /* Assets.xcassets */; };
 		8598F9E72BC0361200132DE6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8598F9E62BC0361200132DE6 /* Preview Assets.xcassets */; };
-		85ADC23A2BC682BB008E947E /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85ADC2392BC682BB008E947E /* Alert.swift */; };
+		85A64D1D2BDD59A60095C46C /* View+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A64D1C2BDD59A60095C46C /* View+Ext.swift */; };
+		85A64D202BDEC9CA0095C46C /* AppointmentNoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A64D1F2BDEC9CA0095C46C /* AppointmentNoneView.swift */; };
+		85A64D222BDEC9F10095C46C /* AppointmentNoneCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A64D212BDEC9F10095C46C /* AppointmentNoneCore.swift */; };
+		85ADC23A2BC682BB008E947E /* Alert+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85ADC2392BC682BB008E947E /* Alert+Ext.swift */; };
 		85ADC23E2BC6FA3D008E947E /* PromisePreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85ADC23D2BC6FA3D008E947E /* PromisePreviewView.swift */; };
 		85ADC2402BC6FD08008E947E /* PromisePreviewCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85ADC23F2BC6FD08008E947E /* PromisePreviewCore.swift */; };
 		85ADC24B2BC8BDD0008E947E /* CustomStrokeRoundedButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85ADC24A2BC8BDD0008E947E /* CustomStrokeRoundedButtonStyle.swift */; };
@@ -46,7 +48,6 @@
 		85ADC2752BCB1054008E947E /* CreatePromiseCompleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85ADC2742BCB1054008E947E /* CreatePromiseCompleteView.swift */; };
 		85ADC2772BCB105E008E947E /* CreatePromiseCompleteCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85ADC2762BCB105E008E947E /* CreatePromiseCompleteCore.swift */; };
 		85ADC27A2BCB17F6008E947E /* WhiteTitleText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85ADC2792BCB17F6008E947E /* WhiteTitleText.swift */; };
-		85ADC27C2BCB20EC008E947E /* CustomTimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85ADC27B2BCB20EC008E947E /* CustomTimePicker.swift */; };
 		85ADC2802BCC31B4008E947E /* CreatePromiseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85ADC27F2BCC31B4008E947E /* CreatePromiseButton.swift */; };
 		85FBAB342BC0433E008CFC1B /* SigninView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FBAB332BC0433E008CFC1B /* SigninView.swift */; };
 		85FBAB382BC045CE008CFC1B /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FBAB372BC045CE008CFC1B /* MainView.swift */; };
@@ -58,7 +59,7 @@
 		85FBAB682BC2DF93008CFC1B /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 85FBAB672BC2DF93008CFC1B /* ComposableArchitecture */; };
 		85FBAB6E2BC2E3EC008CFC1B /* FlowKit in Frameworks */ = {isa = PBXBuildFile; productRef = 85FBAB6D2BC2E3EC008CFC1B /* FlowKit */; };
 		85FBAB702BC2E75A008CFC1B /* CustomBackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FBAB6F2BC2E75A008CFC1B /* CustomBackButton.swift */; };
-		85FBAB8B2BC3D772008CFC1B /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FBAB8A2BC3D772008CFC1B /* Font.swift */; };
+		85FBAB8B2BC3D772008CFC1B /* Font+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FBAB8A2BC3D772008CFC1B /* Font+Ext.swift */; };
 		85FBAB9A2BC40840008CFC1B /* WantedSans-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 85FBAB922BC3DA44008CFC1B /* WantedSans-Black.otf */; };
 		85FBAB9B2BC40840008CFC1B /* WantedSans-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 85FBAB8E2BC3DA44008CFC1B /* WantedSans-Bold.otf */; };
 		85FBAB9C2BC40840008CFC1B /* WantedSans-ExtraBlack.otf in Resources */ = {isa = PBXBuildFile; fileRef = 85FBAB8D2BC3DA44008CFC1B /* WantedSans-ExtraBlack.otf */; };
@@ -80,14 +81,17 @@
 		85424FE82BC50108007A429D /* MainCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCore.swift; sourceTree = "<group>"; };
 		85424FEA2BC508B7007A429D /* MapAnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapAnnotationView.swift; sourceTree = "<group>"; };
 		85424FED2BC50A60007A429D /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
-		85424FEF2BC655FA007A429D /* MKCoordinateRegion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKCoordinateRegion.swift; sourceTree = "<group>"; };
-		857E49372BC4CF84007E3ABC /* Text.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Text.swift; sourceTree = "<group>"; };
+		85558E422BFB36C90053A3B2 /* Adego-iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Adego-iOS.entitlements"; sourceTree = "<group>"; };
+		857E49372BC4CF84007E3ABC /* Text+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Text+Ext.swift"; sourceTree = "<group>"; };
 		8598F9DC2BC0361100132DE6 /* Adego-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Adego-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8598F9DF2BC0361100132DE6 /* Adego_iOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Adego_iOSApp.swift; sourceTree = "<group>"; };
 		8598F9E12BC0361100132DE6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		8598F9E32BC0361200132DE6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8598F9E62BC0361200132DE6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		85ADC2392BC682BB008E947E /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
+		85A64D1C2BDD59A60095C46C /* View+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Ext.swift"; sourceTree = "<group>"; };
+		85A64D1F2BDEC9CA0095C46C /* AppointmentNoneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentNoneView.swift; sourceTree = "<group>"; };
+		85A64D212BDEC9F10095C46C /* AppointmentNoneCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentNoneCore.swift; sourceTree = "<group>"; };
+		85ADC2392BC682BB008E947E /* Alert+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Alert+Ext.swift"; sourceTree = "<group>"; };
 		85ADC23D2BC6FA3D008E947E /* PromisePreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromisePreviewView.swift; sourceTree = "<group>"; };
 		85ADC23F2BC6FD08008E947E /* PromisePreviewCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromisePreviewCore.swift; sourceTree = "<group>"; };
 		85ADC24A2BC8BDD0008E947E /* CustomStrokeRoundedButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStrokeRoundedButtonStyle.swift; sourceTree = "<group>"; };
@@ -108,7 +112,6 @@
 		85ADC2742BCB1054008E947E /* CreatePromiseCompleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePromiseCompleteView.swift; sourceTree = "<group>"; };
 		85ADC2762BCB105E008E947E /* CreatePromiseCompleteCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePromiseCompleteCore.swift; sourceTree = "<group>"; };
 		85ADC2792BCB17F6008E947E /* WhiteTitleText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhiteTitleText.swift; sourceTree = "<group>"; };
-		85ADC27B2BCB20EC008E947E /* CustomTimePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTimePicker.swift; sourceTree = "<group>"; };
 		85ADC27F2BCC31B4008E947E /* CreatePromiseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePromiseButton.swift; sourceTree = "<group>"; };
 		85FBAB332BC0433E008CFC1B /* SigninView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SigninView.swift; path = "Adego-iOS/Source/Feature/Auth/Signin/SigninView.swift"; sourceTree = SOURCE_ROOT; };
 		85FBAB372BC045CE008CFC1B /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MainView.swift; path = "Adego-iOS/Source/Feature/Main/MainView.swift"; sourceTree = SOURCE_ROOT; };
@@ -118,7 +121,7 @@
 		85FBAB4C2BC1AF2D008CFC1B /* SetProfileImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetProfileImageView.swift; sourceTree = "<group>"; };
 		85FBAB502BC1AF76008CFC1B /* SetProfileImageCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetProfileImageCore.swift; sourceTree = "<group>"; };
 		85FBAB6F2BC2E75A008CFC1B /* CustomBackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBackButton.swift; sourceTree = "<group>"; };
-		85FBAB8A2BC3D772008CFC1B /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
+		85FBAB8A2BC3D772008CFC1B /* Font+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+Ext.swift"; sourceTree = "<group>"; };
 		85FBAB8C2BC3DA43008CFC1B /* WantedSans-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WantedSans-Regular.otf"; sourceTree = "<group>"; };
 		85FBAB8D2BC3DA44008CFC1B /* WantedSans-ExtraBlack.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WantedSans-ExtraBlack.otf"; sourceTree = "<group>"; };
 		85FBAB8E2BC3DA44008CFC1B /* WantedSans-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WantedSans-Bold.otf"; sourceTree = "<group>"; };
@@ -161,13 +164,6 @@
 			path = InvitedAppointMent;
 			sourceTree = "<group>";
 		};
-		850702F32BCE9BEB00E3E820 /* New Group */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "New Group";
-			sourceTree = "<group>";
-		};
 		85424FE52BC4DCC7007A429D /* Sub */ = {
 			isa = PBXGroup;
 			children = (
@@ -205,6 +201,7 @@
 		8598F9DE2BC0361100132DE6 /* Adego-iOS */ = {
 			isa = PBXGroup;
 			children = (
+				85558E422BFB36C90053A3B2 /* Adego-iOS.entitlements */,
 				8598F9F42BC0375600132DE6 /* Source */,
 				8598F9F32BC0374900132DE6 /* Resource */,
 			);
@@ -234,6 +231,9 @@
 		8598F9F42BC0375600132DE6 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				85ADC24C2BC8BDDA008E947E /* Style */,
+				85FBAB5D2BC1C343008CFC1B /* Components */,
+				85FBAB542BC1B103008CFC1B /* Extensions */,
 				8598F9F62BC0381100132DE6 /* Feature */,
 			);
 			path = Source;
@@ -242,11 +242,10 @@
 		8598F9F62BC0381100132DE6 /* Feature */ = {
 			isa = PBXGroup;
 			children = (
-				85ADC24C2BC8BDDA008E947E /* Style */,
-				85FBAB5D2BC1C343008CFC1B /* Components */,
-				85FBAB542BC1B103008CFC1B /* Extension */,
 				8598FA032BC03EC400132DE6 /* Auth */,
 				8598FA022BC03EB300132DE6 /* Main */,
+				85ADC24D2BC8BEFA008E947E /* CreatePromise */,
+				85ADC24E2BC8BF09008E947E /* Setting */,
 			);
 			path = Feature;
 			sourceTree = "<group>";
@@ -257,11 +256,10 @@
 				85FBAB372BC045CE008CFC1B /* MainView.swift */,
 				85424FE82BC50108007A429D /* MainCore.swift */,
 				850702E12BCE2F3C00E3E820 /* SendNotification */,
+				85A64D1E2BDEC9910095C46C /* AppointmentNoneView */,
 				85ADC2782BCB10FB008E947E /* PromisePreview */,
 				85424FEC2BC508B8007A429D /* Map */,
 				850702ED2BCE904D00E3E820 /* InvitedAppointMent */,
-				85ADC24D2BC8BEFA008E947E /* CreatePromise */,
-				85ADC24E2BC8BF09008E947E /* Setting */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -274,6 +272,15 @@
 				85FBAB4B2BC1AF10008CFC1B /* SetProfileImage */,
 			);
 			path = Auth;
+			sourceTree = "<group>";
+		};
+		85A64D1E2BDEC9910095C46C /* AppointmentNoneView */ = {
+			isa = PBXGroup;
+			children = (
+				85A64D1F2BDEC9CA0095C46C /* AppointmentNoneView.swift */,
+				85A64D212BDEC9F10095C46C /* AppointmentNoneCore.swift */,
+			);
+			path = AppointmentNoneView;
 			sourceTree = "<group>";
 		};
 		85ADC24C2BC8BDDA008E947E /* Style */ = {
@@ -348,7 +355,6 @@
 		85ADC2662BCB0A40008E947E /* CreateComplete */ = {
 			isa = PBXGroup;
 			children = (
-				850702F32BCE9BEB00E3E820 /* New Group */,
 				85ADC2742BCB1054008E947E /* CreatePromiseCompleteView.swift */,
 				85ADC2762BCB105E008E947E /* CreatePromiseCompleteCore.swift */,
 			);
@@ -393,15 +399,15 @@
 			path = SetProfileImage;
 			sourceTree = "<group>";
 		};
-		85FBAB542BC1B103008CFC1B /* Extension */ = {
+		85FBAB542BC1B103008CFC1B /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				85FBAB8A2BC3D772008CFC1B /* Font.swift */,
-				857E49372BC4CF84007E3ABC /* Text.swift */,
-				85424FEF2BC655FA007A429D /* MKCoordinateRegion.swift */,
-				85ADC2392BC682BB008E947E /* Alert.swift */,
+				85FBAB8A2BC3D772008CFC1B /* Font+Ext.swift */,
+				857E49372BC4CF84007E3ABC /* Text+Ext.swift */,
+				85ADC2392BC682BB008E947E /* Alert+Ext.swift */,
+				85A64D1C2BDD59A60095C46C /* View+Ext.swift */,
 			);
-			path = Extension;
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		85FBAB582BC1B8DB008CFC1B /* Frameworks */ = {
@@ -417,7 +423,6 @@
 				85ADC2792BCB17F6008E947E /* WhiteTitleText.swift */,
 				85FBAB6F2BC2E75A008CFC1B /* CustomBackButton.swift */,
 				85ADC2592BC8C56A008E947E /* CustomInputTextFieldView.swift */,
-				85ADC27B2BCB20EC008E947E /* CustomTimePicker.swift */,
 				85ADC27F2BCC31B4008E947E /* CreatePromiseButton.swift */,
 				850702DD2BCDF47800E3E820 /* CustomInfoView.swift */,
 			);
@@ -525,26 +530,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				85ADC23A2BC682BB008E947E /* Alert.swift in Sources */,
+				85ADC23A2BC682BB008E947E /* Alert+Ext.swift in Sources */,
 				85ADC26C2BCB0BDD008E947E /* SelectTimeTimeCore.swift in Sources */,
 				85ADC24B2BC8BDD0008E947E /* CustomStrokeRoundedButtonStyle.swift in Sources */,
 				85FBAB4D2BC1AF2D008CFC1B /* SetProfileImageView.swift in Sources */,
 				85ADC2562BC8BF95008E947E /* CreatePromiseCore.swift in Sources */,
-				85ADC27C2BCB20EC008E947E /* CustomTimePicker.swift in Sources */,
 				85424FEB2BC508B7007A429D /* MapAnnotationView.swift in Sources */,
 				850702E62BCE2F8700E3E820 /* SendNotificationCore.swift in Sources */,
 				85424FEE2BC50A60007A429D /* Location.swift in Sources */,
 				85ADC2732BCB1044008E947E /* SelectLocationCore.swift in Sources */,
 				850702EB2BCE4D6B00E3E820 /* SendUser.swift in Sources */,
 				85ADC2772BCB105E008E947E /* CreatePromiseCompleteCore.swift in Sources */,
+				85A64D222BDEC9F10095C46C /* AppointmentNoneCore.swift in Sources */,
 				850702DC2BCCD82600E3E820 /* Locations.swift in Sources */,
-				85FBAB8B2BC3D772008CFC1B /* Font.swift in Sources */,
+				85FBAB8B2BC3D772008CFC1B /* Font+Ext.swift in Sources */,
 				85FBAB702BC2E75A008CFC1B /* CustomBackButton.swift in Sources */,
+				85A64D202BDEC9CA0095C46C /* AppointmentNoneView.swift in Sources */,
 				85FBAB382BC045CE008CFC1B /* MainView.swift in Sources */,
 				850702E32BCE2F5700E3E820 /* SendNotificiationView.swift in Sources */,
+				85A64D1D2BDD59A60095C46C /* View+Ext.swift in Sources */,
 				85FBAB3D2BC1A7EB008CFC1B /* SigninCore.swift in Sources */,
 				85ADC26A2BCB0A8E008E947E /* SelectDayCore.swift in Sources */,
-				85424FF02BC655FA007A429D /* MKCoordinateRegion.swift in Sources */,
 				85ADC2622BCAFC2B008E947E /* EditCore.swift in Sources */,
 				85FBAB4A2BC1AAA4008CFC1B /* SetNameView.swift in Sources */,
 				85ADC27A2BCB17F6008E947E /* WhiteTitleText.swift in Sources */,
@@ -564,7 +570,7 @@
 				85FBAB482BC1AA9C008CFC1B /* SetNameCore.swift in Sources */,
 				85ADC25A2BC8C56A008E947E /* CustomInputTextFieldView.swift in Sources */,
 				850702F22BCE91F200E3E820 /* InvitedAppointmentCore.swift in Sources */,
-				857E49382BC4CF84007E3ABC /* Text.swift in Sources */,
+				857E49382BC4CF84007E3ABC /* Text+Ext.swift in Sources */,
 				85ADC2402BC6FD08008E947E /* PromisePreviewCore.swift in Sources */,
 				85ADC23E2BC6FA3D008E947E /* PromisePreviewView.swift in Sources */,
 				8598F9E02BC0361100132DE6 /* Adego_iOSApp.swift in Sources */,
@@ -709,11 +715,13 @@
 				APPLY_RULES_IN_COPY_FILES = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Adego-iOS/Adego-iOS.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CREATE_INFOPLIST_SECTION_IN_BINARY = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Adego-iOS/Resource/Preview Content\"";
-				DEVELOPMENT_TEAM = XCQRCQ3RAB;
+				DEVELOPMENT_TEAM = 782M695PY5;
 				DONT_GENERATE_INFOPLIST_FILE = NO;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -732,8 +740,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.sihun.adego.Adego-iOS";
+				PRODUCT_BUNDLE_IDENTIFIER = com.sihun.adego.Adego;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				STRINGS_FILE_INFOPLIST_RENAME = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -747,11 +756,13 @@
 				APPLY_RULES_IN_COPY_FILES = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Adego-iOS/Adego-iOS.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CREATE_INFOPLIST_SECTION_IN_BINARY = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Adego-iOS/Resource/Preview Content\"";
-				DEVELOPMENT_TEAM = XCQRCQ3RAB;
+				DEVELOPMENT_TEAM = 782M695PY5;
 				DONT_GENERATE_INFOPLIST_FILE = NO;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -770,8 +781,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.sihun.adego.Adego-iOS";
+				PRODUCT_BUNDLE_IDENTIFIER = com.sihun.adego.Adego;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				STRINGS_FILE_INFOPLIST_RENAME = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
