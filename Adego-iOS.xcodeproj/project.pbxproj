@@ -27,6 +27,9 @@
 		85A64D1D2BDD59A60095C46C /* View+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A64D1C2BDD59A60095C46C /* View+Ext.swift */; };
 		85A64D202BDEC9CA0095C46C /* AppointmentNoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A64D1F2BDEC9CA0095C46C /* AppointmentNoneView.swift */; };
 		85A64D222BDEC9F10095C46C /* AppointmentNoneCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A64D212BDEC9F10095C46C /* AppointmentNoneCore.swift */; };
+		85AA46C32C3B247B00F42C63 /* SigninView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85AA46C22C3B247B00F42C63 /* SigninView.swift */; };
+		85AA46C52C3B248500F42C63 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85AA46C42C3B248500F42C63 /* MainView.swift */; };
+		85AA46C72C3BE5A900F42C63 /* AppleSigninDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85AA46C62C3BE5A900F42C63 /* AppleSigninDelegate.swift */; };
 		85ADC23A2BC682BB008E947E /* Alert+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85ADC2392BC682BB008E947E /* Alert+Ext.swift */; };
 		85ADC23E2BC6FA3D008E947E /* PromisePreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85ADC23D2BC6FA3D008E947E /* PromisePreviewView.swift */; };
 		85ADC2402BC6FD08008E947E /* PromisePreviewCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85ADC23F2BC6FD08008E947E /* PromisePreviewCore.swift */; };
@@ -36,7 +39,7 @@
 		85ADC2542BC8BF70008E947E /* SettingCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85ADC2532BC8BF70008E947E /* SettingCore.swift */; };
 		85ADC2562BC8BF95008E947E /* CreatePromiseCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85ADC2552BC8BF95008E947E /* CreatePromiseCore.swift */; };
 		85ADC2582BC8C129008E947E /* CustomWhiteRoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85ADC2572BC8C129008E947E /* CustomWhiteRoundedButton.swift */; };
-		85ADC25A2BC8C56A008E947E /* CustomInputTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85ADC2592BC8C56A008E947E /* CustomInputTextFieldView.swift */; };
+		85ADC25A2BC8C56A008E947E /* CustomInputTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85ADC2592BC8C56A008E947E /* CustomInputTextField.swift */; };
 		85ADC2602BCAFC22008E947E /* EditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85ADC25F2BCAFC22008E947E /* EditView.swift */; };
 		85ADC2622BCAFC2B008E947E /* EditCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85ADC2612BCAFC2B008E947E /* EditCore.swift */; };
 		85ADC2682BCB0A87008E947E /* SelectDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85ADC2672BCB0A87008E947E /* SelectDayView.swift */; };
@@ -49,8 +52,7 @@
 		85ADC2772BCB105E008E947E /* CreatePromiseCompleteCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85ADC2762BCB105E008E947E /* CreatePromiseCompleteCore.swift */; };
 		85ADC27A2BCB17F6008E947E /* WhiteTitleText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85ADC2792BCB17F6008E947E /* WhiteTitleText.swift */; };
 		85ADC2802BCC31B4008E947E /* CreatePromiseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85ADC27F2BCC31B4008E947E /* CreatePromiseButton.swift */; };
-		85FBAB342BC0433E008CFC1B /* SigninView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FBAB332BC0433E008CFC1B /* SigninView.swift */; };
-		85FBAB382BC045CE008CFC1B /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FBAB372BC045CE008CFC1B /* MainView.swift */; };
+		85C16F272C044D3F00BED9A7 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 85C16F262C044D3F00BED9A7 /* Moya */; };
 		85FBAB3D2BC1A7EB008CFC1B /* SigninCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FBAB3C2BC1A7EB008CFC1B /* SigninCore.swift */; };
 		85FBAB482BC1AA9C008CFC1B /* SetNameCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FBAB472BC1AA9C008CFC1B /* SetNameCore.swift */; };
 		85FBAB4A2BC1AAA4008CFC1B /* SetNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FBAB492BC1AAA4008CFC1B /* SetNameView.swift */; };
@@ -91,6 +93,9 @@
 		85A64D1C2BDD59A60095C46C /* View+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Ext.swift"; sourceTree = "<group>"; };
 		85A64D1F2BDEC9CA0095C46C /* AppointmentNoneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentNoneView.swift; sourceTree = "<group>"; };
 		85A64D212BDEC9F10095C46C /* AppointmentNoneCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentNoneCore.swift; sourceTree = "<group>"; };
+		85AA46C22C3B247B00F42C63 /* SigninView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninView.swift; sourceTree = "<group>"; };
+		85AA46C42C3B248500F42C63 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		85AA46C62C3BE5A900F42C63 /* AppleSigninDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleSigninDelegate.swift; sourceTree = "<group>"; };
 		85ADC2392BC682BB008E947E /* Alert+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Alert+Ext.swift"; sourceTree = "<group>"; };
 		85ADC23D2BC6FA3D008E947E /* PromisePreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromisePreviewView.swift; sourceTree = "<group>"; };
 		85ADC23F2BC6FD08008E947E /* PromisePreviewCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromisePreviewCore.swift; sourceTree = "<group>"; };
@@ -100,7 +105,7 @@
 		85ADC2532BC8BF70008E947E /* SettingCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCore.swift; sourceTree = "<group>"; };
 		85ADC2552BC8BF95008E947E /* CreatePromiseCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePromiseCore.swift; sourceTree = "<group>"; };
 		85ADC2572BC8C129008E947E /* CustomWhiteRoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomWhiteRoundedButton.swift; sourceTree = "<group>"; };
-		85ADC2592BC8C56A008E947E /* CustomInputTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomInputTextFieldView.swift; sourceTree = "<group>"; };
+		85ADC2592BC8C56A008E947E /* CustomInputTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomInputTextField.swift; sourceTree = "<group>"; };
 		85ADC25F2BCAFC22008E947E /* EditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditView.swift; sourceTree = "<group>"; };
 		85ADC2612BCAFC2B008E947E /* EditCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCore.swift; sourceTree = "<group>"; };
 		85ADC2672BCB0A87008E947E /* SelectDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectDayView.swift; sourceTree = "<group>"; };
@@ -113,8 +118,6 @@
 		85ADC2762BCB105E008E947E /* CreatePromiseCompleteCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePromiseCompleteCore.swift; sourceTree = "<group>"; };
 		85ADC2792BCB17F6008E947E /* WhiteTitleText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhiteTitleText.swift; sourceTree = "<group>"; };
 		85ADC27F2BCC31B4008E947E /* CreatePromiseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePromiseButton.swift; sourceTree = "<group>"; };
-		85FBAB332BC0433E008CFC1B /* SigninView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SigninView.swift; path = "Adego-iOS/Source/Feature/Auth/Signin/SigninView.swift"; sourceTree = SOURCE_ROOT; };
-		85FBAB372BC045CE008CFC1B /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MainView.swift; path = "Adego-iOS/Source/Feature/Main/MainView.swift"; sourceTree = SOURCE_ROOT; };
 		85FBAB3C2BC1A7EB008CFC1B /* SigninCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninCore.swift; sourceTree = "<group>"; };
 		85FBAB472BC1AA9C008CFC1B /* SetNameCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetNameCore.swift; sourceTree = "<group>"; };
 		85FBAB492BC1AAA4008CFC1B /* SetNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetNameView.swift; sourceTree = "<group>"; };
@@ -138,6 +141,7 @@
 			files = (
 				85FBAB682BC2DF93008CFC1B /* ComposableArchitecture in Frameworks */,
 				850702E92BCE4CBB00E3E820 /* WrappingHStack in Frameworks */,
+				85C16F272C044D3F00BED9A7 /* Moya in Frameworks */,
 				85FBAB6E2BC2E3EC008CFC1B /* FlowKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -224,6 +228,7 @@
 				8598F9DF2BC0361100132DE6 /* Adego_iOSApp.swift */,
 				8598F9E12BC0361100132DE6 /* ContentView.swift */,
 				8598F9E32BC0361200132DE6 /* Assets.xcassets */,
+				85AA46C62C3BE5A900F42C63 /* AppleSigninDelegate.swift */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -231,29 +236,18 @@
 		8598F9F42BC0375600132DE6 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				85ADC24C2BC8BDDA008E947E /* Style */,
-				85FBAB5D2BC1C343008CFC1B /* Components */,
-				85FBAB542BC1B103008CFC1B /* Extensions */,
-				8598F9F62BC0381100132DE6 /* Feature */,
+				85AA44B22C3ACAE400F42C63 /* Data */,
+				85AA44B32C3ACAED00F42C63 /* Domain */,
+				85AA44B12C3ACAC400F42C63 /* Presentation */,
+				85AA44B42C3ACAFB00F42C63 /* Shared */,
 			);
 			path = Source;
-			sourceTree = "<group>";
-		};
-		8598F9F62BC0381100132DE6 /* Feature */ = {
-			isa = PBXGroup;
-			children = (
-				8598FA032BC03EC400132DE6 /* Auth */,
-				8598FA022BC03EB300132DE6 /* Main */,
-				85ADC24D2BC8BEFA008E947E /* CreatePromise */,
-				85ADC24E2BC8BF09008E947E /* Setting */,
-			);
-			path = Feature;
 			sourceTree = "<group>";
 		};
 		8598FA022BC03EB300132DE6 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				85FBAB372BC045CE008CFC1B /* MainView.swift */,
+				85AA46C42C3B248500F42C63 /* MainView.swift */,
 				85424FE82BC50108007A429D /* MainCore.swift */,
 				850702E12BCE2F3C00E3E820 /* SendNotification */,
 				85A64D1E2BDEC9910095C46C /* AppointmentNoneView */,
@@ -281,6 +275,113 @@
 				85A64D212BDEC9F10095C46C /* AppointmentNoneCore.swift */,
 			);
 			path = AppointmentNoneView;
+			sourceTree = "<group>";
+		};
+		85AA44B12C3ACAC400F42C63 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				85AA46C12C3B23C200F42C63 /* View */,
+				85FBAB5D2BC1C343008CFC1B /* Components */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		85AA44B22C3ACAE400F42C63 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				85AA44B52C3ACB1900F42C63 /* Network */,
+				85AA44BD2C3ACC6300F42C63 /* Repositories */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		85AA44B32C3ACAED00F42C63 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				85AA44B62C3ACBAE00F42C63 /* Entity */,
+				85AA44B82C3ACBB600F42C63 /* Repositories */,
+				85AA44B92C3ACBC500F42C63 /* UseCases */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		85AA44B42C3ACAFB00F42C63 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				85ADC24C2BC8BDDA008E947E /* Style */,
+				85FBAB542BC1B103008CFC1B /* Extensions */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		85AA44B52C3ACB1900F42C63 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				85AA44BA2C3ACC0A00F42C63 /* API */,
+				85AA44BB2C3ACC1100F42C63 /* Model */,
+				85AA44BC2C3ACC5900F42C63 /* Services */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		85AA44B62C3ACBAE00F42C63 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		85AA44B82C3ACBB600F42C63 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		85AA44B92C3ACBC500F42C63 /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = UseCases;
+			sourceTree = "<group>";
+		};
+		85AA44BA2C3ACC0A00F42C63 /* API */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		85AA44BB2C3ACC1100F42C63 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		85AA44BC2C3ACC5900F42C63 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		85AA44BD2C3ACC6300F42C63 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		85AA46C12C3B23C200F42C63 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8598FA032BC03EC400132DE6 /* Auth */,
+				8598FA022BC03EB300132DE6 /* Main */,
+				85ADC24D2BC8BEFA008E947E /* CreatePromise */,
+				85ADC24E2BC8BF09008E947E /* Setting */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		85ADC24C2BC8BDDA008E947E /* Style */ = {
@@ -374,7 +475,7 @@
 		85FBAB352BC0433F008CFC1B /* Signin */ = {
 			isa = PBXGroup;
 			children = (
-				85FBAB332BC0433E008CFC1B /* SigninView.swift */,
+				85AA46C22C3B247B00F42C63 /* SigninView.swift */,
 				85FBAB3C2BC1A7EB008CFC1B /* SigninCore.swift */,
 			);
 			path = Signin;
@@ -422,7 +523,7 @@
 			children = (
 				85ADC2792BCB17F6008E947E /* WhiteTitleText.swift */,
 				85FBAB6F2BC2E75A008CFC1B /* CustomBackButton.swift */,
-				85ADC2592BC8C56A008E947E /* CustomInputTextFieldView.swift */,
+				85ADC2592BC8C56A008E947E /* CustomInputTextField.swift */,
 				85ADC27F2BCC31B4008E947E /* CreatePromiseButton.swift */,
 				850702DD2BCDF47800E3E820 /* CustomInfoView.swift */,
 			);
@@ -463,6 +564,7 @@
 				85FBAB672BC2DF93008CFC1B /* ComposableArchitecture */,
 				85FBAB6D2BC2E3EC008CFC1B /* FlowKit */,
 				850702E82BCE4CBB00E3E820 /* WrappingHStack */,
+				85C16F262C044D3F00BED9A7 /* Moya */,
 			);
 			productName = "Adego-iOS";
 			productReference = 8598F9DC2BC0361100132DE6 /* Adego-iOS.app */;
@@ -496,6 +598,7 @@
 				85FBAB662BC2DF93008CFC1B /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
 				85FBAB6C2BC2E3EC008CFC1B /* XCRemoteSwiftPackageReference "FlowKit" */,
 				850702E72BCE4CBB00E3E820 /* XCRemoteSwiftPackageReference "WrappingHStack" */,
+				85C16F252C044D3F00BED9A7 /* XCRemoteSwiftPackageReference "Moya" */,
 			);
 			productRefGroup = 8598F9DD2BC0361100132DE6 /* Products */;
 			projectDirPath = "";
@@ -536,6 +639,7 @@
 				85FBAB4D2BC1AF2D008CFC1B /* SetProfileImageView.swift in Sources */,
 				85ADC2562BC8BF95008E947E /* CreatePromiseCore.swift in Sources */,
 				85424FEB2BC508B7007A429D /* MapAnnotationView.swift in Sources */,
+				85AA46C72C3BE5A900F42C63 /* AppleSigninDelegate.swift in Sources */,
 				850702E62BCE2F8700E3E820 /* SendNotificationCore.swift in Sources */,
 				85424FEE2BC50A60007A429D /* Location.swift in Sources */,
 				85ADC2732BCB1044008E947E /* SelectLocationCore.swift in Sources */,
@@ -546,15 +650,16 @@
 				85FBAB8B2BC3D772008CFC1B /* Font+Ext.swift in Sources */,
 				85FBAB702BC2E75A008CFC1B /* CustomBackButton.swift in Sources */,
 				85A64D202BDEC9CA0095C46C /* AppointmentNoneView.swift in Sources */,
-				85FBAB382BC045CE008CFC1B /* MainView.swift in Sources */,
 				850702E32BCE2F5700E3E820 /* SendNotificiationView.swift in Sources */,
 				85A64D1D2BDD59A60095C46C /* View+Ext.swift in Sources */,
 				85FBAB3D2BC1A7EB008CFC1B /* SigninCore.swift in Sources */,
 				85ADC26A2BCB0A8E008E947E /* SelectDayCore.swift in Sources */,
 				85ADC2622BCAFC2B008E947E /* EditCore.swift in Sources */,
 				85FBAB4A2BC1AAA4008CFC1B /* SetNameView.swift in Sources */,
+				85AA46C32C3B247B00F42C63 /* SigninView.swift in Sources */,
 				85ADC27A2BCB17F6008E947E /* WhiteTitleText.swift in Sources */,
 				85ADC2542BC8BF70008E947E /* SettingCore.swift in Sources */,
+				85AA46C52C3B248500F42C63 /* MainView.swift in Sources */,
 				850702DE2BCDF47800E3E820 /* CustomInfoView.swift in Sources */,
 				850702EF2BCE91C800E3E820 /* InvitedAppointmentView.swift in Sources */,
 				8598F9E22BC0361100132DE6 /* ContentView.swift in Sources */,
@@ -562,13 +667,12 @@
 				85424FE92BC50108007A429D /* MainCore.swift in Sources */,
 				85FBAB512BC1AF76008CFC1B /* SetProfileImageCore.swift in Sources */,
 				85ADC2682BCB0A87008E947E /* SelectDayView.swift in Sources */,
-				85FBAB342BC0433E008CFC1B /* SigninView.swift in Sources */,
 				85ADC2752BCB1054008E947E /* CreatePromiseCompleteView.swift in Sources */,
 				85ADC26F2BCB0C0C008E947E /* SelectTimeView.swift in Sources */,
 				85ADC2602BCAFC22008E947E /* EditView.swift in Sources */,
 				85424FE72BC4DCDB007A429D /* ImagePickerView.swift in Sources */,
 				85FBAB482BC1AA9C008CFC1B /* SetNameCore.swift in Sources */,
-				85ADC25A2BC8C56A008E947E /* CustomInputTextFieldView.swift in Sources */,
+				85ADC25A2BC8C56A008E947E /* CustomInputTextField.swift in Sources */,
 				850702F22BCE91F200E3E820 /* InvitedAppointmentCore.swift in Sources */,
 				857E49382BC4CF84007E3ABC /* Text+Ext.swift in Sources */,
 				85ADC2402BC6FD08008E947E /* PromisePreviewCore.swift in Sources */,
@@ -823,6 +927,14 @@
 				minimumVersion = 2.2.11;
 			};
 		};
+		85C16F252C044D3F00BED9A7 /* XCRemoteSwiftPackageReference "Moya" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Moya/Moya.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 15.0.3;
+			};
+		};
 		85FBAB662BC2DF93008CFC1B /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/pointfreeco/swift-composable-architecture";
@@ -846,6 +958,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 850702E72BCE4CBB00E3E820 /* XCRemoteSwiftPackageReference "WrappingHStack" */;
 			productName = WrappingHStack;
+		};
+		85C16F262C044D3F00BED9A7 /* Moya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 85C16F252C044D3F00BED9A7 /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = Moya;
 		};
 		85FBAB672BC2DF93008CFC1B /* ComposableArchitecture */ = {
 			isa = XCSwiftPackageProductDependency;
