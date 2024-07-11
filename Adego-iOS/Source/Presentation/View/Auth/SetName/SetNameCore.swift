@@ -39,9 +39,7 @@ struct SetNameCore: Reducer {
     public enum View: BindableAction, Sendable {
         case binding(BindingAction<State>)
     }
-    
-    public init() {}
-    
+        
     @Dependency(\.flow) var flow
     
     var body: some Reducer<State, Action> {
