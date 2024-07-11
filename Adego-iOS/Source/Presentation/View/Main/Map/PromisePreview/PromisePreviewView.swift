@@ -67,7 +67,9 @@ extension PromisePreviewView {
                 .frame(width: 259, height: 56)
                 .background(.gray30)
         }
-        .clipShape(RoundedRectangle(cornerRadius: 8))
+        .clipShape(
+            RoundedRectangle(cornerRadius: 8)
+        )
 
         return Button {
             
