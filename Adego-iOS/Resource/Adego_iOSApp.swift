@@ -23,8 +23,8 @@ struct FlowDependency: DependencyKey {
             CustomNavigationBarController(rootViewController: rootView)
         }
     }
+        
 }
-
 extension DependencyValues {
     var flow: FlowProvider {
         get { self[FlowDependency.self] }
@@ -39,7 +39,7 @@ struct Adego_iOSApp: App {
         WindowGroup {
             flow.present()
                 .ignoresSafeArea()
-                .navigationBarHidden(true)
+//            ContentView()
         }
     }
 }
