@@ -22,7 +22,7 @@ struct SetProfileImageView: View {
                     title: "본인의 사진을 설정해주세요"
                 )
                 
-                Image(uiImage: store.image)
+                Image(uiImage: store.profileImage)
                     .resizable()
                     .frame(width: 100, height: 100)
                     .background(.gray20)
@@ -44,7 +44,7 @@ struct SetProfileImageView: View {
                 .sheet(isPresented: $store.isImagePickerShow) {
                     ImagePickerView(
                         result: $store.result,
-                        selectedImage: $store.image,
+                        selectedImage: $store.profileImage,
                         sourceType: .photoLibrary
                     )
                 }
