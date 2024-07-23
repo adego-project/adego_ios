@@ -1,5 +1,5 @@
 {
-  "originHash" : "905b393bac4c94b5bde6069d9d19dc84f837b456337409a9eb106c731ea249c2",
+  "originHash" : "1c604173d2d12642d8a3de68a7268bd1e9f44359c511ae6a67da82f80c089ea5",
   "pins" : [
     {
       "identity" : "alamofire",
@@ -25,7 +25,7 @@
       "location" : "https://github.com/choisihun/FlowKit",
       "state" : {
         "branch" : "main",
-        "revision" : "3ef10fac1837f1ce2fcddaaf1fd4396cfd2b36e1"
+        "revision" : "b2fc2a115e9db3d2a35eeda2be4b26c1f78b697d"
       }
     },
     {

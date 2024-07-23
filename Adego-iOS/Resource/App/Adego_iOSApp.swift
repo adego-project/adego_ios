@@ -11,20 +11,31 @@ import ComposableArchitecture
 
 struct FlowDependency: DependencyKey {
     static var liveValue: FlowProvider {
+        //        FlowProvider(
+        //            rootView: SigninView(
+        //                store: Store(
+        //                    initialState: SigninCore.State()
+        //                ) {
+        //                    SigninCore()
+        //                }
+        //            )
+        //        ) { rootView in
+        //            CustomNavigationBarController(rootViewController: rootView)
+        //        }
         FlowProvider(
-            rootView: SigninView(
+            rootView: MainView(
                 store: Store(
-                    initialState: SigninCore.State()
+                    initialState: MainCore.State()
                 ) {
-                    SigninCore()
+                    MainCore()
                 }
             )
         ) { rootView in
             CustomNavigationBarController(rootViewController: rootView)
         }
     }
-        
 }
+
 extension DependencyValues {
     var flow: FlowProvider {
         get { self[FlowDependency.self] }
@@ -37,6 +48,7 @@ struct Adego_iOSApp: App {
     @Dependency(\.flow) var flow
     var body: some Scene {
         WindowGroup {
+            
             flow.present()
                 .ignoresSafeArea()
 //            ContentView()
