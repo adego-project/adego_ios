@@ -7,19 +7,17 @@
 
 import SwiftUI
 import ComposableArchitecture
-
-import SwiftUI
-import ComposableArchitecture
 import AuthenticationServices
 
 struct SigninView: View {
     @Perception.Bindable var store: StoreOf<SigninCore>
-    private var appleSignInDelegate: AppleSignInDelegate
     
-    init(store: StoreOf<SigninCore>) {
-        self._store = Perception.Bindable(store)
-        self.appleSignInDelegate = AppleSignInDelegate(store: store)
-    }
+    private var appleSignInDelegate: AppleSignInDelegate
+
+        init(store: StoreOf<SigninCore>) {
+            self._store = Perception.Bindable(store)
+            self.appleSignInDelegate = AppleSignInDelegate(store: store)
+        }
     
     var body: some View {
         WithPerceptionTracking {
@@ -50,25 +48,8 @@ extension SigninView {
         } label: {
             Image("AppleLoginImage")
         }
-        .overlay {
-            SignInWithAppleButton(
-                onRequest: { request in
-                    request.requestedScopes = [.fullName, .email]
-                },
-                onCompletion: { result in
-                    switch result {
-                    case .success(let authResults):
-                        appleSignInDelegate.handleAuthorization(authResults)
-                    case .failure(let error):
-                        print(error.localizedDescription)
-                        print("error")
-                    }
-                }
-            ).blendMode(.overlay)
-        }
     }
 }
-
 
 #Preview {
     SigninView(
