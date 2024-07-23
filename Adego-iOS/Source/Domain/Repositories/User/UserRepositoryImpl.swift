@@ -20,19 +20,23 @@ class UserRepositoryImpl: UserRepository {
         accessToken: String,
         completion: @escaping (Result<User, Error>) -> Void
     ) {
-        self.provider.request(.getUser(accessToken: accessToken)) { result in
+        provider.request(.getUser(accessToken: accessToken)) { result in
             switch result {
             case let .success(response):
                 do {
                     if let jsonString = String(data: response.data, encoding: .utf8) {
-                        print("Response JSON: \(jsonString)")
+                        print("getUser Response JSON: \(jsonString)")
                     }
                     
                     let userInfo = try JSONDecoder().decode(User.self, from: response.data)
                     completion(.success(userInfo))
                 } catch {
-                    print("Decoding error: \(error)")
-                    completion(.failure(error))
+                    do {
+                        let decodedError = try JSONDecoder().decode(ErrorResponse.self, from: response.data)
+                        completion(.failure(decodedError))
+                    } catch {
+                        completion(.failure(error))
+                    }
                 }
             case let .failure(error):
                 print("Network error: \(error)")
@@ -45,7 +49,7 @@ class UserRepositoryImpl: UserRepository {
         profileImage: String,
         completion: @escaping (Result<ProfileImage, Error>) -> Void
     ) {
-        self.provider.request(.registerProfileImage(profileImage: profileImage)) { result in
+        provider.request(.registerProfileImage(profileImage: profileImage)) { [weak self] result in
             switch result {
             case let .success(response):
                 do {
