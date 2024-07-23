@@ -11,15 +11,17 @@ import Foundation
 
 @Reducer
 struct SelectDayCore: Reducer {
-    @Dependency(\.flow) var flow
     
     @ObservableState
     struct State: Equatable {
-        var date: Date = Date()
+        var promiseTitle: String = ""
+        var selectedDate = Date()
+        var selectedDateString: String = ""
     }
     
     enum Action: ViewAction {
         case navigateToSelectTimeView
+        case setValue
         case view(View)
     }
     
@@ -28,23 +30,50 @@ struct SelectDayCore: Reducer {
         case binding(BindingAction<State>)
     }
     
+    @Dependency(\.flow) var flow
+    
     var body: some ReducerOf<Self> {
         BindingReducer(action: \.view)
         Reduce { state, action in
             switch action {
             case .navigateToSelectTimeView:
-                flow.push(
-                    SelectTimeView(
-                        store: Store(
-                            initialState: SelectTimeCore.State()
-                        ) {
-                            SelectTimeCore()
-                        }
+                let stringDate = String(describing: state.selectedDate)
+                if !stringDate.isEmpty {
+                    let formattedDate = formatDate(state.selectedDate)
+                    state.selectedDateString = formattedDate
+                    print(formattedDate)
+                    flow.push(
+                        SelectTimeView(
+                            store: Store(
+                                initialState: SelectTimeCore.State(promiseTitle: state.promiseTitle, selectedDate: formattedDate)
+                            ) {
+                                SelectTimeCore()
+                            }
+                        )
                     )
-                )
+                } else {
+                    flow.alert(
+                        Alert(title: "날짜를 선택해주세요.")
+                    )
+                }
+                return .none
+            
+            case .setValue:
                 return .none
             case .view(.binding):
                 return .none
+            }
+            
+            func formatDate(_ date: Date) -> String {
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss Z"
+                let dateString = String(describing: date)
+                
+                if let date = dateFormatter.date(from: dateString) {
+                    dateFormatter.dateFormat = "yyyy년 MM월 dd일"
+                    return dateFormatter.string(from: date)
+                }
+                return "nil"
             }
         }
     }
