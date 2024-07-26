@@ -7,14 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		850702DC2BCCD82600E3E820 /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850702DB2BCCD82600E3E820 /* Document.swift */; };
+		850702DC2BCCD82600E3E820 /* AddressResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850702DB2BCCD82600E3E820 /* AddressResponse.swift */; };
 		850702DE2BCDF47800E3E820 /* CustomInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850702DD2BCDF47800E3E820 /* CustomInfoView.swift */; };
 		850702E32BCE2F5700E3E820 /* SendNotificiationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850702E22BCE2F5700E3E820 /* SendNotificiationView.swift */; };
 		850702E62BCE2F8700E3E820 /* SendNotificationCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850702E52BCE2F8700E3E820 /* SendNotificationCore.swift */; };
-		850702E92BCE4CBB00E3E820 /* WrappingHStack in Frameworks */ = {isa = PBXBuildFile; productRef = 850702E82BCE4CBB00E3E820 /* WrappingHStack */; };
 		850702EB2BCE4D6B00E3E820 /* SendUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850702EA2BCE4D6B00E3E820 /* SendUser.swift */; };
 		850702EF2BCE91C800E3E820 /* InvitedAppointmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850702EE2BCE91C800E3E820 /* InvitedAppointmentView.swift */; };
 		850702F22BCE91F200E3E820 /* InvitedAppointmentCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850702F12BCE91F200E3E820 /* InvitedAppointmentCore.swift */; };
+		851490BF2C52C833008A286E /* Debounce.swift in Sources */ = {isa = PBXBuildFile; fileRef = 851490BE2C52C833008A286E /* Debounce.swift */; };
 		8530047E2C4C47A400F533EF /* CustomCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8530047D2C4C47A400F533EF /* CustomCalendarView.swift */; };
 		85424FE72BC4DCDB007A429D /* ImagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85424FE62BC4DCDB007A429D /* ImagePickerView.swift */; };
 		85424FE92BC50108007A429D /* MainCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85424FE82BC50108007A429D /* MainCore.swift */; };
@@ -77,7 +77,6 @@
 		85BAC8882C40436C006261F8 /* UserUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85BAC8872C40436C006261F8 /* UserUseCase.swift */; };
 		85BAC88B2C405951006261F8 /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85BAC88A2C405951006261F8 /* KeychainManager.swift */; };
 		85BAC88D2C407411006261F8 /* TokenRefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85BAC88C2C407411006261F8 /* TokenRefresh.swift */; };
-		85C16F272C044D3F00BED9A7 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 85C16F262C044D3F00BED9A7 /* Moya */; };
 		85C2B9352C427EF00060F16D /* AppMainCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C2B9342C427EF00060F16D /* AppMainCore.swift */; };
 		85C2B9372C44105E0060F16D /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C2B9362C44105E0060F16D /* Place.swift */; };
 		85FBAB3D2BC1A7EB008CFC1B /* SigninCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FBAB3C2BC1A7EB008CFC1B /* SigninCore.swift */; };
@@ -85,8 +84,6 @@
 		85FBAB4A2BC1AAA4008CFC1B /* SetNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FBAB492BC1AAA4008CFC1B /* SetNameView.swift */; };
 		85FBAB4D2BC1AF2D008CFC1B /* SetProfileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FBAB4C2BC1AF2D008CFC1B /* SetProfileImageView.swift */; };
 		85FBAB512BC1AF76008CFC1B /* SetProfileImageCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FBAB502BC1AF76008CFC1B /* SetProfileImageCore.swift */; };
-		85FBAB682BC2DF93008CFC1B /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 85FBAB672BC2DF93008CFC1B /* ComposableArchitecture */; };
-		85FBAB6E2BC2E3EC008CFC1B /* FlowKit in Frameworks */ = {isa = PBXBuildFile; productRef = 85FBAB6D2BC2E3EC008CFC1B /* FlowKit */; };
 		85FBAB702BC2E75A008CFC1B /* CustomBackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FBAB6F2BC2E75A008CFC1B /* CustomBackButton.swift */; };
 		85FBAB8B2BC3D772008CFC1B /* Font+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FBAB8A2BC3D772008CFC1B /* Font+Ext.swift */; };
 		85FBAB9A2BC40840008CFC1B /* WantedSans-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 85FBAB922BC3DA44008CFC1B /* WantedSans-Black.otf */; };
@@ -99,13 +96,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		850702DB2BCCD82600E3E820 /* Document.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
+		850702DB2BCCD82600E3E820 /* AddressResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressResponse.swift; sourceTree = "<group>"; };
 		850702DD2BCDF47800E3E820 /* CustomInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomInfoView.swift; sourceTree = "<group>"; };
 		850702E22BCE2F5700E3E820 /* SendNotificiationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendNotificiationView.swift; sourceTree = "<group>"; };
 		850702E52BCE2F8700E3E820 /* SendNotificationCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendNotificationCore.swift; sourceTree = "<group>"; };
 		850702EA2BCE4D6B00E3E820 /* SendUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendUser.swift; sourceTree = "<group>"; };
 		850702EE2BCE91C800E3E820 /* InvitedAppointmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitedAppointmentView.swift; sourceTree = "<group>"; };
 		850702F12BCE91F200E3E820 /* InvitedAppointmentCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitedAppointmentCore.swift; sourceTree = "<group>"; };
+		851490BE2C52C833008A286E /* Debounce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debounce.swift; sourceTree = "<group>"; };
 		8530047D2C4C47A400F533EF /* CustomCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCalendarView.swift; sourceTree = "<group>"; };
 		85424FE62BC4DCDB007A429D /* ImagePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerView.swift; sourceTree = "<group>"; };
 		85424FE82BC50108007A429D /* MainCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCore.swift; sourceTree = "<group>"; };
@@ -194,10 +192,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				85FBAB682BC2DF93008CFC1B /* ComposableArchitecture in Frameworks */,
-				850702E92BCE4CBB00E3E820 /* WrappingHStack in Frameworks */,
-				85C16F272C044D3F00BED9A7 /* Moya in Frameworks */,
-				85FBAB6E2BC2E3EC008CFC1B /* FlowKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -221,6 +215,14 @@
 				850702F12BCE91F200E3E820 /* InvitedAppointmentCore.swift */,
 			);
 			path = InvitedAppointMent;
+			sourceTree = "<group>";
+		};
+		851490BD2C52C827008A286E /* Impl */ = {
+			isa = PBXGroup;
+			children = (
+				851490BE2C52C833008A286E /* Debounce.swift */,
+			);
+			path = Impl;
 			sourceTree = "<group>";
 		};
 		8531A3F32C41AF45000C3FC8 /* DI */ = {
@@ -428,6 +430,7 @@
 		85AA44B42C3ACAFB00F42C63 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				851490BD2C52C827008A286E /* Impl */,
 				85ADC24C2BC8BDDA008E947E /* Style */,
 				85FBAB542BC1B103008CFC1B /* Extensions */,
 			);
@@ -675,7 +678,7 @@
 		85C2B92E2C42507B0060F16D /* Address */ = {
 			isa = PBXGroup;
 			children = (
-				850702DB2BCCD82600E3E820 /* Document.swift */,
+				850702DB2BCCD82600E3E820 /* AddressResponse.swift */,
 			);
 			path = Address;
 			sourceTree = "<group>";
@@ -780,10 +783,6 @@
 			);
 			name = "Adego-iOS";
 			packageProductDependencies = (
-				85FBAB672BC2DF93008CFC1B /* ComposableArchitecture */,
-				85FBAB6D2BC2E3EC008CFC1B /* FlowKit */,
-				850702E82BCE4CBB00E3E820 /* WrappingHStack */,
-				85C16F262C044D3F00BED9A7 /* Moya */,
 			);
 			productName = "Adego-iOS";
 			productReference = 8598F9DC2BC0361100132DE6 /* Adego-iOS.app */;
@@ -814,10 +813,6 @@
 			);
 			mainGroup = 8598F9D32BC0361100132DE6;
 			packageReferences = (
-				85FBAB662BC2DF93008CFC1B /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
-				85FBAB6C2BC2E3EC008CFC1B /* XCRemoteSwiftPackageReference "FlowKit" */,
-				850702E72BCE4CBB00E3E820 /* XCRemoteSwiftPackageReference "WrappingHStack" */,
-				85C16F252C044D3F00BED9A7 /* XCRemoteSwiftPackageReference "Moya" */,
 			);
 			productRefGroup = 8598F9DD2BC0361100132DE6 /* Products */;
 			projectDirPath = "";
@@ -865,10 +860,11 @@
 				85ADC2732BCB1044008E947E /* SelectLocationCore.swift in Sources */,
 				85BAC8882C40436C006261F8 /* UserUseCase.swift in Sources */,
 				850702EB2BCE4D6B00E3E820 /* SendUser.swift in Sources */,
+				851490BF2C52C833008A286E /* Debounce.swift in Sources */,
 				85ADC2772BCB105E008E947E /* CreatePromiseCompleteCore.swift in Sources */,
 				85A64D222BDEC9F10095C46C /* AppointmentNoneCore.swift in Sources */,
 				8592998E2C4102AE005EB807 /* PromiseUseCase.swift in Sources */,
-				850702DC2BCCD82600E3E820 /* Document.swift in Sources */,
+				850702DC2BCCD82600E3E820 /* AddressResponse.swift in Sources */,
 				859299912C41074B005EB807 /* Tokens.swift in Sources */,
 				85FBAB8B2BC3D772008CFC1B /* Font+Ext.swift in Sources */,
 				859299842C40FF35005EB807 /* PromiseRepository.swift in Sources */,
@@ -1087,6 +1083,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1128,6 +1125,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1165,64 +1163,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		850702E72BCE4CBB00E3E820 /* XCRemoteSwiftPackageReference "WrappingHStack" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/dkk/WrappingHStack.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.2.11;
-			};
-		};
-		85C16F252C044D3F00BED9A7 /* XCRemoteSwiftPackageReference "Moya" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Moya/Moya.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 15.0.3;
-			};
-		};
-		85FBAB662BC2DF93008CFC1B /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/pointfreeco/swift-composable-architecture";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.9.2;
-			};
-		};
-		85FBAB6C2BC2E3EC008CFC1B /* XCRemoteSwiftPackageReference "FlowKit" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/choisihun/FlowKit";
-			requirement = {
-				branch = main;
-				kind = branch;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		850702E82BCE4CBB00E3E820 /* WrappingHStack */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 850702E72BCE4CBB00E3E820 /* XCRemoteSwiftPackageReference "WrappingHStack" */;
-			productName = WrappingHStack;
-		};
-		85C16F262C044D3F00BED9A7 /* Moya */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 85C16F252C044D3F00BED9A7 /* XCRemoteSwiftPackageReference "Moya" */;
-			productName = Moya;
-		};
-		85FBAB672BC2DF93008CFC1B /* ComposableArchitecture */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 85FBAB662BC2DF93008CFC1B /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
-			productName = ComposableArchitecture;
-		};
-		85FBAB6D2BC2E3EC008CFC1B /* FlowKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 85FBAB6C2BC2E3EC008CFC1B /* XCRemoteSwiftPackageReference "FlowKit" */;
-			productName = FlowKit;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 8598F9D42BC0361100132DE6 /* Project object */;
 }

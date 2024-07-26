@@ -58,7 +58,6 @@ struct SigninCore: Reducer {
                 signinUseCase.tokenRefresh(accessToken: accessToken) {  result in
                     switch result {
                     case .success(let tokens):
-                        let saveAccessToken = KeychainManager.shared.save(key: "accessToken", string: tokens.accessToken)
                         print("✅tokenRefresh.Access Token: \(tokens.accessToken)")
                     case .failure(let error):
                         print("🚫SigninCore.tokenRefresh error: \(error.localizedDescription)")
@@ -77,7 +76,7 @@ struct SigninCore: Reducer {
                     case .success(let info):
                         print("✅SigninCore.getUser id:", info.id)
                         print("✅SigninCore.getUser name:", info.name ?? "")
-                        print("✅SigninCore.getUser planId:", info.planId)
+                        print("✅SigninCore.getUser planId:", info.planId ?? "")
                         print("✅SigninCore.getUser profileImage:", info.profileImage ?? "")
                         if ((info.name?.isEmpty) != nil) {
                             flow.push(
