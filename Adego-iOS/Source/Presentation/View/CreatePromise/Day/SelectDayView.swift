@@ -13,7 +13,6 @@ struct SelectDayView: View {
     
     var body: some View {
         WithPerceptionTracking {
-            //        ScrollView {
             VStack {
                 WhiteTitleText(
                     title: "약속날을 정해주세요"
@@ -21,10 +20,10 @@ struct SelectDayView: View {
                 .padding(.leading, 16)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 
-                DatePicker("약속날을 선택해주세요", selection: $store.date)
-                    .datePickerStyle(.graphical)
-                    .tint(.gray70)
-                
+                CustomCalendarView(selectedDate: $store.selectedDate)
+                    .onChange(of: store.selectedDate) { newDate in
+                                print("Selected date changed to: \(newDate)")
+                            }
                 Spacer()
                 
                 Button {
@@ -36,7 +35,6 @@ struct SelectDayView: View {
                 .padding(.bottom, 10)
                 
             }
-//        }
         }
     }
 }

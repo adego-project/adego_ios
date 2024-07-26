@@ -46,16 +46,23 @@ struct CreatePromiseCore: Reducer {
         Reduce { state, action in
             switch action {
             case .navigateToSelectDayView:
-                flow.push(
-                    SelectDayView(
-                        store: Store(
-                            initialState: SelectDayCore.State()
-                        ) {
-                            SelectDayCore()
-                        }
+                if state.titleLength >= 3 {
+                    flow.push(
+                        SelectDayView(
+                            store: Store(
+                                initialState: SelectDayCore.State()
+                            ) {
+                                SelectDayCore()
+                            }
+                        )
                     )
-                )
+                } else {
+                    flow.alert(
+                        Alert(title: "제목을 3자 이상 입력해주세요")
+                    )
+                }
                 return .none
+                
             case .view(.binding):
                 return .none
             }

@@ -11,9 +11,6 @@ import ComposableArchitecture
 struct SelectLocationView: View {
     @Perception.Bindable var store: StoreOf<SelectLocationCore>
     
-    init(store: StoreOf<SelectLocationCore>) {
-        self.store = store
-    }
     
     var body: some View {
         WithPerceptionTracking {
@@ -23,26 +20,28 @@ struct SelectLocationView: View {
                 
                 CustomInputTextField(
                     text: "장소 이름",
-                    input: $store.serchWord,
+                    input: $store.searchWord,
                     placeholder: "만날 장소를 검색해주세요",
                     isFormValid: false
                 )
                 .padding(.leading, 16)
                 .padding(.top, 40)
-                .onChange(of: store.serchWord) { newValue in
-                    store.send(.getAddressList)
+                .onChange(of: store.searchWord) { newValue in
+                        store.send(.getAddressList)
+                        
+                    print("store.model", store.model)
                 }
                 
-                List(store.promiseLocationInfo, id: \.id) { item in
+                List(store.model.documents, id: \.id) { index in
                     Button {
                         
                     } label: {
                         VStack(alignment: .leading) {
-                            Text(item.address)
+                            Text(index.addressName)
                                 .font(.wantedSans())
                                 .foregroundStyle(.gray100)
                             
-                            Text(item.address)
+                            Text(index.roadAddressName)
                                 .font(.wantedSans(14))
                                 .foregroundStyle(.gray70)
                                 .padding(.top, 4)

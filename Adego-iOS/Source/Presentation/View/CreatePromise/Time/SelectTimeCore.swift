@@ -9,20 +9,21 @@ import ComposableArchitecture
 
 @Reducer
 struct SelectTimeCore: Reducer {
-    @Dependency(\.flow) var flow
     
     @ObservableState
     struct State: Equatable {
+        var promiseTitle: String = ""
+        
         var amPM: String = "오전"
         var hours: String = "4"
         var minute: String = "14"
-        var year: String = "2006"
-        var month: String = "12"
-        var day: String = "03"
+        var selectedDate: String = ""
+        var selectedAddress: String = ""
     }
     
     enum Action: ViewAction {
         case navigateToSelectLocationView
+        case setValue
         case view(View)
     }
     
@@ -31,6 +32,8 @@ struct SelectTimeCore: Reducer {
         case binding(BindingAction<State>)
     }
     
+    @Dependency(\.flow) var flow
+
     var body: some ReducerOf<Self> {
         BindingReducer(action: \.view)
         Reduce { state, action in
@@ -39,12 +42,14 @@ struct SelectTimeCore: Reducer {
                 flow.push(
                     SelectLocationView(
                         store: Store(
-                            initialState: SelectLocationCore.State()
+                            initialState: SelectLocationCore.State(promiseTitle: state.promiseTitle, selectedDate: state.selectedDate)
                         ) {
                             SelectLocationCore()
                         }
                     )
                 )
+                return .none
+            case .setValue:
                 return .none
             case .view(.binding):
                 return .none
@@ -52,4 +57,3 @@ struct SelectTimeCore: Reducer {
         }
     }
 }
-

@@ -38,7 +38,7 @@ extension AddressService: TargetType {
                 parameters: [
                     "query": searchWord
                 ],
-                encoding: JSONEncoding.default
+                encoding: URLEncoding.queryString
             )
         }
     }
@@ -49,7 +49,7 @@ extension AddressService: TargetType {
             return [
                 "Content-Type": "application/json",
                 "Authorization": "Bearer \(savedAccessToken)"
-
+                
             ]
         }
     }

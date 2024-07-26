@@ -40,7 +40,7 @@ struct SelectTimeView: View {
                 
                 
                 
-                Text("\(Image(systemName: "calendar")) \(store.year)년 \(store.month)월 \(store.day)일")
+                Text("\(Image(systemName: "calendar")) \(store.selectedDate)")
                     .font(.wantedSans())
                     .foregroundStyle(.gray100)
                     .padding(.top, 4)
@@ -50,11 +50,14 @@ struct SelectTimeView: View {
                 
                 timePickerContainer
                     .padding(.top, 40)
+                    .onChange(of: store.amPM) { _ in
+                        
+                    }
                 
                 Spacer()
                 
                 Button {
-                    
+                    store.send(.navigateToSelectLocationView)
                 } label: {
                     Text("약속 생성하기 \(Image(systemName: "arrow.right"))")
                         .frame(width: 319, height: 56)

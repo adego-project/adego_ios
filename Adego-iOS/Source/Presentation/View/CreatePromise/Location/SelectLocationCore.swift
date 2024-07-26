@@ -5,27 +5,35 @@
 //  Created by 최시훈 on 4/14/24.
 //
 
+import Foundation
 import ComposableArchitecture
 
 @Reducer
 struct SelectLocationCore: Reducer {
-    @Dependency(\.flow) var flow
     
     @ObservableState
-    struct State {
+    struct State: Equatable {
         
-        var serchWord: String = ""
+        var searchWord: String = ""
+        var debouncedText: String = ""
         
-        let promiseLocationInfo = [
-            PromiseLocation(locationName: "알파", address: "대구소프트웨어마이스터고등학교"),
-            PromiseLocation(locationName: "메일", address: "대구소프트웨어마이스터고등학교"),
-            PromiseLocation(locationName: "최시훈", address: "대구소프트웨어마이스터고등학교")
-        ]
+        var promiseTitle: String = ""
+        var selectedAddress: String = ""
+        var selectedDate: String = ""
+        
+        var debounceTimer: Timer?
+        let debounceInterval: TimeInterval = 0.5
+        
+        var model: AddressResponse = AddressResponse(documents: [Document]())
+        
     }
     
     enum Action: ViewAction {
+        case createPromise
         case getAddressList
-        case navigateToCreatePromiseCompleatView
+//        case debouncedTextChanged(String)
+        case setValue(AddressResponse)
+        case navigateToCreatePromiseCompleteView
         case view(View)
     }
     
@@ -34,17 +42,56 @@ struct SelectLocationCore: Reducer {
         case binding(BindingAction<State>)
     }
     
+    @Dependency(\.flow) var flow
+    
     var body: some ReducerOf<Self> {
         BindingReducer(action: \.view)
         Reduce { state, action in
             switch action {
+            case .createPromise:
+                let promiseRepository = PromiseRepositoryImpl()
+                let promiseUseCase = PromiseUseCase(promiseRepository: promiseRepository)
+                promiseUseCase.createPromise(name: state.promiseTitle, address: state.selectedAddress, date: state.selectedDate) { result in
+                    switch result {
+                    case .success(let response):
+                        print("✅SelectLocationCore.createPromise: \(response)")
+                    case .failure(let error):
+                        print("🚫SelectLocationCore.createPromise error: \(error.localizedDescription)")
+                        print(error)
+                    }
+                }
+                return .none
+                
             case .getAddressList:
+                let searchWord = state.searchWord
+                print("searchWord", searchWord)
+                return .run { send in
+                    let addressRepository =  AddressRepositoryImpl()
+                    let addressUseCase = AddressUseCase(addressRepository: addressRepository)
+                    addressUseCase.searchAddress(searchWord: searchWord) { result in
+                        switch result {
+                        case .success(let response):
+                            print("✅SelectLocationCore.getAddressList: \(response)")
+                            DispatchQueue.main.async {
+                                send(.setValue(response))
+                                
+                            }
+                            print("3")
+                            
+                        case .failure(let error):
+                            print("🚫SelectLocationCore.getAddressList error: \(error.localizedDescription)")
+                            print(error)
+                        }
+                    }
+                }
+                
+            case .setValue(let response):
+                state.model = response
+                print("4")
                 
                 return .none
-//                return .run (
-//                    operation: try await
-//                )
-            case .navigateToCreatePromiseCompleatView:
+                
+            case .navigateToCreatePromiseCompleteView:
                 flow.push(
                     CreatePromiseCompleteView(
                         store: Store(
@@ -57,9 +104,9 @@ struct SelectLocationCore: Reducer {
                 return .none
                 
             case .view(.binding):
+
                 return .none
             }
         }
     }
 }
-
