@@ -35,7 +35,7 @@ struct SettingView: View {
                         }
                         .padding(.leading, 16)
                         
-                        Text("알파 메일 최시훈")
+                        Text(store.name)
                             .font(.wantedSans(24))
                             .foregroundStyle(.white)
                         
@@ -50,7 +50,6 @@ struct SettingView: View {
                                 .underline()
                         }
                         .padding(.trailing, 24)
-                        
                     }
                     
                     Divider()
@@ -63,7 +62,6 @@ struct SettingView: View {
                             .font(.wantedSans(14, weight: .midium))
                             .foregroundStyle(.gray60)
                             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
-                        
                         
                         button(
                             action: store.send(.showLogoutAlert),

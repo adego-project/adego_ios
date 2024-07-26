@@ -12,13 +12,18 @@ import CoreLocation
 
 @Reducer
 struct MainCore: Reducer {
-    @Dependency(\.flow) var flow
     
     @ObservableState
     struct State: Equatable {
         var locations: [Location]?
         var mapRegion: MKCoordinateRegion?
         var mapLocation: Location?
+        var promiseTitle: String = ""
+        
+        var isHavePromise: Bool = false
+        
+        var promiseLocation: String = ""
+        var promiseTimeRemaingUntil: String = ""
         
         static func == (lhs: MainCore.State, rhs: MainCore.State) -> Bool {
             lhs.locations == rhs.locations
@@ -26,6 +31,9 @@ struct MainCore: Reducer {
     }
     
     enum Action {
+        case onAppear
+        case setIsHavePromiseTrue
+        case setIsHavePromiseFalse
         case findCurrentLocation
         case updateMapRegion(Location?)
         case getUserAnnotationInfoMation
@@ -39,10 +47,42 @@ struct MainCore: Reducer {
         case binding(BindingAction<State>)
     }
     
+    @Dependency(\.flow) var flow
+    
     var body: some ReducerOf<Self> {
         BindingReducer(action: \.view)
         Reduce { state, action in
             switch action {
+            case .onAppear:
+                return .run { send in
+                    let promiseRepository = PromiseRepositoryImpl()
+                    let promiseUseCase = PromiseUseCase(promiseRepository: promiseRepository)
+                    
+                    promiseUseCase.getPromise(
+                        accessToken: savedAccessToken
+                    ) { result in
+                        switch result {
+                        case .success(let response):
+                            DispatchQueue.main.async {
+                                send(.setIsHavePromiseTrue)
+                            }
+                        case .failure(let error):
+                            print("🚫MainViewCore.getPromise error: \(error.localizedDescription)")
+                            DispatchQueue.main.async {
+                                send(.setIsHavePromiseFalse)
+                            }
+                        }
+                    }
+                }
+                
+            case .setIsHavePromiseTrue:
+                    state.isHavePromise = true
+                    return .none
+                
+            case .setIsHavePromiseFalse:
+                    state.isHavePromise = false
+                    return .none
+                
             case .findCurrentLocation:
                 startTask()
                 return .none
@@ -58,7 +98,7 @@ struct MainCore: Reducer {
                 return .none
                 
             case .getUserAnnotationInfoMation:
-            //    UserAnnotationInfo 가져오는 코드 작성
+                //    UserAnnotationInfo 가져오는 코드 작성
                 return .none
                 
             case .navigateToCreateView:

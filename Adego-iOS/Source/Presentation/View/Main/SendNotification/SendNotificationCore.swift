@@ -14,7 +14,7 @@ struct SendNotificationCore: Reducer {
     @ObservableState
     struct State {
         var imageUrl: String = ""
-        let userName = [
+        var userName = [
             SendUser(num: 1, image: "알파", name: "대구소프트웨어마이스터고등학교"),
             SendUser(num: 2, image: "메일", name: "대구소프트웨어마이스터고등학교"),
             SendUser(num: 3, image: "메일", name: "대구소프트웨어마이스터고등학교"),

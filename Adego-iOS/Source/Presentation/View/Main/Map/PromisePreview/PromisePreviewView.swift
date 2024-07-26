@@ -10,8 +10,10 @@ import ComposableArchitecture
 
 struct PromisePreviewView: View {
     @Perception.Bindable var store: StoreOf<PromisePreviewCore>
-    
-    let location: Location
+
+    init(store: StoreOf<PromisePreviewCore>) {
+        self._store = Perception.Bindable(store)
+    }
     
     var body: some View {
         WithPerceptionTracking {
@@ -37,11 +39,19 @@ struct PromisePreviewView: View {
                 makeNotificationButton
             }
             .frame(maxWidth: .infinity, maxHeight: 260)
+            .padding(.horizontal, 10)
             .background(.black)
             .clipShape(
                 RoundedRectangle(cornerRadius: 8)
             )
-            .padding(.horizontal, 20)
+            .onAppear {
+                store.send(.onAppear)
+                
+                print(store.promiseTitle,
+                      store.promiseLocation,
+                      store.promiseDay
+                )
+            }
         }
     }
 }
@@ -70,7 +80,7 @@ extension PromisePreviewView {
         .clipShape(
             RoundedRectangle(cornerRadius: 8)
         )
-
+        
         return Button {
             
         } label: {
@@ -80,10 +90,12 @@ extension PromisePreviewView {
                     .foregroundStyle(.white)
             }
             .frame(width: 56, height: 56)
-            .buttonStyle(CustomStrokeRoundedButtonStyle())
+            .buttonStyle(
+                CustomStrokeRoundedButtonStyle()
+            )
         }
     }
-
+    
     
     private var sendNotificationViewButton: some View{
         Button {
@@ -108,6 +120,6 @@ extension PromisePreviewView {
             initialState: PromisePreviewCore.State()
         ) {
             PromisePreviewCore()
-        }, location:  locations.first!
+        }
     )
 }

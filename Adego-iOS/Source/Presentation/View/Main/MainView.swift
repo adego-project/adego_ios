@@ -13,7 +13,7 @@ struct MainView: View {
     @Perception.Bindable private var store: StoreOf<MainCore>
     
     init(store: StoreOf<MainCore>) {
-        self.store = store
+        self._store = Perception.Bindable(store)
     }
     
     var body: some View {
@@ -81,12 +81,32 @@ extension MainView {
     
     private var promisePreviewStack: some View {
         ZStack {
-            ForEach(locations) { location in
+            if store.isHavePromise {
                 PromisePreviewView(
-                    store: Store(initialState: PromisePreviewCore.State()) {
+                    store: Store(
+                        initialState: PromisePreviewCore.State()
+                    ) {
                         PromisePreviewCore()
-                    }, location:  locations.first!
+                    }
                 )
+                .frame(maxWidth: .infinity)
+                .padding(.horizontal, 20)
+                .transition(
+                    .asymmetric(
+                        insertion: .move(edge: .trailing),
+                        removal: .move(edge: .leading)
+                    )
+                )
+                .navigationBarHidden(true)
+            } else {
+                AppointmentNoneView(
+                    store: Store(
+                        initialState: AppointmentNoneCore.State()
+                    ) {
+                        AppointmentNoneCore()
+                    }
+                )
+                
                 .frame(maxWidth: .infinity)
                 .transition(
                     .asymmetric(
@@ -94,8 +114,8 @@ extension MainView {
                         removal: .move(edge: .leading)
                     )
                 )
+                .navigationBarHidden(true)
             }
-            .navigationBarHidden(true)
         }
     }
 }
