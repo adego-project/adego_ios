@@ -11,28 +11,28 @@ import ComposableArchitecture
 
 struct FlowDependency: DependencyKey {
     static var liveValue: FlowProvider {
-        //        FlowProvider(
-        //            rootView: SigninView(
-        //                store: Store(
-        //                    initialState: SigninCore.State()
-        //                ) {
-        //                    SigninCore()
-        //                }
-        //            )
-        //        ) { rootView in
-        //            CustomNavigationBarController(rootViewController: rootView)
-        //        }
-        FlowProvider(
-            rootView: MainView(
-                store: Store(
-                    initialState: MainCore.State()
-                ) {
-                    MainCore()
+                FlowProvider(
+                    rootView: SigninView(
+                        store: Store(
+                            initialState: SigninCore.State()
+                        ) {
+                            SigninCore()
+                        }
+                    )
+                ) { rootView in
+                    CustomNavigationBarController(rootViewController: rootView)
                 }
-            )
-        ) { rootView in
-            CustomNavigationBarController(rootViewController: rootView)
-        }
+//        FlowProvider(
+//            rootView: MainView(
+//                store: Store(
+//                    initialState: MainCore.State()
+//                ) {
+//                    MainCore()
+//                }
+//            )
+//        ) { rootView in
+//            CustomNavigationBarController(rootViewController: rootView)
+//        }
     }
 }
 
