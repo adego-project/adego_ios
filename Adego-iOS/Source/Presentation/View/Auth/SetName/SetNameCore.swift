@@ -60,10 +60,11 @@ struct SetNameCore: Reducer {
             case .view(.binding):
                 return .none
             }
+            // MARK: - func
+            func checkName(text: String) {
+                
+                
+            }
         }
-    }
-    // MARK: - func
-    func checkName(text: String) {
-        
     }
 }

@@ -6,7 +6,9 @@
 //
 
 import ComposableArchitecture
+import Combine
 import UIKit
+
 
 @Reducer
 struct SetProfileImageCore: Reducer {
@@ -66,11 +68,11 @@ struct SetProfileImageCore: Reducer {
                 let userUseCase = UserUseCase(userRepository: userRepository)
                 
                 userUseCase.registerProfileImage(
-                    profileImage: encodeImageToBase64(image: state.profileImage)!
+                    profileImage: encodeImageToBase64(image: state.profileImage) ?? ""
                 ) { result in
                     switch result {
-                    case .success(let value):
-                        print("✅SetProfileImageCore.registerProfileImage Image: \(value.profileImage)")
+                    case .success(let response):
+                        print("✅SetProfileImageCore.registerProfileImage Image: \(response.profileImage)")
                     case .failure(let error):
                         print("🚫SigninCore.tokenRefresh error: \(error.localizedDescription)")
                         print(error)
