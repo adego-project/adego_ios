@@ -9,7 +9,6 @@ import ComposableArchitecture
 
 @Reducer
 struct InvitedAppointmentCore: Reducer {
-    @Dependency(\.flow) var flow
     
     @ObservableState
     struct State {
@@ -28,6 +27,8 @@ struct InvitedAppointmentCore: Reducer {
         case acceptInvitation
         case view(View)
     }
+    
+    @Dependency(\.flow) var flow
     
     @CasePathable
     public enum View: BindableAction, Sendable {
