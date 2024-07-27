@@ -15,6 +15,10 @@
 		850702EF2BCE91C800E3E820 /* InvitedAppointmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850702EE2BCE91C800E3E820 /* InvitedAppointmentView.swift */; };
 		850702F22BCE91F200E3E820 /* InvitedAppointmentCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850702F12BCE91F200E3E820 /* InvitedAppointmentCore.swift */; };
 		851490BF2C52C833008A286E /* Debounce.swift in Sources */ = {isa = PBXBuildFile; fileRef = 851490BE2C52C833008A286E /* Debounce.swift */; };
+		851490CE2C5401AE008A286E /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 851490CD2C5401AE008A286E /* Moya */; };
+		851490D12C54021F008A286E /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 851490D02C54021F008A286E /* ComposableArchitecture */; };
+		851490D42C540231008A286E /* FlowKit in Frameworks */ = {isa = PBXBuildFile; productRef = 851490D32C540231008A286E /* FlowKit */; };
+		851490D72C5403AB008A286E /* WrappingHStack in Frameworks */ = {isa = PBXBuildFile; productRef = 851490D62C5403AB008A286E /* WrappingHStack */; };
 		8530047E2C4C47A400F533EF /* CustomCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8530047D2C4C47A400F533EF /* CustomCalendarView.swift */; };
 		85424FE72BC4DCDB007A429D /* ImagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85424FE62BC4DCDB007A429D /* ImagePickerView.swift */; };
 		85424FE92BC50108007A429D /* MainCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85424FE82BC50108007A429D /* MainCore.swift */; };
@@ -77,7 +81,6 @@
 		85BAC8882C40436C006261F8 /* UserUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85BAC8872C40436C006261F8 /* UserUseCase.swift */; };
 		85BAC88B2C405951006261F8 /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85BAC88A2C405951006261F8 /* KeychainManager.swift */; };
 		85BAC88D2C407411006261F8 /* TokenRefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85BAC88C2C407411006261F8 /* TokenRefresh.swift */; };
-		85C2B9352C427EF00060F16D /* AppMainCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C2B9342C427EF00060F16D /* AppMainCore.swift */; };
 		85C2B9372C44105E0060F16D /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C2B9362C44105E0060F16D /* Place.swift */; };
 		85FBAB3D2BC1A7EB008CFC1B /* SigninCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FBAB3C2BC1A7EB008CFC1B /* SigninCore.swift */; };
 		85FBAB482BC1AA9C008CFC1B /* SetNameCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FBAB472BC1AA9C008CFC1B /* SetNameCore.swift */; };
@@ -169,7 +172,6 @@
 		85BAC8872C40436C006261F8 /* UserUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserUseCase.swift; sourceTree = "<group>"; };
 		85BAC88A2C405951006261F8 /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
 		85BAC88C2C407411006261F8 /* TokenRefresh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenRefresh.swift; sourceTree = "<group>"; };
-		85C2B9342C427EF00060F16D /* AppMainCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppMainCore.swift; sourceTree = "<group>"; };
 		85C2B9362C44105E0060F16D /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
 		85FBAB3C2BC1A7EB008CFC1B /* SigninCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninCore.swift; sourceTree = "<group>"; };
 		85FBAB472BC1AA9C008CFC1B /* SetNameCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetNameCore.swift; sourceTree = "<group>"; };
@@ -192,6 +194,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				851490D72C5403AB008A286E /* WrappingHStack in Frameworks */,
+				851490D42C540231008A286E /* FlowKit in Frameworks */,
+				851490D12C54021F008A286E /* ComposableArchitecture in Frameworks */,
+				851490CE2C5401AE008A286E /* Moya in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -689,7 +695,6 @@
 				85AA46C82C3C1E7500F42C63 /* AppleSigninDelegate.swift */,
 				8598F9DF2BC0361100132DE6 /* Adego_iOSApp.swift */,
 				8598F9E12BC0361100132DE6 /* ContentView.swift */,
-				85C2B9342C427EF00060F16D /* AppMainCore.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -783,6 +788,10 @@
 			);
 			name = "Adego-iOS";
 			packageProductDependencies = (
+				851490CD2C5401AE008A286E /* Moya */,
+				851490D02C54021F008A286E /* ComposableArchitecture */,
+				851490D32C540231008A286E /* FlowKit */,
+				851490D62C5403AB008A286E /* WrappingHStack */,
 			);
 			productName = "Adego-iOS";
 			productReference = 8598F9DC2BC0361100132DE6 /* Adego-iOS.app */;
@@ -813,6 +822,10 @@
 			);
 			mainGroup = 8598F9D32BC0361100132DE6;
 			packageReferences = (
+				851490CC2C5401AE008A286E /* XCRemoteSwiftPackageReference "Moya" */,
+				851490CF2C54021F008A286E /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
+				851490D22C540231008A286E /* XCRemoteSwiftPackageReference "FlowKit" */,
+				851490D52C5403AB008A286E /* XCRemoteSwiftPackageReference "WrappingHStack" */,
 			);
 			productRefGroup = 8598F9DD2BC0361100132DE6 /* Products */;
 			projectDirPath = "";
@@ -902,7 +915,6 @@
 				85AA46CF2C3CD38C00F42C63 /* SigninUseCase.swift in Sources */,
 				85ADC2682BCB0A87008E947E /* SelectDayView.swift in Sources */,
 				858DE69F2C4FB5EA00340648 /* AdressRepositoryImpl.swift in Sources */,
-				85C2B9352C427EF00060F16D /* AppMainCore.swift in Sources */,
 				858DE69D2C4FB5E000340648 /* AddressRepository.swift in Sources */,
 				85BAC8772C403E4F006261F8 /* UserRepository.swift in Sources */,
 				85ADC2752BCB1054008E947E /* CreatePromiseCompleteView.swift in Sources */,
@@ -1163,6 +1175,64 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		851490CC2C5401AE008A286E /* XCRemoteSwiftPackageReference "Moya" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Moya/Moya.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 15.0.3;
+			};
+		};
+		851490CF2C54021F008A286E /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-composable-architecture";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.12.1;
+			};
+		};
+		851490D22C540231008A286E /* XCRemoteSwiftPackageReference "FlowKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/choisihun/FlowKit";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+		851490D52C5403AB008A286E /* XCRemoteSwiftPackageReference "WrappingHStack" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/dkk/WrappingHStack.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.2.11;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		851490CD2C5401AE008A286E /* Moya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 851490CC2C5401AE008A286E /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = Moya;
+		};
+		851490D02C54021F008A286E /* ComposableArchitecture */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 851490CF2C54021F008A286E /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
+			productName = ComposableArchitecture;
+		};
+		851490D32C540231008A286E /* FlowKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 851490D22C540231008A286E /* XCRemoteSwiftPackageReference "FlowKit" */;
+			productName = FlowKit;
+		};
+		851490D62C5403AB008A286E /* WrappingHStack */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 851490D52C5403AB008A286E /* XCRemoteSwiftPackageReference "WrappingHStack" */;
+			productName = WrappingHStack;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 8598F9D42BC0361100132DE6 /* Project object */;
 }
