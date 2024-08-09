@@ -49,7 +49,7 @@ class UserRepositoryImpl: UserRepository {
         profileImage: String,
         completion: @escaping (Result<ProfileImage, Error>) -> Void
     ) {
-        provider.request(.registerProfileImage(profileImage: profileImage)) { [weak self] result in
+        provider.request(.registerProfileImage(profileImage: profileImage)) { result in
             switch result {
             case let .success(response):
                 do {
@@ -59,6 +59,31 @@ class UserRepositoryImpl: UserRepository {
                     
                     let userInfo = try JSONDecoder().decode(ProfileImage.self, from: response.data)
                     completion(.success(userInfo))
+                } catch {
+                    print("Decoding error: \(error)")
+                    completion(.failure(error))
+                }
+            case let .failure(error):
+                print("Network error: \(error)")
+                completion(.failure(error))
+            }
+        }
+    }
+    
+    func deleteUser(
+        accessToken: String,
+        completion: @escaping (Result<DeleteUser, Error>) -> Void
+    ) {
+        provider.request(.deleteUser(accessToken: accessToken)) { result in
+            switch result {
+            case let .success(response):
+                do {
+                    if let jsonString = String(data: response.data, encoding: .utf8) {
+                        print("Response JSON: \(jsonString)")
+                    }
+                    
+                    let response = try JSONDecoder().decode(DeleteUser.self, from: response.data)
+                    completion(.success(response))
                 } catch {
                     print("Decoding error: \(error)")
                     completion(.failure(error))

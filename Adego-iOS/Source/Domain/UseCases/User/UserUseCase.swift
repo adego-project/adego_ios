@@ -33,4 +33,14 @@ class UserUseCase {
             completion: completion
         )
     }
+    
+    func deleteUser(
+        accessToken: String,
+        completion: @escaping (Result<DeleteUser, Error>) -> Void
+    ) {
+        userRepository.deleteUser(
+            accessToken: accessToken,
+            completion: completion
+        )
+    }
 }

@@ -11,7 +11,7 @@ import Moya
 enum UserService {
     case getUser(accessToken: String)
     case registerProfileImage(profileImage: String)
-    
+    case deleteUser(accessToken: String)
 }
 
 extension UserService: TargetType {
@@ -26,6 +26,9 @@ extension UserService: TargetType {
             
         case .registerProfileImage:
             return "/user/profile-image"
+            
+        case .deleteUser:
+            return "/user"
         }
     }
     
@@ -35,16 +38,20 @@ extension UserService: TargetType {
             return .get
         case .registerProfileImage:
             return .patch
+        case .deleteUser:
+            return .delete
         }
     }
     
     var task: Task {
         switch self {
         case .getUser(let accessToken):
-            return .requestParameters(parameters: [
-                "Authorization": "Bearer \(accessToken)"
-            ],
-                                      encoding: URLEncoding.queryString)
+            return .requestParameters(
+                parameters: [
+                    "Authorization": "Bearer \(accessToken)"
+                ],
+                encoding: URLEncoding.queryString
+            )
             
         case let .registerProfileImage(profileImage):
             return .requestParameters(
@@ -53,6 +60,8 @@ extension UserService: TargetType {
                 ],
                 encoding: JSONEncoding.default
             )
+        case .deleteUser:
+            return .requestPlain
         }
     }
     
@@ -66,6 +75,11 @@ extension UserService: TargetType {
         case .registerProfileImage:
             return [
                 "Content-Type": "application/json"
+            ]
+        case .deleteUser(let accessToken):
+            return [
+                "Content-Type": "application/json",
+                "Authorization": "Bearer \(accessToken)"
             ]
         }
     }

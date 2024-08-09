@@ -17,4 +17,9 @@ protocol UserRepository {
         profileImage: String,
         completion: @escaping (Result<ProfileImage, Error>) -> Void
     )
+    
+    func deleteUser(
+        accessToken: String,
+        completion: @escaping (Result<DeleteUser, Error>) -> Void
+    )
 }
