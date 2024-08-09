@@ -10,40 +10,18 @@ import MapKit
 import ComposableArchitecture
 
 struct MainView: View {
-    @Perception.Bindable private var store: StoreOf<MainCore>
-    
-    init(store: StoreOf<MainCore>) {
-        self._store = Perception.Bindable(store)
-    }
+    @Perception.Bindable var store: StoreOf<MainCore>
     
     var body: some View {
         WithPerceptionTracking {
             ZStack {
-                Map(coordinateRegion: .constant(store.mapRegion ?? MKCoordinateRegion()),
-                    showsUserLocation: true,
-                    annotationItems: locations,
-                    annotationContent: { location in
-                    MapAnnotation(coordinate: location.coordinates) {
-                        MapAnnotationView()
-                            .scaleEffect(store.mapLocation == location ? 1 : 0.7)
-                            .clipShape(
-                                Circle()
-                            )
-                            .overlay(
-                                Circle()
-                                    .stroke()
-                                    .foregroundStyle(.gray80)
-                            )
-                            .onTapGesture {
-                                store.send(.updateMapRegion(location))
-                            }
+                MapView(
+                    store: Store(
+                        initialState: MapCore.State()
+                    ) {
+                        MapCore()
                     }
-                })
-                .preferredColorScheme(.dark)
-                .ignoresSafeArea(.all)
-                .onAppear {
-                    store.send(.findCurrentLocation)
-                }
+                )
                 
                 VStack {
                     header
@@ -52,6 +30,9 @@ struct MainView: View {
                     
                     promisePreviewStack
                 }
+            }
+            .onAppear {
+                store.send(.onAppear)
             }
         }
     }
@@ -63,6 +44,9 @@ extension MainView {
             Image("Union")
                 .resizable()
                 .frame(width: 28, height: 28)
+                .onTapGesture {
+                    store.send(.setIsHavePromiseTrue)
+                }
             
             Spacer()
             
@@ -90,7 +74,7 @@ extension MainView {
                     }
                 )
                 .frame(maxWidth: .infinity)
-                .padding(.horizontal, 20)
+                .padding(.horizontal, 10)
                 .transition(
                     .asymmetric(
                         insertion: .move(edge: .trailing),
@@ -106,7 +90,6 @@ extension MainView {
                         AppointmentNoneCore()
                     }
                 )
-                
                 .frame(maxWidth: .infinity)
                 .transition(
                     .asymmetric(
