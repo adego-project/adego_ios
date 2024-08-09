@@ -7,6 +7,8 @@
 
 import Foundation
 import ComposableArchitecture
+import FlowKit
+import SwiftUI
 
 @Reducer
 struct SelectLocationCore: Reducer {
@@ -24,16 +26,18 @@ struct SelectLocationCore: Reducer {
         var debounceTimer: Timer?
         let debounceInterval: TimeInterval = 0.5
         
-        var model: AddressResponse = AddressResponse(documents: [Document]())
+        var promiseResponse: Promise = Promise()
         
+        var serchList: AddressResponse = AddressResponse(documents: [Document]())
     }
     
     enum Action: ViewAction {
-        case createPromise
+        case createPromise(String, String, String)
         case getAddressList
-//        case debouncedTextChanged(String)
-        case setValue(AddressResponse)
-        case navigateToCreatePromiseCompleteView
+        //        case debouncedTextChanged(String)
+        case setSearchList(AddressResponse)
+        case setPromiseResponse(Promise)
+        case navigateCreatePromiseCompleteView
         case view(View)
     }
     
@@ -48,19 +52,38 @@ struct SelectLocationCore: Reducer {
         BindingReducer(action: \.view)
         Reduce { state, action in
             switch action {
-            case .createPromise:
+            case .createPromise(let promiseTitle, let selectedAddress, let selectedDate):
                 let promiseRepository = PromiseRepositoryImpl()
                 let promiseUseCase = PromiseUseCase(promiseRepository: promiseRepository)
-                promiseUseCase.createPromise(name: state.promiseTitle, address: state.selectedAddress, date: state.selectedDate) { result in
-                    switch result {
-                    case .success(let response):
-                        print("✅SelectLocationCore.createPromise: \(response)")
-                    case .failure(let error):
-                        print("🚫SelectLocationCore.createPromise error: \(error.localizedDescription)")
-                        print(error)
+                return .run { send in
+                    promiseUseCase.createPromise(name: promiseTitle, address: selectedAddress, date: selectedDate) { result in
+                        switch result {
+                        case .success(let response):
+                            print("✅SelectLocationCore.createPromise: \(response)")
+                            DispatchQueue.main.async {
+                                send(.setPromiseResponse(response))
+                                send(.navigateCreatePromiseCompleteView)
+                            }
+                            
+                        case .failure(let error):
+                            if let errorResponse = error as? ErrorResponse {
+                                if errorResponse.message == "User already has a plan" {
+                                    flow.alert(
+                                        Alert(
+                                            title: "이미 생성된 약속이 있습니다.",
+                                            dismissButton: .default("확인",
+                                                                    action: {
+                                                                        flow.popToRoot()
+                                                                    })
+                                        )
+                                    )
+                                }
+                            } else {
+                                print("🚫SelectLocationCore.createPromise error: \(error.localizedDescription)")
+                            }
+                        }
                     }
                 }
-                return .none
                 
             case .getAddressList:
                 let searchWord = state.searchWord
@@ -73,38 +96,37 @@ struct SelectLocationCore: Reducer {
                         case .success(let response):
                             print("✅SelectLocationCore.getAddressList: \(response)")
                             DispatchQueue.main.async {
-                                send(.setValue(response))
-                                
+                                send(.setSearchList(response))
                             }
-                            print("3")
-                            
                         case .failure(let error):
                             print("🚫SelectLocationCore.getAddressList error: \(error.localizedDescription)")
-                            print(error)
                         }
                     }
                 }
                 
-            case .setValue(let response):
-                state.model = response
-                print("4")
+            case .setSearchList(let response):
+                state.serchList = response
                 
                 return .none
                 
-            case .navigateToCreatePromiseCompleteView:
+            case .setPromiseResponse(let response):
+                state.promiseResponse = response
+                
+                return .none
+                
+            case .navigateCreatePromiseCompleteView:
                 flow.push(
                     CreatePromiseCompleteView(
                         store: Store(
-                            initialState: CreatePromiseCompleteCore.State()
+                            initialState: CreatePromiseCompleteCore.State(promiseResponse: state.promiseResponse)
                         ) {
                             CreatePromiseCompleteCore()
                         }
                     )
                 )
                 return .none
-                
             case .view(.binding):
-
+                
                 return .none
             }
         }
