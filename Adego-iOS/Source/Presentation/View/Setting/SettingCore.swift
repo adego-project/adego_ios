@@ -21,8 +21,10 @@ struct SettingCore: Reducer {
     
     enum Action {
         case onAppear
+        case deletePromise
         case showLogoutAlert
         case showSecessionAlert
+        case setValue(User)
         case navigateToEditView
         case view(View)
     }
@@ -33,24 +35,86 @@ struct SettingCore: Reducer {
     }
     
     @Dependency(\.flow) var flow
-
+    
     var body: some ReducerOf<Self> {
         BindingReducer(action: \.view)
         Reduce { state, action in
-            let operation: @Sendable (_ send: Send<Action>) async throws -> Void = { send in
-                try await logout()
-            }
-            
             switch action {
             case .onAppear:
-                getUser()
-                return .none
+                let userRepository = UserRepositoryImpl()
+                let getUserUseCase = UserUseCase(userRepository: userRepository)
+                
+                return .run { send in
+                    getUserUseCase.getUser(accessToken: savedAccessToken) { result in
+                        switch result {
+                        case .success(let response):
+                            print("✅SigninCore.getUser id:", response.id)
+                            print("✅SigninCore.getUser name:", response.name ?? "")
+                            DispatchQueue.main.async {
+                                send(.setValue(response))
+                            }
+                        case .failure(let error):
+                            print("🚫SigninCore.getUser error: \(error.localizedDescription)")
+                        }
+                    }
+                }
+                
+            case .deletePromise:
+                let promiseRepository = PromiseRepositoryImpl()
+                let promiseUseCase = PromiseUseCase(promiseRepository: promiseRepository)
+                return .run { send in
+                    promiseUseCase.deletePromise(accessToken: savedAccessToken) { result in
+                        switch result {
+                        case .success:
+                            flow.alert(
+                                Alert(
+                                    title: "약속에서 나가시겠습니까?",
+                                    primaryButton: .destructive(
+                                        "나가기",
+                                        action: {
+                                            replaceToSigninView()
+                                        }
+                                    ), secondaryButton: .cancel()
+                                )
+                            )
+                        case .failure(let error):
+                            print("🚫MainViewCore.getPromise error: \(error.localizedDescription)")
+                        }
+                    }
+                }
+                
             case .showLogoutAlert:
-                return .run(
-                    operation: operation
+                flow.alert(
+                    Alert(
+                        title: "계정에서 로그아웃 하시겠습니까?",
+                        primaryButton: .destructive(
+                            "로그아웃",
+                            action: {
+                                replaceToSigninView()
+                            }
+                        ),
+                        secondaryButton: .cancel()
+                    )
                 )
+                return .none
                 
             case .showSecessionAlert:
+                flow.alert(
+                    Alert(
+                        title: "계정에서 탈퇴 하시겠습니까?",
+                        primaryButton: .destructive(
+                            "탈퇴",
+                            action: {
+                                deleteUser()
+                            }
+                        ),
+                        secondaryButton: .cancel()
+                    )
+                )
+                return .none
+                
+            case .setValue(let response):
+                state.name = response.name ?? ""
                 
                 return .none
                 
@@ -70,90 +134,32 @@ struct SettingCore: Reducer {
                 return .none
             }
             
-            @Sendable func logout() async throws {
-//                flow.alert(
-//                    Alert(
-//                        title: "계정에서 로그아웃 하시겠습니까?",
-//                        primaryButton: .destructive(
-//                            "로그아웃",
-//                            action: {
-//                                flow.replace([
-//                                    SigninView(
-//                                        store: Store(
-//                                            initialState: SigninCore.State()
-//                                        ) {
-//                                            SigninCore()
-//                                        }
-//                                    )
-//                                ])
-//                            }
-//                        ),
-//                        secondaryButton: .cancel { }
-//                    )
-//                )
-            }
-            
-            func seccession() {
-//                flow.alert(
-//                    Alert(
-//                        title: "계정에서 탈퇴 하시겠습니까?",
-//                        primaryButton: .destructive(
-//                            "탈퇴",
-//                            action: {
-//                                flow.replace([
-//                                    SigninView(
-//                                        store: Store(
-//                                            initialState: SigninCore.State()
-//                                        ) {
-//                                            SigninCore()
-//                                        }
-//                                    )
-//                                ])
-//                            }
-//                        ),
-//                        secondaryButton: .cancel {
-//                            flow.exit()
-//                        }
-//                    )
-//                )
-            }
-            
-            func getUser() {
+            func deleteUser() {
                 let userRepository = UserRepositoryImpl()
                 let getUserUseCase = UserUseCase(userRepository: userRepository)
-                
-                getUserUseCase.getUser(accessToken: savedAccessToken) { result in
+                getUserUseCase.deleteUser(accessToken: savedAccessToken) { result in
                     switch result {
-                    case .success(let info):
-                        print("✅SigninCore.getUser id:", info.id)
-                        print("✅SigninCore.getUser name:", info.name ?? "")
-                        if ((info.name?.isEmpty) != nil) {
-                            flow.push(
-                                SetNameView(
-                                    store: Store(
-                                        initialState: SetNameCore.State()
-                                    ) {
-                                        SetNameCore()
-                                    }
-                                )
-                            )
-                        } else {
-                            flow.replace(
-                                [
-                                    MainView(
-                                        store: Store(
-                                            initialState: MainCore.State()
-                                        ) {
-                                            MainCore()
-                                        }
-                                    )
-                                ]
-                            )
-                        }
-                        
+                    case .success:
+                        replaceToSigninView()
                     case .failure(let error):
-                        print("🚫SigninCore.getUser error: \(error.localizedDescription)")
+                        print("🚫SigninCore.deleteUser error: \(error.localizedDescription)")
                     }
+                }
+                
+            }
+            
+            @Sendable
+            func replaceToSigninView() {
+                DispatchQueue.main.async {
+                    let signinStore = Store(
+                        initialState: SigninCore.State()
+                    ) {
+                        SigninCore()
+                    }
+                    
+                    let signinView = SigninView(store: signinStore)
+                    
+                    flow.replace([signinView])
                 }
             }
         }
