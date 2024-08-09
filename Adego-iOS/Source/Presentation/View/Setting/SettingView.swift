@@ -58,21 +58,52 @@ struct SettingView: View {
                         .padding(.horizontal, 16)
                     
                     VStack(alignment: .leading) {
+                        Text("약속")
+                            .font(.wantedSans(14, weight: .midium))
+                            .foregroundStyle(.gray60)
+                            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
+                        
+                        Button {
+                            store.send(.deletePromise)
+                        } label: {
+                            Text("약속 탈퇴")
+                                .font(.wantedSans())
+                                .underline()
+                                .foregroundStyle(.gray70)
+                        }
+                        .padding(.vertical, 16)
+                    }
+                    .padding(.horizontal, 16)
+                    
+                    Divider()
+                        .foregroundStyle(.gray40)
+                        .padding(.vertical, 32)
+                        .padding(.horizontal, 16)
+                    
+                    VStack(alignment: .leading) {
                         Text("계정")
                             .font(.wantedSans(14, weight: .midium))
                             .foregroundStyle(.gray60)
                             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
                         
-                        button(
-                            action: store.send(.showLogoutAlert),
-                               text: "계정 로그아웃"
-                        )
+                        Button {
+                            store.send(.showLogoutAlert)
+                        } label: {
+                            Text("계정 로그아웃")
+                                .font(.wantedSans())
+                                .underline()
+                                .foregroundStyle(.gray70)
+                        }
                         .padding(.vertical, 16)
                         
-                        button(
-                            action: store.send(.showSecessionAlert),
-                               text: "계정 탈퇴"
-                        )
+                        Button {
+                            store.send(.showSecessionAlert)
+                        } label: {
+                            Text("계정 탈퇴")
+                                .font(.wantedSans())
+                                .underline()
+                                .foregroundStyle(.gray70)
+                        }
                     }
                     .padding(.horizontal, 16)
                 }
@@ -102,19 +133,7 @@ extension SettingView {
                 )
         }
     }
-    private func button(
-        action: StoreTask,
-        text: String
-    ) -> some View {
-        Button {
-            action
-        } label: {
-            Text(text)
-                .font(.wantedSans())
-                .underline()
-                .foregroundStyle(.gray70)
-        }
-    }
+    
 }
 
 #Preview {
