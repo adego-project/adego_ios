@@ -11,7 +11,6 @@ import ComposableArchitecture
 struct SelectLocationView: View {
     @Perception.Bindable var store: StoreOf<SelectLocationCore>
     
-    
     var body: some View {
         WithPerceptionTracking {
             VStack(alignment: .leading) {
@@ -26,18 +25,17 @@ struct SelectLocationView: View {
                 )
                 .padding(.leading, 16)
                 .padding(.top, 40)
-                .onChange(of: store.searchWord) { newValue in
-                        store.send(.getAddressList)
-                        
-                    print("store.model", store.model)
+                .debounce(value: store.searchWord) { debouncedValue in
+                    print("Debounced Value: \(debouncedValue)")
+                    store.send(.getAddressList)
                 }
                 
-                List(store.model.documents, id: \.id) { index in
+                List(store.serchList.documents, id: \.id) { index in
                     Button {
-                        
+                        store.selectedAddress = index.placeName
                     } label: {
                         VStack(alignment: .leading) {
-                            Text(index.addressName)
+                            Text(index.placeName)
                                 .font(.wantedSans())
                                 .foregroundStyle(.gray100)
                             
@@ -50,6 +48,9 @@ struct SelectLocationView: View {
                 }
                 .padding(.top, 24)
                 .listStyle(.plain)
+                .onChange(of: store.selectedAddress) { _ in
+                    store.send(.createPromise(store.promiseTitle, store.selectedAddress, store.selectedDate))
+                }
             }
         }
     }
