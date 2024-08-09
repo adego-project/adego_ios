@@ -7,9 +7,16 @@
 
 import Foundation
 
-struct User: Codable {
+struct User: Codable, Equatable {
     let id: String
     let name: String?
     let planId: String?
     let profileImage: String?
+    
+    init(id: String, name: String?, planId: String?, profileImage: String?) {
+        self.id = id
+        self.name = name
+        self.planId = planId
+        self.profileImage = profileImage
+    }
 }
