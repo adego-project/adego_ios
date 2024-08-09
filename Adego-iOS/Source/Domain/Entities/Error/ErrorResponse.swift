@@ -8,6 +8,6 @@
 import Foundation
 
 struct ErrorResponse: Error, Codable {
-    let statusCode: Int?
-    let message: String?
+    let statusCode: Int
+    let message: String
 }
