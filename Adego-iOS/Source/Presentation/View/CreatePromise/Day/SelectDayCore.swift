@@ -70,7 +70,7 @@ struct SelectDayCore: Reducer {
                 let dateString = String(describing: date)
                 
                 if let date = dateFormatter.date(from: dateString) {
-                    dateFormatter.dateFormat = "yyyy년 MM월 dd일"
+                    dateFormatter.dateFormat = "yyyy-MM-dd"
                     return dateFormatter.string(from: date)
                 }
                 return "nil"
