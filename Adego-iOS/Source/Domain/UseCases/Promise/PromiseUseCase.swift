@@ -37,4 +37,24 @@ class PromiseUseCase {
             completion: completion
         )
     }
+    
+    func deletePromise(
+        accessToken: String,
+        completion: @escaping (Result<Promise, Error>) -> Void
+    ) {
+        promiseRepository.deletePromise(
+            accessToken: accessToken,
+            completion: completion
+        )
+    }
+    
+    func inviteUserToPromise(
+        accessToken: String,
+        completion: @escaping (Result<LinkResponse, Error>) -> Void
+    ) {
+        promiseRepository.inviteUserToPromise(
+            accessToken: accessToken,
+            completion: completion
+        )
+    }
 }
