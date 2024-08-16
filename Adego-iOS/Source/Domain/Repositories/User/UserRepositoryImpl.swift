@@ -16,6 +16,32 @@ class UserRepositoryImpl: UserRepository {
         self.provider = provider
     }
     
+    func updateUserName(
+        name: String,
+        accessToken: String,
+        completion: @escaping (Result<UserNameResponse, Error>) -> Void
+    ) {
+        provider.request(.updateUserName(name: name, accessToken: accessToken)) { result in
+            switch result {
+            case let .success(response):
+                do {
+                    if let jsonString = String(data: response.data, encoding: .utf8) {
+                        print("✅UserRepositoryImpl.updateUserName Response JSON: \(jsonString)")
+                    }
+                    
+                    let userNameResponse = try JSONDecoder().decode(UserNameResponse.self, from: response.data)
+                    completion(.success(userNameResponse))
+                } catch {
+                    print("🚫UserRepositoryImpl.updateUserName Decoding error: \(error)")
+                    completion(.failure(error))
+                }
+            case let .failure(error):
+                print("🚫UserRepositoryImpl.updateUserName Network error: \(error)")
+                completion(.failure(error))
+            }
+        }
+    }
+    
     func getUser(
         accessToken: String,
         completion: @escaping (Result<User, Error>) -> Void
