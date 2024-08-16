@@ -41,7 +41,7 @@ struct SetNameView: View {
                 Spacer()
                 
                 Button {
-                    store.send(.navigateToSetProfileImage)
+                    store.send(.next(store.name))
                 } label: {
                     Text("다음으로 넘어가기 \(Image(systemName: "arrow.right"))")
                 }
@@ -52,17 +52,6 @@ struct SetNameView: View {
             }
             .navigationBarBackButtonHidden(false)
         }
-        //        .toolbar(content: {
-        //            ToolbarItem(placement: .navigationBarLeading) {
-        //                Button {
-        //                    store.send(.navigateToSetProfileImage)
-        //                } label: {
-        //                    Image(systemName: "arrow.backward")
-        //                        .foregroundColor(.gray50)
-        //                        .font(.title3)
-        //                }
-        //            }
-        //        })
     }
 }
 
