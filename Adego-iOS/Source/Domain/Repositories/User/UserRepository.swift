@@ -8,6 +8,12 @@
 import Foundation
 
 protocol UserRepository {
+    func updateUserName(
+        name: String,
+        accessToken: String,
+        completion: @escaping (Result<UserNameResponse, Error>) -> Void
+    )
+    
     func getUser(
         accessToken: String,
         completion: @escaping (Result<User, Error>) -> Void
