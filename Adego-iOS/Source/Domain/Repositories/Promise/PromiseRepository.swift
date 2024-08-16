@@ -19,4 +19,14 @@ protocol PromiseRepository {
         date: String,
         completion: @escaping (Result<Promise, Error>) -> Void
     )
+    
+    func deletePromise(
+        accessToken: String,
+        completion: @escaping (Result<Promise, Error>) -> Void
+    )
+    
+    func inviteUserToPromise(
+        accessToken: String,
+        completion: @escaping (Result<LinkResponse, Error>) -> Void
+    )
 }

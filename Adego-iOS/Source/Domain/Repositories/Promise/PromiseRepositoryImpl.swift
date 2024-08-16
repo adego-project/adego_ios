@@ -76,4 +76,62 @@ class PromiseRepositoryImpl: PromiseRepository {
             }
         }
     }
+    
+    func deletePromise(
+        accessToken: String,
+        completion: @escaping (Result<Promise, Error>) -> Void
+    ) {
+        provider.request(.deletePromise(accessToken: accessToken)) { result in
+            switch result {
+            case let .success(response):
+                do {
+                    if let jsonString = String(data: response.data, encoding: .utf8) {
+                        print("✅PromiseRepositoryImpl.deletePromise.jsonString Response JSON: \(jsonString)")
+                    }
+                    
+                    let decodedPromise = try JSONDecoder().decode(Promise.self, from: response.data)
+                    completion(.success(decodedPromise))
+                } catch {
+                    do {
+                        let decodedError = try JSONDecoder().decode(ErrorResponse.self, from: response.data)
+                        completion(.failure(decodedError))
+                    } catch {
+                        completion(.failure(error))
+                    }
+                }
+            case let .failure(error):
+                print("🚫PromiseRepositoryImpl.deletePromise error: \(error)")
+                completion(.failure(error))
+            }
+        }
+    }
+    
+    func inviteUserToPromise(
+        accessToken: String,
+        completion: @escaping (Result<LinkResponse, Error>) -> Void
+    ) {
+        provider.request(.inviteUserToPromise(accessToken: accessToken)) { result in
+            switch result {
+            case let .success(response):
+                do {
+                    if let jsonString = String(data: response.data, encoding: .utf8) {
+                        print("✅PromiseRepositoryImpl.inviteUserToPromise.jsonString Response JSON: \(jsonString)")
+                    }
+                    
+                    let decodedLink = try JSONDecoder().decode(LinkResponse.self, from: response.data)
+                    completion(.success(decodedLink))
+                } catch {
+                    do {
+                        let decodedError = try JSONDecoder().decode(ErrorResponse.self, from: response.data)
+                        completion(.failure(decodedError))
+                    } catch {
+                        completion(.failure(error))
+                    }
+                }
+            case let .failure(error):
+                print("🚫PromiseRepositoryImpl.inviteUserToPromise error: \(error)")
+                completion(.failure(error))
+            }
+        }
+    }
 }
