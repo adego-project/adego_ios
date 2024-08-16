@@ -10,6 +10,7 @@ import SwiftUI
 struct CustomStrokeRoundedButtonStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
+            .padding(8)
             .background(Color.gray.opacity(0.2))
             .clipShape(RoundedRectangle(cornerRadius: 8))
             .overlay(
