@@ -14,6 +14,18 @@ class UserUseCase {
         self.userRepository = userRepository
     }
     
+    func updateUserName(
+        name: String,
+        accessToken: String,
+        completion: @escaping (Result<UserNameResponse, Error>) -> Void
+    ) {
+        userRepository.updateUserName(
+            name: name,
+            accessToken: accessToken,
+            completion: completion
+        )
+    }
+    
     func getUser(
         accessToken: String,
         completion: @escaping (Result<User, Error>) -> Void
