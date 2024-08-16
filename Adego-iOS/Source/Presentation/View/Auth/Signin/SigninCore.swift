@@ -34,6 +34,9 @@ struct SigninCore: Reducer {
                         print("✅Access Token: \(tokens.accessToken)")
                         print("✅Refresh Token: \(tokens.refreshToken)")
                         
+                        let _ = KeychainManager.shared.save(key: "accessToken", string: tokens.accessToken)
+                        let _ = KeychainManager.shared.save(key: "refreshToken", string: tokens.refreshToken)
+                        
                         tokenRefresh(accessToken: tokens.refreshToken)
                         getUser(accessToken: tokens.accessToken)
                     case .failure(let error):
