@@ -17,19 +17,14 @@ struct Location: Identifiable, Equatable {
     let imgaeUrl: String
     let coordinates: CLLocationCoordinate2D
     
+    init(name: String, imgaeUrl: String, coordinates: CLLocationCoordinate2D) {
+        self.name = name
+        self.imgaeUrl = imgaeUrl
+        self.coordinates = coordinates
+    }
+    
     static func == (lhs: Location, rhs: Location) -> Bool {
         lhs.id == rhs.id
     }
 }
-
-let locations: [Location] = [
-    Location(
-        name: "알파 메일 최시훈",
-        imgaeUrl: "",
-        coordinates: CLLocationCoordinate2D(
-            latitude: 41.8902, longitude: 12.4922
-        )
-    )
-]
-
 
