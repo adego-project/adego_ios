@@ -60,27 +60,28 @@ struct SettingCore: Reducer {
                 }
                 
             case .deletePromise:
-                let promiseRepository = PromiseRepositoryImpl()
-                let promiseUseCase = PromiseUseCase(promiseRepository: promiseRepository)
+               
                 return .run { send in
-                    promiseUseCase.deletePromise(accessToken: savedAccessToken) { result in
-                        switch result {
-                        case .success:
-                            flow.alert(
-                                Alert(
-                                    title: "약속에서 나가시겠습니까?",
-                                    primaryButton: .destructive(
-                                        "나가기",
-                                        action: {
-                                            replaceToSigninView()
+                    flow.alert(
+                        Alert(
+                            title: "약속에서 나가시겠습니까?",
+                            primaryButton: .destructive(
+                                "나가기",
+                                action: {
+                                    let promiseRepository = PromiseRepositoryImpl()
+                                    let promiseUseCase = PromiseUseCase(promiseRepository: promiseRepository)
+                                    promiseUseCase.deletePromise(accessToken: savedAccessToken) { result in
+                                        switch result {
+                                        case .success:
+                                            flow.popToRoot()
+                                        case .failure(let error):
+                                            print("🚫MainViewCore.getPromise error: \(error.localizedDescription)")
                                         }
-                                    ), secondaryButton: .cancel()
-                                )
-                            )
-                        case .failure(let error):
-                            print("🚫MainViewCore.getPromise error: \(error.localizedDescription)")
-                        }
-                    }
+                                    }
+                                }
+                            ), secondaryButton: .cancel()
+                        )
+                    )
                 }
                 
             case .showLogoutAlert:
@@ -115,7 +116,6 @@ struct SettingCore: Reducer {
                 
             case .setValue(let response):
                 state.name = response.name ?? ""
-                
                 return .none
                 
             case .navigateToEditView:
@@ -145,7 +145,6 @@ struct SettingCore: Reducer {
                         print("🚫SigninCore.deleteUser error: \(error.localizedDescription)")
                     }
                 }
-                
             }
             
             @Sendable
