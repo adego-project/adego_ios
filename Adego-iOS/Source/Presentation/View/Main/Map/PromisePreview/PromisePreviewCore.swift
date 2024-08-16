@@ -56,15 +56,15 @@ struct PromisePreviewCore: Reducer {
                         case .failure(let error):
                             print("🚫PromisePreviewCore.getPromise error: \(error.localizedDescription)")
                             print(error)
-                    }
+                        }
                     }
                 }
             case .setValue(let response):
-                print("setValue")
                 state.promiseTitle = response.name
                 state.promiseLocation = response.place.address
                 state.promiseDate = response.date
-                setDate(dateString: response.date, state: &state)
+                state.promiseDay = formatDate(response.date)
+                state.promiseTime = formatTime(response.date)
                 return .none
             case .navigateToSendNotificationView:
                 flow.push(
@@ -83,40 +83,33 @@ struct PromisePreviewCore: Reducer {
         }
     }
     
-    private func setDate(dateString: String, state: inout State) { //"yyyy-MM-ddTHH:mm:ss"
+    func formatDate(_ date: String) -> String {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
-        dateFormatter.timeZone = TimeZone(identifier: "Asia/Seoul")
         
-        guard let date = dateFormatter.date(from: dateString) else {
-            print("🚫PromisePreviewCore.setDate DateFormatterError")
-            return
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        
+        if let date = dateFormatter.date(from: date) {
+            dateFormatter.dateFormat = "yyyy년 MM월 dd일"
+            return dateFormatter.string(from: date)
         }
         
-        let now = Date()
-        let calendar = Calendar.current
+        return "날짜를 가져오는데에 실패하였습니다."
+    }
+
+    
+    func formatTime(_ date: String) -> String {
+        let dateFormatter = DateFormatter()
         
-        // 날짜 정보
-        let dateInfo = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: date)
-        if let year = dateInfo.year,
-           let month = dateInfo.month,
-           let day = dateInfo.day,
-           let hour = dateInfo.hour,
-           let minute = dateInfo.minute {
-            state.promiseDay = "\(year)년 \(month)월 \(day)일"
-            state.promiseTime = "\(hour)시 \(minute)분"
-        }
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         
-        // 남은 시간
-        let remainingUntil = calendar.dateComponents([.day, .hour, .minute], from: now, to: date)
-        if let day = remainingUntil.day,
-           let hour = remainingUntil.hour,
-           let minute = remainingUntil.minute {
-            state.promiseTimeRemaingUntil = "\(day)일 \(hour)시간 \(minute)분 뒤 시작돼요"
+        if let date = dateFormatter.date(from: date) {
+            dateFormatter.dateFormat = "HH시 mm분"
+            return dateFormatter.string(from: date)
         }
+        return "시간를 가져오는데에 실패하였습니다."
     }
     
     private func save(response: Promise) {
-
+        
     }
 }
