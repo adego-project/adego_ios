@@ -38,7 +38,7 @@ class UserUseCase {
     
     func registerProfileImage(
         profileImage: String,
-        completion: @escaping (Result<ProfileImage, Error>) -> Void
+        completion: @escaping (Result<ProfileImageResponse, Error>) -> Void
     ) {
         userRepository.registerProfileImage(
             profileImage: profileImage,
