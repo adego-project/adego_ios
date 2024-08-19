@@ -21,7 +21,7 @@ protocol UserRepository {
     
     func registerProfileImage(
         profileImage: String,
-        completion: @escaping (Result<ProfileImage, Error>) -> Void
+        completion: @escaping (Result<ProfileImageResponse, Error>) -> Void
     )
     
     func deleteUser(
