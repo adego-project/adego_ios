@@ -7,6 +7,7 @@
 
 import Foundation
 import Moya
+import SwiftUI
 
 class AddressRepositoryImpl: AddressRepository {
     
@@ -32,11 +33,9 @@ class AddressRepositoryImpl: AddressRepository {
                     completion(.success(decodedDocument))
                 } catch {
                     do {
-                        print("1")
                         let decodedError = try JSONDecoder().decode(ErrorResponse.self, from: response.data)
                         completion(.failure(decodedError))
                     } catch {
-                        print("2")
                         completion(.failure(error))
                     }
                 }
