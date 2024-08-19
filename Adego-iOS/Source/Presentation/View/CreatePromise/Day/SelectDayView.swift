@@ -42,7 +42,7 @@ struct SelectDayView: View {
 #Preview {
     SelectDayView(
         store: Store(
-            initialState: SelectDayCore.State()
+            initialState: SelectDayCore.State(promiseTitle: "asdf")
         ) {
             SelectDayCore()
         }
