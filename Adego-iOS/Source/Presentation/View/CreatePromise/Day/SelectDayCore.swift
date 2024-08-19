@@ -14,7 +14,7 @@ struct SelectDayCore: Reducer {
     
     @ObservableState
     struct State: Equatable {
-        var promiseTitle: String = ""
+        var promiseTitle: String
         var selectedDate = Date()
         var selectedDateString: String = ""
     }
