@@ -31,9 +31,12 @@ struct SetProfileImageView: View {
                         Circle()
                             .stroke()
                     )
+                    .onChange(of: store.base64String) { result in
+                        store.send(.refreshProfileImage)
+                    }
                 
                 Button {
-                    store.send(.setProfileImage)
+                    store.send(.navigate(store.result, store.selectedImage))
                 } label: {
                     Text("프로필 사진 설정 \(Image(systemName: "arrow.right"))")
                         .font(.wantedSans())
@@ -41,13 +44,6 @@ struct SetProfileImageView: View {
                         .underline()
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
-                .sheet(isPresented: $store.isImagePickerShow) {
-                    ImagePickerView(
-                        result: $store.result,
-                        selectedImage: $store.profileImage,
-                        sourceType: .photoLibrary
-                    )
-                }
                 
                 Spacer()
                 
@@ -55,22 +51,16 @@ struct SetProfileImageView: View {
                     store.send(.createAccount)
                 } label: {
                     Text("생성하기 \(Image(systemName: "arrow.right"))")
-                       
+                    
                 }
                 .buttonStyle(CustomWhiteRoundedButton())
                 .padding(.bottom, 10)
-                
+            }
+            
+            .onAppear {
+                store.send(.refreshProfileImage)
             }
         }
     }
 }
 
-#Preview {
-    SetProfileImageView(
-        store: Store(
-            initialState: SetProfileImageCore.State()
-        ) {
-            SetProfileImageCore()
-        }
-    )
-}
