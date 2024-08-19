@@ -13,7 +13,7 @@ struct CreatePromiseCompleteView: View {
     
     var body: some View {
         WithPerceptionTracking {
-            VStack(alignment: .leading) {
+            VStack {
                 WhiteTitleText(
                     title: "약속이 생성됐어요!\n링크를 보내고\n친구들과 함께하세요."
                 )
@@ -31,7 +31,7 @@ struct CreatePromiseCompleteView: View {
                     
                     CustomInfoView(image: "clock", caption: store.promiseTime)
                     
-                    CustomInfoView(image: "calendar", caption: store.promiseLocation)
+                    CustomInfoView(image: "distance", caption: store.promiseLocation)
                 }
                 .padding(20)
                 .frame(width: 343, height: 176)
@@ -48,15 +48,16 @@ struct CreatePromiseCompleteView: View {
                 
                 HStack(alignment: .top, spacing: 4) {
                     ShareLink(
-                        item: URL(string: store.shereUrl)!,
+                        item: store.shereUrl,
                         subject: Text("링크를 공유하고 친구를 깨우세요!"),
-                        message: Text("링크가 공유 되었어요.")
+                        message: Text(store.shereUrl)
                     ) {
                         Text("\(Image(systemName: "square.and.arrow.up")) 링크 공유하기")
                             .font(.wantedSans(weight: .regular))
                             .foregroundStyle(.gray100)
                             .multilineTextAlignment(.center)
                     }
+                    .frame(alignment: .center)
                 }
                 .padding(.leading, 16)
                 .padding(.trailing, 20)
@@ -81,13 +82,16 @@ struct CreatePromiseCompleteView: View {
                 .padding(.bottom, 10)
             }
         }
+        .onAppear {
+            store.send(.onApear)
+        }
     }
 }
 
 #Preview {
     CreatePromiseCompleteView(
         store: Store(
-            initialState: CreatePromiseCompleteCore.State()
+            initialState: CreatePromiseCompleteCore.State(promiseResponse: Promise())
         ) {
             CreatePromiseCompleteCore()
         }
