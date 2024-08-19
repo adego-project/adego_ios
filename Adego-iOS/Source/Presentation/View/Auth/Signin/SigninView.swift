@@ -40,7 +40,7 @@ struct SigninView: View {
         }
     }
 }
-
+	
 extension SigninView {
     private var appleLoginButton: some View {
         Button {
