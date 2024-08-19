@@ -73,7 +73,7 @@ class UserRepositoryImpl: UserRepository {
     
     func registerProfileImage(
         profileImage: String,
-        completion: @escaping (Result<ProfileImage, Error>) -> Void
+        completion: @escaping (Result<ProfileImageResponse, Error>) -> Void
     ) {
         provider.request(.registerProfileImage(profileImage: profileImage)) { result in
             switch result {
@@ -83,7 +83,7 @@ class UserRepositoryImpl: UserRepository {
                         print("Response JSON: \(jsonString)")
                     }
                     
-                    let userInfo = try JSONDecoder().decode(ProfileImage.self, from: response.data)
+                    let userInfo = try JSONDecoder().decode(ProfileImageResponse.self, from: response.data)
                     completion(.success(userInfo))
                 } catch {
                     print("Decoding error: \(error)")
