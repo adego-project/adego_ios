@@ -23,5 +23,4 @@ class UserInfoManager {
     static func remove(_ user: User) {
         UserDefaults.standard.removeObject(forKey: String(describing: user))
     }
-    
 }
