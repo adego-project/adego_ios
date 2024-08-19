@@ -50,7 +50,7 @@ struct CreatePromiseCore: Reducer {
                     flow.push(
                         SelectDayView(
                             store: Store(
-                                initialState: SelectDayCore.State()
+                                initialState: SelectDayCore.State(promiseTitle: state.promiseTitle)
                             ) {
                                 SelectDayCore()
                             }
