@@ -29,7 +29,3 @@ struct MapAnnotationView: View {
         .padding(2)
     }
 }
-
-#Preview {
-    MapAnnotationView()
-}
