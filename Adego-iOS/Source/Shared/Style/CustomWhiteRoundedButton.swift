@@ -10,7 +10,6 @@ import SwiftUI
 struct CustomWhiteRoundedButton: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .padding()
             .frame(width: 343, height: 56)
             .foregroundColor(.gray10)
             .background(.gray100)
