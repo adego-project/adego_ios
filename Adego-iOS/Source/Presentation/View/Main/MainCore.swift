@@ -8,7 +8,6 @@
 import SwiftUI
 import ComposableArchitecture
 import MapKit
-import CoreLocation
 
 @Reducer
 struct MainCore: Reducer {
@@ -19,13 +18,14 @@ struct MainCore: Reducer {
         
         var promiseLocation: String = ""
         var promiseTimeRemaingUntil: String = ""
+        
+        var promise: Promise = Promise()
     }
     
     enum Action {
         case onAppear
-        case setIsHavePromiseTrue
+        case getPromiseSuccess(Promise)
         case setIsHavePromiseFalse
-        case getUserAnnotationInfoMation
         case navigateToCreateView
         case navigateToSettingView
         case view(View)
@@ -43,34 +43,28 @@ struct MainCore: Reducer {
         Reduce { state, action in
             switch action {
             case .onAppear:
+                let promiseRepository = PromiseRepositoryImpl()
+                let promiseUseCase = PromiseUseCase(promiseRepository: promiseRepository)
                 return .run { send in
-                    let promiseRepository = PromiseRepositoryImpl()
-                    let promiseUseCase = PromiseUseCase(promiseRepository: promiseRepository)
-                    promiseUseCase.getPromise(accessToken: savedAccessToken) { result in
-                        switch result {
-                        case .success:
-                            DispatchQueue.main.async {
-                                send(.setIsHavePromiseTrue)
-                            }
-                        case .failure(let error):
-                            print("🚫MainViewCore.getPromise error: \(error.localizedDescription)")
-                            DispatchQueue.main.async {
-                                send(.setIsHavePromiseFalse)
-                            }
-                        }
+                    do {
+                        let response = try await promiseUseCase.getPromise(accessToken: savedAccessToken)
+                        await send(.getPromiseSuccess(response))
+                    } catch {
+                        print("🚫MainViewCore.getPromise error: \(error.localizedDescription)")
+                        await send(.setIsHavePromiseFalse)
                     }
                 }
                 
-            case .setIsHavePromiseTrue:
-                    state.isHavePromise = true
-                    return .none
                 
-            case .setIsHavePromiseFalse:
-                    state.isHavePromise = false
+            case .getPromiseSuccess(let response):
+                state.isHavePromise = true
+                state.promise = response
                 
                 return .none
-            case .getUserAnnotationInfoMation:
-                //    UserAnnotationInfo 가져오는 코드 작성
+                
+            case .setIsHavePromiseFalse:
+                state.isHavePromise = false
+                
                 return .none
                 
             case .navigateToCreateView:

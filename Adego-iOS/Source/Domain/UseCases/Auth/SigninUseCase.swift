@@ -14,23 +14,19 @@ class SigninUseCase {
         self.authRepository = authRepository
     }
     
-    func signin(
-        appleToken: String,
-        completion: @escaping (Result<OAuthTokens, Error>) -> Void
-    ) {
-        authRepository.signIn(
-            appleToken: appleToken,
-            completion: completion
+    func signinWithApple(
+        appleToken: String
+    ) async throws -> OAuthTokens {
+        return try await authRepository.signInWithApple(
+            appleToken: appleToken
         )
     }
     
     func tokenRefresh(
-        accessToken: String,
-        completion: @escaping (Result<TokenRefresh, Error>) -> Void
-    ) {
-        authRepository.tokenRefresh(
-            accessToken: accessToken,
-            completion: completion
+        accessToken: String
+    ) async throws -> TokenRefresh {
+        return try await authRepository.tokenRefresh(
+            accessToken: accessToken
         )
     }
 }

@@ -38,6 +38,20 @@ class PromiseUseCase {
         )
     }
     
+    func createPromise(
+        name: String,
+        address: String,
+        date: String,
+        completion: @escaping (Result<Promise, Error>) -> Void
+    ) {
+        promiseRepository.createPromise(
+            name: name,
+            address: address,
+            date: date,
+            completion: completion
+        )
+    }
+    
     func deletePromise(
         accessToken: String,
         completion: @escaping (Result<Promise, Error>) -> Void

@@ -5,7 +5,7 @@
 //  Created by 최시훈 on 4/14/24.
 //
 
-import Foundation
+import SwiftUI
 import ComposableArchitecture
 import FlowKit
 import Moya
@@ -54,23 +54,18 @@ struct CreatePromiseCompleteCore: Reducer {
                 state.promiseLocation = state.promiseResponse.place.name
                 state.promiseDay = formatDate(state.promiseResponse.date)
                 state.promiseTime = formatTime(state.promiseResponse.date)
+                
                 let promiseRepository = PromiseRepositoryImpl()
                 let promiseUseCase = PromiseUseCase(promiseRepository: promiseRepository)
                 return .run { send in
-                    promiseUseCase.inviteUserToPromise(accessToken: savedAccessToken) { result in
-                        switch result {
-                        case .success(let response):
-                            print("getLink")
-                            DispatchQueue.main.async {
-                                send(.setLink(response))
-                            }
-                        case .failure(let error):
-                            print("🚫CreatePromiseCompleteCore.inviteUserToPromise error: \(error.localizedDescription)")
-
-                        }
-                        
+                    do {
+                        let response = try await promiseUseCase.inviteUserToPromise(accessToken: savedAccessToken)
+                        await send(.setLink(response))
+                    } catch {
+                        print("🚫CreatePromiseCompleteCore.inviteUserToPromise error: \(error.localizedDescription)")
                     }
                 }
+                
             case .setLink(let response):
                 state.shereUrl = response.link
                 return .none

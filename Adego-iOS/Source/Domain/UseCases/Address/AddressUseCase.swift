@@ -15,12 +15,10 @@ class AddressUseCase {
     }
     
     func searchAddress(
-        searchWord: String,
-        completion: @escaping (Result<AddressResponse, Error>) -> Void
-    ) {
-        addressRepository.searchAddress(
-            searchWord: searchWord,
-            completion: completion
+        searchWord: String
+    ) async throws -> AddressResponse {
+        return try await addressRepository.searchAddress(
+            searchWord: searchWord
         )
     }
 }

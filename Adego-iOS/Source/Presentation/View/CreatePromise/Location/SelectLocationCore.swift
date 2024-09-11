@@ -56,31 +56,26 @@ struct SelectLocationCore: Reducer {
                 let promiseRepository = PromiseRepositoryImpl()
                 let promiseUseCase = PromiseUseCase(promiseRepository: promiseRepository)
                 return .run { send in
-                    promiseUseCase.createPromise(name: promiseTitle, address: selectedAddress, date: selectedDate) { result in
-                        switch result {
-                        case .success(let response):
-                            print("✅SelectLocationCore.createPromise: \(response)")
-                            DispatchQueue.main.async {
-                                send(.setPromiseResponse(response))
-                                send(.navigateCreatePromiseCompleteView)
-                            }
-                            
-                        case .failure(let error):
-                            if let errorResponse = error as? ErrorResponse {
-                                if errorResponse.message == "User already has a plan" {
-                                    flow.alert(
-                                        Alert(
-                                            title: "이미 생성된 약속이 있습니다.",
-                                            dismissButton: .default("확인",
-                                                                    action: {
-                                                                        flow.popToRoot()
-                                                                    })
+                    do {
+                        let response = try await promiseUseCase.createPromise(name: promiseTitle, address: selectedAddress, date: selectedDate)
+                        print("✅SelectLocationCore.createPromise: \(response)")
+                        await send(.setPromiseResponse(response))
+                        await send(.navigateCreatePromiseCompleteView)
+                    } catch {
+                        print("🚫SelectLocationCore.createPromise error: \(error.localizedDescription)")
+                        if let errorResponse = error as? ErrorResponse {
+                            if errorResponse.message == "User already has a plan" {
+                                flow.alert(
+                                    Alert(title: "이미 생성된 약속이 있습니다.",
+                                        dismissButton: .default("확인", action: {
+                                                flow.popToRoot()
+                                            }
                                         )
                                     )
-                                }
-                            } else {
-                                print("🚫SelectLocationCore.createPromise error: \(error.localizedDescription)")
+                                )
                             }
+                        } else {
+                            print("🚫SelectLocationCore.createPromise error: \(error.localizedDescription)")
                         }
                     }
                 }
@@ -88,19 +83,14 @@ struct SelectLocationCore: Reducer {
             case .getAddressList:
                 let searchWord = state.searchWord
                 print("searchWord", searchWord)
+                let addressRepository =  AddressRepositoryImpl()
+                let addressUseCase = AddressUseCase(addressRepository: addressRepository)
                 return .run { send in
-                    let addressRepository =  AddressRepositoryImpl()
-                    let addressUseCase = AddressUseCase(addressRepository: addressRepository)
-                    addressUseCase.searchAddress(searchWord: searchWord) { result in
-                        switch result {
-                        case .success(let response):
-                            print("✅SelectLocationCore.getAddressList: \(response)")
-                            DispatchQueue.main.async {
-                                send(.setSearchList(response))
-                            }
-                        case .failure(let error):
-                            print("🚫SelectLocationCore.getAddressList error: \(error.localizedDescription)")
-                        }
+                    do {
+                        let response = try await addressUseCase.searchAddress(searchWord: searchWord)
+                        print("✅SelectLocationCore.getAddressList: \(response)")
+                        await send(.setSearchList(response))
+                    } catch {                            print("🚫SelectLocationCore.getAddressList error: \(error.localizedDescription)")
                     }
                 }
                 

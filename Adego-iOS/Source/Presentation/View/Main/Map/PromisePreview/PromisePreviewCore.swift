@@ -43,20 +43,15 @@ struct PromisePreviewCore: Reducer {
         Reduce { state, action in
             switch action {
             case .onAppear:
+                let promiseRepository = PromiseRepositoryImpl()
+                let promiseUseCase = PromiseUseCase(promiseRepository: promiseRepository)
                 return .run { send in
-                    let promiseRepository = PromiseRepositoryImpl()
-                    let promiseUseCase = PromiseUseCase(promiseRepository: promiseRepository)
-                    
-                    promiseUseCase.getPromise(accessToken: savedAccessToken) { result in
-                        switch result {
-                        case .success(let response):
-                            DispatchQueue.main.async {
-                                send(.setValue(response))
-                            }
-                        case .failure(let error):
-                            print("🚫PromisePreviewCore.getPromise error: \(error.localizedDescription)")
-                            print(error)
-                        }
+                    do {
+                        let response = try await promiseUseCase.getPromise(accessToken: savedAccessToken)
+                        await send(.setValue(response))
+                    } catch {
+                        print("🚫PromisePreviewCore.getPromise error: \(error.localizedDescription)")
+                        print(error)
                     }
                 }
             case .setValue(let response):
@@ -66,6 +61,7 @@ struct PromisePreviewCore: Reducer {
                 state.promiseDay = formatDate(response.date)
                 state.promiseTime = formatTime(response.date)
                 return .none
+                
             case .navigateToSendNotificationView:
                 flow.push(
                     SendNotificationView(

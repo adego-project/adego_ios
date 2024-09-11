@@ -17,6 +17,8 @@ struct SettingCore: Reducer {
         var accessToken: String = ""
         var imageUrl: String = ""
         var name: String = "알파 메일 최시훈"
+        
+        var selectedImage: UIImage = UIImage()
     }
     
     enum Action {
@@ -24,6 +26,7 @@ struct SettingCore: Reducer {
         case deletePromise
         case showLogoutAlert
         case showSecessionAlert
+        //        case navigate(String, UIImage)
         case setValue(User)
         case navigateToEditView
         case view(View)
@@ -45,41 +48,39 @@ struct SettingCore: Reducer {
                 let getUserUseCase = UserUseCase(userRepository: userRepository)
                 
                 return .run { send in
-                    getUserUseCase.getUser(accessToken: savedAccessToken) { result in
-                        switch result {
-                        case .success(let response):
-                            print("✅SigninCore.getUser id:", response.id)
-                            print("✅SigninCore.getUser name:", response.name ?? "")
-                            DispatchQueue.main.async {
-                                send(.setValue(response))
-                            }
-                        case .failure(let error):
-                            print("🚫SigninCore.getUser error: \(error.localizedDescription)")
-                        }
+                    do {
+                        let response = try await getUserUseCase.getUser(accessToken: savedAccessToken)
+                        print("✅SigninCore.getUser id:", response.id)
+                        print("✅SigninCore.getUser name:", response.name ?? "")
+                        await send(.setValue(response))
+                    } catch {
+                        print("🚫SigninCore.getUser error: \(error.localizedDescription)")
                     }
+                    
                 }
                 
+                
             case .deletePromise:
-               
+                
                 return .run { send in
                     flow.alert(
                         Alert(
-                            title: "약속에서 나가시겠습니까?",
-                            primaryButton: .destructive(
-                                "나가기",
-                                action: {
-                                    let promiseRepository = PromiseRepositoryImpl()
-                                    let promiseUseCase = PromiseUseCase(promiseRepository: promiseRepository)
-                                    promiseUseCase.deletePromise(accessToken: savedAccessToken) { result in
-                                        switch result {
-                                        case .success:
-                                            flow.popToRoot()
-                                        case .failure(let error):
-                                            print("🚫MainViewCore.getPromise error: \(error.localizedDescription)")
-                                        }
-                                    }
-                                }
-                            ), secondaryButton: .cancel()
+                            title: "약속에서 나가시겠습니까?"
+                            //                            primaryButton: .destructive(
+                            //                                "나가기",
+                            //                                action: {
+                            //                                    let promiseRepository = PromiseRepositoryImpl()
+                            //                                    let promiseUseCase = PromiseUseCase(promiseRepository: promiseRepository)
+                            //                                    promiseUseCase.deletePromise(accessToken: savedAccessToken) { result in
+                            //                                        switch result {
+                            //                                        case .success:
+                            //                                            flow.popToRoot()
+                            //                                        case .failure(let error):
+                            //                                            print("🚫MainViewCore.getPromise error: \(error.localizedDescription)")
+                            //                                        }
+                            //                                    }
+                            //                                }
+                            //                            ), secondaryButton: .cancel()
                         )
                     )
                 }
@@ -100,19 +101,41 @@ struct SettingCore: Reducer {
                 return .none
                 
             case .showSecessionAlert:
-                flow.alert(
-                    Alert(
-                        title: "계정에서 탈퇴 하시겠습니까?",
-                        primaryButton: .destructive(
-                            "탈퇴",
-                            action: {
-                                deleteUser()
-                            }
-                        ),
-                        secondaryButton: .cancel()
+                return .run { send in
+                    flow.alert(
+                        Alert(
+                            title: "계정에서 탈퇴 하시겠습니까?",
+                            primaryButton: .destructive(
+                                "탈퇴",
+                                action: {
+                                    await deleteUser()
+                                }
+                            ),
+                            secondaryButton: .cancel()
+                        )
                     )
-                )
-                return .none
+                }
+                
+                //            case let .navigate(result, selectedImage):
+                //                flow.sheet(
+                //                    ImagePickerView(
+                //                        store: Store(
+                //                            initialState: ImagePickerCore.State(
+                //                                result: result,
+                //                                selectedImage: selectedImage
+                //                            )
+                //                        ) {
+                //                            ImagePickerCore()
+                //                        },
+                //                        setting: Store(
+                //                            initialState: SettingCore.State()
+                //                        ) {
+                //                            SettingCore()
+                //                        },
+                //                        sourceType: .photoLibrary
+                //                    )
+                //                )
+                //                return .none
                 
             case .setValue(let response):
                 state.name = response.name ?? ""
@@ -134,16 +157,15 @@ struct SettingCore: Reducer {
                 return .none
             }
             
-            func deleteUser() {
+            @Sendable 
+            func deleteUser() async {
                 let userRepository = UserRepositoryImpl()
                 let getUserUseCase = UserUseCase(userRepository: userRepository)
-                getUserUseCase.deleteUser(accessToken: savedAccessToken) { result in
-                    switch result {
-                    case .success:
-                        replaceToSigninView()
-                    case .failure(let error):
-                        print("🚫SigninCore.deleteUser error: \(error.localizedDescription)")
-                    }
+                do {
+                    _ = try await getUserUseCase.deleteUser(accessToken: savedAccessToken)
+                    replaceToSigninView()
+                } catch {
+                    print("🚫SigninCore.deleteUser error: \(error.localizedDescription)")
                 }
             }
             

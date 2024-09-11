@@ -16,43 +16,35 @@ class UserUseCase {
     
     func updateUserName(
         name: String,
-        accessToken: String,
-        completion: @escaping (Result<UserNameResponse, Error>) -> Void
-    ) {
-        userRepository.updateUserName(
+        accessToken: String
+    ) async throws -> UserNameResponse {
+        return try await userRepository.updateUserName(
             name: name,
-            accessToken: accessToken,
-            completion: completion
+            accessToken: accessToken
         )
     }
     
     func getUser(
-        accessToken: String,
-        completion: @escaping (Result<User, Error>) -> Void
-    ) {
-        userRepository.getUser(
-            accessToken: accessToken,
-            completion: completion
+        accessToken: String
+    ) async throws -> User {
+        return try await userRepository.getUser(
+            accessToken: accessToken
         )
     }
     
     func registerProfileImage(
-        profileImage: String,
-        completion: @escaping (Result<ProfileImageResponse, Error>) -> Void
-    ) {
-        userRepository.registerProfileImage(
-            profileImage: profileImage,
-            completion: completion
+        profileImage: String
+    ) async throws -> ProfileImageResponse {
+        return try await userRepository.registerProfileImage(
+            profileImage: profileImage
         )
     }
     
     func deleteUser(
-        accessToken: String,
-        completion: @escaping (Result<DeleteUser, Error>) -> Void
-    ) {
-        userRepository.deleteUser(
-            accessToken: accessToken,
-            completion: completion
+        accessToken: String
+    ) async throws -> DeleteUser {
+        return try await userRepository.deleteUser(
+            accessToken: accessToken
         )
     }
 }

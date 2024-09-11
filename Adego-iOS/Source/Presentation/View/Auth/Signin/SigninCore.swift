@@ -19,6 +19,7 @@ struct SigninCore: Reducer {
     enum Action: Equatable {
         case successSigninWithApple(String)
         case kakaoLogin
+        case navigation
     }
     
     var body: some Reducer<State, Action> {
@@ -28,58 +29,36 @@ struct SigninCore: Reducer {
                 let authRepository = AuthRepositoryImpl()
                 let signinUseCase = SigninUseCase(authRepository: authRepository)
                 
-                signinUseCase.signin(appleToken: appleToken) { result in
-                    switch result {
-                    case .success(let tokens):
-                        print("✅Access Token: \(tokens.accessToken)")
-                        print("✅Refresh Token: \(tokens.refreshToken)")
+                return .run { send in
+                    do {
+                        let response = try await signinUseCase.signinWithApple(appleToken: appleToken)
+                        print("✅Access Token: \(response.accessToken)")
+                        print("✅Refresh Token: \(response.refreshToken)")
                         
-                        let _ = KeychainManager.shared.save(key: "accessToken", string: tokens.accessToken)
-                        let _ = KeychainManager.shared.save(key: "refreshToken", string: tokens.refreshToken)
-                        
-                        tokenRefresh(accessToken: tokens.refreshToken)
-                        getUser(accessToken: tokens.accessToken)
-                    case .failure(let error):
+                        await tokenRefresh(accessToken: response.refreshToken)
+                        await send(.navigation)
+                    } catch {
                         print("🚫Sign in failed: \(error.localizedDescription)")
                         print(error)
                     }
                 }
-                return .none
             case .kakaoLogin:
                 
                 return .none
-            }
-            
-            // MARK: - func
-            func tokenRefresh(
-                accessToken: String
-            ) {
-                let authRepository = AuthRepositoryImpl()
-                let signinUseCase = SigninUseCase(authRepository: authRepository)
-                signinUseCase.tokenRefresh(accessToken: accessToken) {  result in
-                    switch result {
-                    case .success(let tokens):
-                        print("✅tokenRefresh.Access Token: \(tokens.accessToken)")
-                    case .failure(let error):
-                        print("🚫SigninCore.tokenRefresh error: \(error.localizedDescription)")
-                        print(error)
-                    }
-                }
-            }
-            
-            func getUser(
-                accessToken: String
-            ) {
-                let userRepository = UserRepositoryImpl()
-                let getUserUseCase = UserUseCase(userRepository: userRepository)
-                getUserUseCase.getUser(accessToken: accessToken) { result in
-                    switch result {
-                    case .success(let info):
-                        print("✅SigninCore.getUser id:", info.id)
-                        print("✅SigninCore.getUser name:", info.name ?? "")
-                        print("✅SigninCore.getUser planId:", info.planId ?? "")
-                        print("✅SigninCore.getUser profileImage:", info.profileImage ?? "")
-                        if ((info.name?.isEmpty) != nil) {
+                
+            case .navigation:
+                
+                return .run { send in
+                    do {
+                        let userRepository = UserRepositoryImpl()
+                        let getUserUseCase = UserUseCase(userRepository: userRepository)
+                        let response = try await getUserUseCase.getUser(accessToken: savedAccessToken)
+                        
+                        print("✅SigninCore.getUser id:", response.id)
+                        print("✅SigninCore.getUser name:", response.name ?? "")
+                        print("✅SigninCore.getUser planId:", response.planId ?? "")
+                        print("✅SigninCore.getUser profileImage:", response.profileImage ?? "")
+                        if ((response.name?.isEmpty) != nil) {
                             flow.push(
                                 SetNameView(
                                     store: Store(
@@ -102,15 +81,29 @@ struct SigninCore: Reducer {
                                 ]
                             )
                         }
-                        
-                    case .failure(let error):
+                    } catch {
                         print("🚫SigninCore.getUser error: \(error.localizedDescription)")
                         print(error)
                     }
                 }
             }
+            
+            
+            // MARK: - func
+            @Sendable 
+            func tokenRefresh(
+                accessToken: String
+            ) async {
+                let authRepository = AuthRepositoryImpl()
+                let signinUseCase = SigninUseCase(authRepository: authRepository)
+                do {
+                    let response = try await signinUseCase.tokenRefresh(accessToken: accessToken)
+                    print("✅tokenRefresh.Access Token: \(response.accessToken)")
+                } catch {
+                    print("🚫SigninCore.tokenRefresh error: \(error.localizedDescription)")
+                    print(error)
+                }
+            }
         }
     }
 }
-
-
