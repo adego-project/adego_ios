@@ -9,5 +9,5 @@ import Foundation
 
 struct DeleteUser: Codable {
     let status: String
-    let data: [String: String]
+    let data: DataType?
 }
