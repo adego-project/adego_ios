@@ -23,5 +23,4 @@ class ProfileImageManager {
     static func remove(_ base64: ProfileImageCase) {
         UserDefaults.standard.removeObject(forKey: String(describing: base64))
     }
-    
 }
