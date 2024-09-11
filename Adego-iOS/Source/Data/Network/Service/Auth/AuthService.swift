@@ -9,7 +9,7 @@ import Foundation
 import Moya
 
 enum AuthService {
-    case signIn(appleToken: String)
+    case signInWithApple(appleToken: String)
     case tokenRefresh(accessToken: String)
 }
 
@@ -20,7 +20,7 @@ extension AuthService: TargetType {
 
     var path: String {
         switch self {
-        case .signIn:
+        case .signInWithApple:
             return "/oauth/apple/login"
         case .tokenRefresh:
             return "/auth/refresh"
@@ -29,7 +29,7 @@ extension AuthService: TargetType {
 
     var method: Moya.Method {
         switch self {
-        case .signIn:
+        case .signInWithApple:
             return .post
         case .tokenRefresh:
             return .get
@@ -38,7 +38,7 @@ extension AuthService: TargetType {
 
     var task: Task {
         switch self {
-        case let .signIn(appleToken):
+        case let .signInWithApple(appleToken):
             return .requestParameters(
                 parameters: [
                     "accessToken": appleToken
@@ -52,7 +52,7 @@ extension AuthService: TargetType {
 
     var headers: [String: String]? {
         switch self {
-        case .signIn:
+        case .signInWithApple:
             return [
                 "Content-Type": "application/json"
             ]

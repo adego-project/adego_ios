@@ -9,7 +9,6 @@ import Foundation
 
 protocol AddressRepository {
     func searchAddress(
-        searchWord: String,
-        completion: @escaping (Result<AddressResponse, Error>) -> Void
-    )
+        searchWord: String
+    ) async throws -> AddressResponse
 }

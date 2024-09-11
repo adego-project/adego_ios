@@ -9,8 +9,6 @@ import Foundation
 
 protocol LocationRepository {
     func getDestination(
-        accessToken: String,
-        completion: @escaping (Result<CordinateResponse, Error>) -> Void
-    )
+        accessToken: String
+    ) async throws -> CordinateResponse
 }
-

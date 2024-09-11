@@ -9,6 +9,8 @@ import Foundation
 import Moya
 
 enum UserService {
+    case updateUserName(name: String, accessToken: String)
+    
     case getUser(accessToken: String)
     case registerProfileImage(profileImage: String)
     case deleteUser(accessToken: String)
@@ -21,6 +23,10 @@ extension UserService: TargetType {
     
     var path: String {
         switch self {
+            
+        case .updateUserName:
+            return "/user"
+            
         case .getUser:
             return "/user"
             
@@ -34,6 +40,9 @@ extension UserService: TargetType {
     
     var method: Moya.Method {
         switch self {
+        case .updateUserName:
+            return .patch
+            
         case .getUser:
             return .get
         case .registerProfileImage:
@@ -45,6 +54,15 @@ extension UserService: TargetType {
     
     var task: Task {
         switch self {
+            
+        case let .updateUserName(name, accessToken):
+            return .requestParameters(
+                parameters: [
+                    "name": name
+                ],
+                encoding: JSONEncoding.default
+            )
+            
         case .getUser(let accessToken):
             return .requestParameters(
                 parameters: [
@@ -67,6 +85,12 @@ extension UserService: TargetType {
     
     var headers: [String: String]? {
         switch self {
+        case let .updateUserName(name, accessToken):
+            return [
+                "Content-Type": "application/json",
+                "Authorization": "Bearer \(accessToken)"
+            ]
+            
         case .getUser(let accessToken):
             return [
                 "Content-Type": "application/json",
