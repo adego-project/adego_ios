@@ -11,6 +11,17 @@ import ComposableArchitecture
 
 struct FlowDependency: DependencyKey {
     static var liveValue: FlowProvider {
+//        FlowProvider(
+//            rootView: SetProfileImageView(
+//                store: Store(
+//                    initialState: SetProfileImageCore.State()
+//                ) {
+//                    SetProfileImageCore()
+//                }
+//            )
+//        ) { rootView in
+//            CustomNavigationBarController(rootViewController: rootView)
+//        }
                 FlowProvider(
                     rootView: SigninView(
                         store: Store(
@@ -22,17 +33,6 @@ struct FlowDependency: DependencyKey {
                 ) { rootView in
                     CustomNavigationBarController(rootViewController: rootView)
                 }
-//        FlowProvider(
-//            rootView: MainView(
-//                store: Store(
-//                    initialState: MainCore.State()
-//                ) {
-//                    MainCore()
-//                }
-//            )
-//        ) { rootView in
-//            CustomNavigationBarController(rootViewController: rootView)
-//        }
     }
 }
 
@@ -51,7 +51,29 @@ struct Adego_iOSApp: App {
             
             flow.present()
                 .ignoresSafeArea()
-//            ContentView()
+                .onOpenURL(perform: { url in
+                    handleDeeplink(url)
+                })
         }
+    }
+    func handleDeeplink(_ url: URL) {
+        print(url)
+        flow.fullScreenSheet(
+            InvitedAppointmentView(
+                store: Store(
+                    initialState: InvitedAppointmentCore.State()
+                ) {
+                    InvitedAppointmentCore()
+                }
+            )
+        )
+        //            // URL 처리 로직
+        //            if url.scheme == "myapp" {
+        //                if url.host == "home" {
+        //                    selectedTab = 0 // 홈 화면으로 이동
+        //                } else if url.host == "profile" {
+        //                    selectedTab = 1 // 프로필 화면으로 이동
+        //                }
+        //            }
     }
 }

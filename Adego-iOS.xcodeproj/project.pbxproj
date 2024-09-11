@@ -14,11 +14,19 @@
 		850702EB2BCE4D6B00E3E820 /* SendUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850702EA2BCE4D6B00E3E820 /* SendUser.swift */; };
 		850702EF2BCE91C800E3E820 /* InvitedAppointmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850702EE2BCE91C800E3E820 /* InvitedAppointmentView.swift */; };
 		850702F22BCE91F200E3E820 /* InvitedAppointmentCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850702F12BCE91F200E3E820 /* InvitedAppointmentCore.swift */; };
-		851490BF2C52C833008A286E /* Debounce.swift in Sources */ = {isa = PBXBuildFile; fileRef = 851490BE2C52C833008A286E /* Debounce.swift */; };
+		851490BF2C52C833008A286E /* DebounceModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 851490BE2C52C833008A286E /* DebounceModifier.swift */; };
 		851490CE2C5401AE008A286E /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 851490CD2C5401AE008A286E /* Moya */; };
 		851490D12C54021F008A286E /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 851490D02C54021F008A286E /* ComposableArchitecture */; };
 		851490D42C540231008A286E /* FlowKit in Frameworks */ = {isa = PBXBuildFile; productRef = 851490D32C540231008A286E /* FlowKit */; };
 		851490D72C5403AB008A286E /* WrappingHStack in Frameworks */ = {isa = PBXBuildFile; productRef = 851490D62C5403AB008A286E /* WrappingHStack */; };
+		8528CDFB2C69EE5F0070EFA7 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8528CDFA2C69EE5F0070EFA7 /* UserInfo.swift */; };
+		8528CDFE2C6E06970070EFA7 /* CordinateResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8528CDFD2C6E06970070EFA7 /* CordinateResponse.swift */; };
+		8528CE012C6E083F0070EFA7 /* LocationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8528CE002C6E083F0070EFA7 /* LocationRepository.swift */; };
+		8528CE032C6E099A0070EFA7 /* LoationRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8528CE022C6E099A0070EFA7 /* LoationRepositoryImpl.swift */; };
+		8528CE062C6E0AF70070EFA7 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8528CE052C6E0AF70070EFA7 /* LocationService.swift */; };
+		8528CE082C6FBB690070EFA7 /* UserNameResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8528CE072C6FBB690070EFA7 /* UserNameResponse.swift */; };
+		8528CE0B2C70C1360070EFA7 /* ImagePickerCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8528CE0A2C70C1360070EFA7 /* ImagePickerCore.swift */; };
+		8528CE0F2C72E2300070EFA7 /* ProfileImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8528CE0E2C72E2300070EFA7 /* ProfileImageManager.swift */; };
 		8530047E2C4C47A400F533EF /* CustomCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8530047D2C4C47A400F533EF /* CustomCalendarView.swift */; };
 		85424FE72BC4DCDB007A429D /* ImagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85424FE62BC4DCDB007A429D /* ImagePickerView.swift */; };
 		85424FE92BC50108007A429D /* MainCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85424FE82BC50108007A429D /* MainCore.swift */; };
@@ -29,7 +37,7 @@
 		858DE69F2C4FB5EA00340648 /* AdressRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 858DE69E2C4FB5EA00340648 /* AdressRepositoryImpl.swift */; };
 		858DE6A22C4FB6E000340648 /* AddressService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 858DE6A12C4FB6E000340648 /* AddressService.swift */; };
 		858DE6A42C4FB87C00340648 /* AddressUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 858DE6A32C4FB87C00340648 /* AddressUseCase.swift */; };
-		859299802C40F8B6005EB807 /* ProfileImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8592997F2C40F8B6005EB807 /* ProfileImage.swift */; };
+		859299802C40F8B6005EB807 /* ProfileImageResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8592997F2C40F8B6005EB807 /* ProfileImageResponse.swift */; };
 		859299842C40FF35005EB807 /* PromiseRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859299832C40FF35005EB807 /* PromiseRepository.swift */; };
 		859299862C40FF40005EB807 /* PromiseRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859299852C40FF40005EB807 /* PromiseRepositoryImpl.swift */; };
 		859299892C410062005EB807 /* PromiseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859299882C410062005EB807 /* PromiseService.swift */; };
@@ -82,6 +90,12 @@
 		85BAC88B2C405951006261F8 /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85BAC88A2C405951006261F8 /* KeychainManager.swift */; };
 		85BAC88D2C407411006261F8 /* TokenRefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85BAC88C2C407411006261F8 /* TokenRefresh.swift */; };
 		85C2B9372C44105E0060F16D /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C2B9362C44105E0060F16D /* Place.swift */; };
+		85CC4F222C7EE7CB003CFC17 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CC4F212C7EE7CB003CFC17 /* File.swift */; };
+		85DD6FF32C668BB50072FBD1 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85DD6FF22C668BB50072FBD1 /* MapView.swift */; };
+		85DD6FF62C668BC10072FBD1 /* MapCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85DD6FF52C668BC10072FBD1 /* MapCore.swift */; };
+		85DD6FF82C66CDB20072FBD1 /* DeleteUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85DD6FF72C66CDB20072FBD1 /* DeleteUser.swift */; };
+		85DD6FFA2C6778FD0072FBD1 /* LinkResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85DD6FF92C6778FD0072FBD1 /* LinkResponse.swift */; };
+		85E307F22C60964C0027E122 /* Debouncer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E307F12C60964C0027E122 /* Debouncer.swift */; };
 		85FBAB3D2BC1A7EB008CFC1B /* SigninCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FBAB3C2BC1A7EB008CFC1B /* SigninCore.swift */; };
 		85FBAB482BC1AA9C008CFC1B /* SetNameCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FBAB472BC1AA9C008CFC1B /* SetNameCore.swift */; };
 		85FBAB4A2BC1AAA4008CFC1B /* SetNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FBAB492BC1AAA4008CFC1B /* SetNameView.swift */; };
@@ -106,7 +120,15 @@
 		850702EA2BCE4D6B00E3E820 /* SendUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendUser.swift; sourceTree = "<group>"; };
 		850702EE2BCE91C800E3E820 /* InvitedAppointmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitedAppointmentView.swift; sourceTree = "<group>"; };
 		850702F12BCE91F200E3E820 /* InvitedAppointmentCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitedAppointmentCore.swift; sourceTree = "<group>"; };
-		851490BE2C52C833008A286E /* Debounce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debounce.swift; sourceTree = "<group>"; };
+		851490BE2C52C833008A286E /* DebounceModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebounceModifier.swift; sourceTree = "<group>"; };
+		8528CDFA2C69EE5F0070EFA7 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
+		8528CDFD2C6E06970070EFA7 /* CordinateResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CordinateResponse.swift; sourceTree = "<group>"; };
+		8528CE002C6E083F0070EFA7 /* LocationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationRepository.swift; sourceTree = "<group>"; };
+		8528CE022C6E099A0070EFA7 /* LoationRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoationRepositoryImpl.swift; sourceTree = "<group>"; };
+		8528CE052C6E0AF70070EFA7 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
+		8528CE072C6FBB690070EFA7 /* UserNameResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNameResponse.swift; sourceTree = "<group>"; };
+		8528CE0A2C70C1360070EFA7 /* ImagePickerCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerCore.swift; sourceTree = "<group>"; };
+		8528CE0E2C72E2300070EFA7 /* ProfileImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageManager.swift; sourceTree = "<group>"; };
 		8530047D2C4C47A400F533EF /* CustomCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCalendarView.swift; sourceTree = "<group>"; };
 		85424FE62BC4DCDB007A429D /* ImagePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerView.swift; sourceTree = "<group>"; };
 		85424FE82BC50108007A429D /* MainCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCore.swift; sourceTree = "<group>"; };
@@ -118,7 +140,7 @@
 		858DE69E2C4FB5EA00340648 /* AdressRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdressRepositoryImpl.swift; sourceTree = "<group>"; };
 		858DE6A12C4FB6E000340648 /* AddressService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressService.swift; sourceTree = "<group>"; };
 		858DE6A32C4FB87C00340648 /* AddressUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressUseCase.swift; sourceTree = "<group>"; };
-		8592997F2C40F8B6005EB807 /* ProfileImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImage.swift; sourceTree = "<group>"; };
+		8592997F2C40F8B6005EB807 /* ProfileImageResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageResponse.swift; sourceTree = "<group>"; };
 		859299832C40FF35005EB807 /* PromiseRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromiseRepository.swift; sourceTree = "<group>"; };
 		859299852C40FF40005EB807 /* PromiseRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromiseRepositoryImpl.swift; sourceTree = "<group>"; };
 		859299882C410062005EB807 /* PromiseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromiseService.swift; sourceTree = "<group>"; };
@@ -173,6 +195,12 @@
 		85BAC88A2C405951006261F8 /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
 		85BAC88C2C407411006261F8 /* TokenRefresh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenRefresh.swift; sourceTree = "<group>"; };
 		85C2B9362C44105E0060F16D /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
+		85CC4F212C7EE7CB003CFC17 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		85DD6FF22C668BB50072FBD1 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		85DD6FF52C668BC10072FBD1 /* MapCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCore.swift; sourceTree = "<group>"; };
+		85DD6FF72C66CDB20072FBD1 /* DeleteUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteUser.swift; sourceTree = "<group>"; };
+		85DD6FF92C6778FD0072FBD1 /* LinkResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkResponse.swift; sourceTree = "<group>"; };
+		85E307F12C60964C0027E122 /* Debouncer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debouncer.swift; sourceTree = "<group>"; };
 		85FBAB3C2BC1A7EB008CFC1B /* SigninCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninCore.swift; sourceTree = "<group>"; };
 		85FBAB472BC1AA9C008CFC1B /* SetNameCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetNameCore.swift; sourceTree = "<group>"; };
 		85FBAB492BC1AAA4008CFC1B /* SetNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetNameView.swift; sourceTree = "<group>"; };
@@ -223,25 +251,62 @@
 			path = InvitedAppointMent;
 			sourceTree = "<group>";
 		};
-		851490BD2C52C827008A286E /* Impl */ = {
+		851490BD2C52C827008A286E /* Modifier */ = {
 			isa = PBXGroup;
 			children = (
-				851490BE2C52C833008A286E /* Debounce.swift */,
+				851490BE2C52C833008A286E /* DebounceModifier.swift */,
 			);
-			path = Impl;
+			path = Modifier;
 			sourceTree = "<group>";
 		};
-		8531A3F32C41AF45000C3FC8 /* DI */ = {
+		8528CDF52C6888C90070EFA7 /* Storage */ = {
 			isa = PBXGroup;
 			children = (
+				8528CDF92C69EE560070EFA7 /* UserInfo */,
+				85BAC8892C405945006261F8 /* Secure */,
 			);
-			path = DI;
+			path = Storage;
+			sourceTree = "<group>";
+		};
+		8528CDF92C69EE560070EFA7 /* UserInfo */ = {
+			isa = PBXGroup;
+			children = (
+				8528CDFA2C69EE5F0070EFA7 /* UserInfo.swift */,
+				8528CE0E2C72E2300070EFA7 /* ProfileImageManager.swift */,
+			);
+			path = UserInfo;
+			sourceTree = "<group>";
+		};
+		8528CDFC2C6E05060070EFA7 /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				8528CDFD2C6E06970070EFA7 /* CordinateResponse.swift */,
+			);
+			path = Location;
+			sourceTree = "<group>";
+		};
+		8528CDFF2C6E08210070EFA7 /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				8528CE002C6E083F0070EFA7 /* LocationRepository.swift */,
+				8528CE022C6E099A0070EFA7 /* LoationRepositoryImpl.swift */,
+			);
+			path = Location;
+			sourceTree = "<group>";
+		};
+		8528CE042C6E09EB0070EFA7 /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				8528CE052C6E0AF70070EFA7 /* LocationService.swift */,
+			);
+			path = Location;
 			sourceTree = "<group>";
 		};
 		85424FE52BC4DCC7007A429D /* Sub */ = {
 			isa = PBXGroup;
 			children = (
 				85424FE62BC4DCDB007A429D /* ImagePickerView.swift */,
+				8528CE0A2C70C1360070EFA7 /* ImagePickerCore.swift */,
 			);
 			path = Sub;
 			sourceTree = "<group>";
@@ -249,10 +314,24 @@
 		85424FEC2BC508B8007A429D /* Map */ = {
 			isa = PBXGroup;
 			children = (
+				85DD6FF22C668BB50072FBD1 /* MapView.swift */,
+				85DD6FF52C668BC10072FBD1 /* MapCore.swift */,
 				85424FEA2BC508B7007A429D /* MapAnnotationView.swift */,
 				85424FED2BC50A60007A429D /* Location.swift */,
 			);
 			path = Map;
+			sourceTree = "<group>";
+		};
+		8573BDEE2C89EEC600F7BB56 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				8528CE042C6E09EB0070EFA7 /* Location */,
+				858DE6A02C4FB6D700340648 /* Address */,
+				859299872C410058005EB807 /* Promise */,
+				85BAC87D2C403EC7006261F8 /* User */,
+				85BAC87C2C403EC2006261F8 /* Auth */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 		858DE69A2C4FB5A600340648 /* Address */ = {
@@ -310,6 +389,7 @@
 			children = (
 				8592998B2C4101A2005EB807 /* Promise.swift */,
 				85C2B9362C44105E0060F16D /* Place.swift */,
+				85DD6FF92C6778FD0072FBD1 /* LinkResponse.swift */,
 			);
 			path = Promise;
 			sourceTree = "<group>";
@@ -364,7 +444,6 @@
 		8598F9F42BC0375600132DE6 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				8531A3F32C41AF45000C3FC8 /* DI */,
 				85AA44B22C3ACAE400F42C63 /* Data */,
 				85AA44B32C3ACAED00F42C63 /* Domain */,
 				85AA44B12C3ACAC400F42C63 /* Presentation */,
@@ -419,6 +498,7 @@
 			isa = PBXGroup;
 			children = (
 				85AA44B52C3ACB1900F42C63 /* Network */,
+				85AA44B82C3ACBB600F42C63 /* Repositories */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -427,7 +507,6 @@
 			isa = PBXGroup;
 			children = (
 				85AA44B62C3ACBAE00F42C63 /* Entities */,
-				85AA44B82C3ACBB600F42C63 /* Repositories */,
 				85AA44B92C3ACBC500F42C63 /* UseCases */,
 			);
 			path = Domain;
@@ -436,7 +515,9 @@
 		85AA44B42C3ACAFB00F42C63 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				851490BD2C52C827008A286E /* Impl */,
+				8528CDF52C6888C90070EFA7 /* Storage */,
+				85E307F02C6095250027E122 /* Impl */,
+				851490BD2C52C827008A286E /* Modifier */,
 				85ADC24C2BC8BDDA008E947E /* Style */,
 				85FBAB542BC1B103008CFC1B /* Extensions */,
 			);
@@ -446,7 +527,7 @@
 		85AA44B52C3ACB1900F42C63 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				85AA44BC2C3ACC5900F42C63 /* Services */,
+				8573BDEE2C89EEC600F7BB56 /* Service */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -456,6 +537,7 @@
 			children = (
 				85C2B92E2C42507B0060F16D /* Address */,
 				8592998A2C41013D005EB807 /* Promise */,
+				8528CDFC2C6E05060070EFA7 /* Location */,
 				85BAC8822C4041A8006261F8 /* User */,
 				85BAC8812C4041A2006261F8 /* Error */,
 				85BAC8802C40419C006261F8 /* Auth */,
@@ -466,11 +548,11 @@
 		85AA44B82C3ACBB600F42C63 /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
-				85BAC8892C405945006261F8 /* SecureStorage */,
 				858DE69B2C4FB5CE00340648 /* Address */,
 				859299822C40FF21005EB807 /* Promise */,
 				85BAC8732C403E14006261F8 /* User */,
 				85BAC8722C403E03006261F8 /* Auth */,
+				8528CDFF2C6E08210070EFA7 /* Location */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -478,23 +560,12 @@
 		85AA44B92C3ACBC500F42C63 /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
+				85BAC8852C40434A006261F8 /* Auth */,
 				858DE69A2C4FB5A600340648 /* Address */,
 				859299812C40FF04005EB807 /* Promise */,
-				85BAC8852C40434A006261F8 /* Auth */,
 				85BAC8862C40434F006261F8 /* User */,
 			);
 			path = UseCases;
-			sourceTree = "<group>";
-		};
-		85AA44BC2C3ACC5900F42C63 /* Services */ = {
-			isa = PBXGroup;
-			children = (
-				858DE6A02C4FB6D700340648 /* Address */,
-				859299872C410058005EB807 /* Promise */,
-				85BAC87D2C403EC7006261F8 /* User */,
-				85BAC87C2C403EC2006261F8 /* Auth */,
-			);
-			path = Services;
 			sourceTree = "<group>";
 		};
 		85AA46C12C3B23C200F42C63 /* View */ = {
@@ -651,7 +722,9 @@
 			isa = PBXGroup;
 			children = (
 				85BAC8832C4041AC006261F8 /* User.swift */,
-				8592997F2C40F8B6005EB807 /* ProfileImage.swift */,
+				8592997F2C40F8B6005EB807 /* ProfileImageResponse.swift */,
+				85DD6FF72C66CDB20072FBD1 /* DeleteUser.swift */,
+				8528CE072C6FBB690070EFA7 /* UserNameResponse.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -672,13 +745,13 @@
 			path = User;
 			sourceTree = "<group>";
 		};
-		85BAC8892C405945006261F8 /* SecureStorage */ = {
+		85BAC8892C405945006261F8 /* Secure */ = {
 			isa = PBXGroup;
 			children = (
 				85BAC88A2C405951006261F8 /* KeychainManager.swift */,
 				859299902C41074B005EB807 /* Tokens.swift */,
 			);
-			path = SecureStorage;
+			path = Secure;
 			sourceTree = "<group>";
 		};
 		85C2B92E2C42507B0060F16D /* Address */ = {
@@ -692,11 +765,20 @@
 		85C2B9312C427E6D0060F16D /* App */ = {
 			isa = PBXGroup;
 			children = (
+				85CC4F212C7EE7CB003CFC17 /* File.swift */,
 				85AA46C82C3C1E7500F42C63 /* AppleSigninDelegate.swift */,
 				8598F9DF2BC0361100132DE6 /* Adego_iOSApp.swift */,
 				8598F9E12BC0361100132DE6 /* ContentView.swift */,
 			);
 			path = App;
+			sourceTree = "<group>";
+		};
+		85E307F02C6095250027E122 /* Impl */ = {
+			isa = PBXGroup;
+			children = (
+				85E307F12C60964C0027E122 /* Debouncer.swift */,
+			);
+			path = Impl;
 			sourceTree = "<group>";
 		};
 		85FBAB352BC0433F008CFC1B /* Signin */ = {
@@ -869,19 +951,23 @@
 				85424FEB2BC508B7007A429D /* MapAnnotationView.swift in Sources */,
 				85AA46C92C3C1E7500F42C63 /* AppleSigninDelegate.swift in Sources */,
 				850702E62BCE2F8700E3E820 /* SendNotificationCore.swift in Sources */,
+				85E307F22C60964C0027E122 /* Debouncer.swift in Sources */,
 				85424FEE2BC50A60007A429D /* Location.swift in Sources */,
 				85ADC2732BCB1044008E947E /* SelectLocationCore.swift in Sources */,
 				85BAC8882C40436C006261F8 /* UserUseCase.swift in Sources */,
 				850702EB2BCE4D6B00E3E820 /* SendUser.swift in Sources */,
-				851490BF2C52C833008A286E /* Debounce.swift in Sources */,
+				851490BF2C52C833008A286E /* DebounceModifier.swift in Sources */,
 				85ADC2772BCB105E008E947E /* CreatePromiseCompleteCore.swift in Sources */,
 				85A64D222BDEC9F10095C46C /* AppointmentNoneCore.swift in Sources */,
 				8592998E2C4102AE005EB807 /* PromiseUseCase.swift in Sources */,
 				850702DC2BCCD82600E3E820 /* AddressResponse.swift in Sources */,
 				859299912C41074B005EB807 /* Tokens.swift in Sources */,
 				85FBAB8B2BC3D772008CFC1B /* Font+Ext.swift in Sources */,
+				85DD6FF62C668BC10072FBD1 /* MapCore.swift in Sources */,
+				8528CDFE2C6E06970070EFA7 /* CordinateResponse.swift in Sources */,
 				859299842C40FF35005EB807 /* PromiseRepository.swift in Sources */,
 				85FBAB702BC2E75A008CFC1B /* CustomBackButton.swift in Sources */,
+				85CC4F222C7EE7CB003CFC17 /* File.swift in Sources */,
 				85A64D202BDEC9CA0095C46C /* AppointmentNoneView.swift in Sources */,
 				858DE6A42C4FB87C00340648 /* AddressUseCase.swift in Sources */,
 				850702E32BCE2F5700E3E820 /* SendNotificiationView.swift in Sources */,
@@ -892,7 +978,9 @@
 				85FBAB4A2BC1AAA4008CFC1B /* SetNameView.swift in Sources */,
 				85BAC88D2C407411006261F8 /* TokenRefresh.swift in Sources */,
 				85AA46C32C3B247B00F42C63 /* SigninView.swift in Sources */,
+				8528CE082C6FBB690070EFA7 /* UserNameResponse.swift in Sources */,
 				85BAC8842C4041AC006261F8 /* User.swift in Sources */,
+				8528CE032C6E099A0070EFA7 /* LoationRepositoryImpl.swift in Sources */,
 				85ADC27A2BCB17F6008E947E /* WhiteTitleText.swift in Sources */,
 				85AA46D12C3CD3A300F42C63 /* AuthRepository.swift in Sources */,
 				85ADC2542BC8BF70008E947E /* SettingCore.swift in Sources */,
@@ -902,10 +990,12 @@
 				858DE6A22C4FB6E000340648 /* AddressService.swift in Sources */,
 				850702DE2BCDF47800E3E820 /* CustomInfoView.swift in Sources */,
 				85C2B9372C44105E0060F16D /* Place.swift in Sources */,
+				85DD6FF32C668BB50072FBD1 /* MapView.swift in Sources */,
 				85AA46D72C3CD55700F42C63 /* ErrorResponse.swift in Sources */,
 				859299862C40FF40005EB807 /* PromiseRepositoryImpl.swift in Sources */,
 				850702EF2BCE91C800E3E820 /* InvitedAppointmentView.swift in Sources */,
 				85AA46D52C3CD52E00F42C63 /* AuthRepositoryImpl.swift in Sources */,
+				8528CE0F2C72E2300070EFA7 /* ProfileImageManager.swift in Sources */,
 				8598F9E22BC0361100132DE6 /* ContentView.swift in Sources */,
 				85ADC2582BC8C129008E947E /* CustomWhiteRoundedButton.swift in Sources */,
 				85BAC88B2C405951006261F8 /* KeychainManager.swift in Sources */,
@@ -918,20 +1008,26 @@
 				858DE69D2C4FB5E000340648 /* AddressRepository.swift in Sources */,
 				85BAC8772C403E4F006261F8 /* UserRepository.swift in Sources */,
 				85ADC2752BCB1054008E947E /* CreatePromiseCompleteView.swift in Sources */,
+				85DD6FF82C66CDB20072FBD1 /* DeleteUser.swift in Sources */,
 				85ADC26F2BCB0C0C008E947E /* SelectTimeView.swift in Sources */,
 				85ADC2602BCAFC22008E947E /* EditView.swift in Sources */,
 				85424FE72BC4DCDB007A429D /* ImagePickerView.swift in Sources */,
 				85FBAB482BC1AA9C008CFC1B /* SetNameCore.swift in Sources */,
+				8528CE062C6E0AF70070EFA7 /* LocationService.swift in Sources */,
 				85AA46CB2C3CD0AF00F42C63 /* OAuthTokens.swift in Sources */,
 				85ADC25A2BC8C56A008E947E /* CustomInputTextField.swift in Sources */,
 				850702F22BCE91F200E3E820 /* InvitedAppointmentCore.swift in Sources */,
 				857E49382BC4CF84007E3ABC /* Text+Ext.swift in Sources */,
 				85ADC2402BC6FD08008E947E /* PromisePreviewCore.swift in Sources */,
+				8528CE012C6E083F0070EFA7 /* LocationRepository.swift in Sources */,
 				85ADC23E2BC6FA3D008E947E /* PromisePreviewView.swift in Sources */,
 				8598F9E02BC0361100132DE6 /* Adego_iOSApp.swift in Sources */,
 				85BAC87B2C403E63006261F8 /* UserRepositoryImpl.swift in Sources */,
 				85AA46DB2C3DF1D600F42C63 /* AuthService.swift in Sources */,
-				859299802C40F8B6005EB807 /* ProfileImage.swift in Sources */,
+				859299802C40F8B6005EB807 /* ProfileImageResponse.swift in Sources */,
+				8528CDFB2C69EE5F0070EFA7 /* UserInfo.swift in Sources */,
+				8528CE0B2C70C1360070EFA7 /* ImagePickerCore.swift in Sources */,
+				85DD6FFA2C6778FD0072FBD1 /* LinkResponse.swift in Sources */,
 				85ADC2802BCC31B4008E947E /* CreatePromiseButton.swift in Sources */,
 				85ADC2712BCB1034008E947E /* SelectLocationView.swift in Sources */,
 				85ADC2502BC8BF37008E947E /* SettingView.swift in Sources */,
