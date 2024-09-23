@@ -19,13 +19,21 @@ struct CreatePromiseView: View {
                 )
                 
                 CustomInputTextField(
-                    text: "약속이름 (\(store.titleLength)/12)",
+                    text: "약속이름 (1/12)",
                     input: $store.promiseTitle,
                     placeholder: "약속 이름을 정해주세요.", 
                     isFormValid: store.isFormValid
                 )
                 
+                if store.isFormValid {
+                    Text(store.message)
+                        .font(.wantedSans())
+                        .foregroundStyle(.red)
+                        .padding(.top, 10)
+                }
+                
                 Spacer()
+                
                 
                 Button {
                     store.send(.navigateToSelectDayView)
