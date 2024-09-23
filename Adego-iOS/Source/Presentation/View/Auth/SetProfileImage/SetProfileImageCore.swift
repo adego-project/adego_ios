@@ -6,7 +6,6 @@
 //
 
 import ComposableArchitecture
-import Combine
 import UIKit
 import SwiftUI
 import FlowKit
@@ -18,20 +17,23 @@ struct SetProfileImageCore: Reducer {
     struct State: Equatable {
         var isFormValid: Bool = false
         var base64String: String = ""
-
-        var selectedImage: UIImage = UIImage()
-        var isImagePickerShow: Bool = false
+        
+        var isImagePickerPresented: Bool = false
         var isShowPhotoLibrary: Bool = false
         var isShowSearchView: Bool = false
-        
-        var profileImage: UIImage = UIImage()
-        var result = "First you've to select an image"
+        var profileImage: UIImage = UIImage() {
+            didSet {
+                print("profileImage didChange")
+            }
+        }
     }
     
     enum Action: ViewAction {
-        case createAccount
+        case createAccount(UIImage)
         case refreshProfileImage
-        case navigate(String, UIImage)
+        case navigate
+//        case imagePicker()
+        case imageSelected(UIImage)
         case view(View)
     }
     
@@ -42,78 +44,67 @@ struct SetProfileImageCore: Reducer {
     
     @Dependency(\.flow) var flow
     
-    var body: some Reducer<State, Action> {
+    var body: some ReducerOf<Self> {
         BindingReducer(action: \.view)
         Reduce { state, action in
             switch action {
-            case .createAccount:
+            case .createAccount(let profileImage):
                 print("createAccount")
-                registerProfileImage()
                 replaceRootToMain()
-                return .none
+                return .run { send in
+                    let userRepository = UserRepositoryImpl()
+                    let userUseCase = UserUseCase(userRepository: userRepository)
+                    do {
+                        let response = try await userUseCase.registerProfileImage(profileImage: convertImageToBase64(profileImage)!)
+                        print("✅SetProfileImageCore.registerProfileImage Image: \(response)")
+                    } catch {
+                            print("🚫SigninCore.tokenRefresh error: \(error.localizedDescription)")
+                            print(error)
+                        }
+                }
                 
             case .refreshProfileImage:
-                state.profileImage = base64StringToUIImage(base64String: state.base64String) ?? UIImage()
+                print("asdfasdfsdf")
                 return .none
                 
-            case let .navigate(result, selectedImage):
+            case .navigate:
                 flow.sheet(
                     ImagePickerView(
                         store: Store(
                             initialState: ImagePickerCore.State(
-                                result: result,
-                                selectedImage: selectedImage
+                                selectedImage: state.profileImage
                             )
                         ) {
                             ImagePickerCore()
-                        },
-                        setImageCore: Store(
-                            initialState: SetProfileImageCore.State()
-                        ) {
-                            SetProfileImageCore()
-                        },
-                        sourceType: .photoLibrary
+                        }
                     )
                 )
+                return .none
+                
+//            case .imagePicker(let imagePickerAction):
+//                            switch imagePickerAction {
+//                            case .didSelectImage(let image):
+//                                state.profileImage = image
+//                                state.isImagePickerPresented = false
+//                            case .dismiss:
+//                                state.isImagePickerPresented = false
+//                            }
+//                            return .none
+                
+            case .imageSelected(let image):
+                state.profileImage = image
                 return .none
                 
             case .view(.binding):
                 return .none
             }
             
-            func registerProfileImage() {
-                let base64String = ProfileImageManager.get(.base64String) ?? ""
-                state.base64String = base64String
-                let userRepository = UserRepositoryImpl()
-                let userUseCase = UserUseCase(userRepository: userRepository)
-                
-                userUseCase.registerProfileImage(
-                    profileImage: base64String
-                ) { result in
-                    switch result {
-                    case .success(let response):
-                        print("✅SetProfileImageCore.registerProfileImage Image: \(response)")
-                    case .failure(let error):
-                        print("🚫SigninCore.tokenRefresh error: \(error.localizedDescription)")
-                        print(error)
-                    }
+            @Sendable 
+            func convertImageToBase64(_ image: UIImage) -> String? {
+                guard let imageData = image.jpegData(compressionQuality: 1.0) else {
+                    return "이미지 변환에 실패하였습니다."
                 }
-            }
-            
-            func refresh() {
-                state.profileImage = base64StringToUIImage(base64String: state.base64String) ?? UIImage()
-            }
-            
-            func base64StringToUIImage(base64String: String) -> UIImage? {
-                guard let imageData = Data(base64Encoded: base64String, options: .ignoreUnknownCharacters) else {
-                        flow.alert(
-                            Alert(title: "Base64 문자열을 Data로 변환하는 데 실패했습니다.")
-                        )
-                    return nil
-                }
-
-                let image = UIImage(data: imageData)
-                return image
+                return imageData.base64EncodedString(options: .lineLength64Characters)
             }
 
             func replaceRootToMain() {
@@ -132,3 +123,4 @@ struct SetProfileImageCore: Reducer {
         }
     }
 }
+

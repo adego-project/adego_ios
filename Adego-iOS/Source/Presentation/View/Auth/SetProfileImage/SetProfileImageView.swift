@@ -11,6 +11,7 @@ import ComposableArchitecture
 struct SetProfileImageView: View {
     @Perception.Bindable private var store: StoreOf<SetProfileImageCore>
     
+    @State private var profileImage: UIImage = UIImage()
     init(store: StoreOf<SetProfileImageCore>) {
         self.store = store
     }
@@ -31,12 +32,14 @@ struct SetProfileImageView: View {
                         Circle()
                             .stroke()
                     )
-                    .onChange(of: store.base64String) { result in
+                    .onChange(of: store.profileImage) { result in
                         store.send(.refreshProfileImage)
+                        print("onChange")
                     }
                 
                 Button {
-                    store.send(.navigate(store.result, store.selectedImage))
+                    store.send(.navigate)
+                    print("setprofileImageView.setProfileImageButton")
                 } label: {
                     Text("프로필 사진 설정 \(Image(systemName: "arrow.right"))")
                         .font(.wantedSans())
@@ -44,11 +47,12 @@ struct SetProfileImageView: View {
                         .underline()
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
+
                 
                 Spacer()
                 
                 Button {
-                    store.send(.createAccount)
+                    store.send(.createAccount(store.profileImage))
                 } label: {
                     Text("생성하기 \(Image(systemName: "arrow.right"))")
                     
@@ -56,11 +60,6 @@ struct SetProfileImageView: View {
                 .buttonStyle(CustomWhiteRoundedButton())
                 .padding(.bottom, 10)
             }
-            
-            .onAppear {
-                store.send(.refreshProfileImage)
-            }
         }
     }
 }
-
