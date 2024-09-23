@@ -10,10 +10,6 @@ import ComposableArchitecture
 
 struct PromisePreviewView: View {
     @Perception.Bindable var store: StoreOf<PromisePreviewCore>
-
-    init(store: StoreOf<PromisePreviewCore>) {
-        self._store = Perception.Bindable(store)
-    }
     
     var body: some View {
         WithPerceptionTracking {
@@ -65,39 +61,40 @@ extension PromisePreviewView {
                 sendNotificationViewButton
             }
         }
-        .animation(.easeInOut, value: store.isPromiseValid)
     }
     
     private var shereButton: some View {
-        Button {
-            store.isPromiseValid.toggle()
-        } label: {
-            Text(store.promiseTimeRemaingUntil)
-                .foregroundStyle(.white)
-                .frame(width: 259, height: 56)
-                .background(.gray30)
-        }
-        .clipShape(
-            RoundedRectangle(cornerRadius: 8)
-        )
-        
-        return Button {
-            
-        } label: {
-            VStack {
-                Image(systemName: "square.and.arrow.up")
-                    .frame(width: 24, height: 24)
+        HStack {
+            Button {
+                store.isPromiseValid.toggle()
+            } label: {
+                Text(store.promiseTimeRemaingUntil)
                     .foregroundStyle(.white)
+                    .frame(width: 259, height: 56)
+                    .background(.gray30)
+                    .clipShape(
+                        RoundedRectangle(cornerRadius: 8)
+                    )
             }
-            .frame(width: 56, height: 56)
-            .buttonStyle(
-                CustomStrokeRoundedButtonStyle()
-            )
+            
+            Button {
+                
+            } label: {
+                VStack {
+                    Image(systemName: "square.and.arrow.up")
+                        .frame(width: 24, height: 24)
+                        .foregroundStyle(.white)
+                }
+                .frame(width: 56, height: 56)
+                .buttonStyle(
+                    CustomWhiteRoundedButton()
+                )
+            }
         }
     }
     
     
-    private var sendNotificationViewButton: some View{
+    private var sendNotificationViewButton: some View {
         Button {
             store.isPromiseValid.toggle()
             store.send(.navigateToSendNotificationView)
@@ -107,7 +104,7 @@ extension PromisePreviewView {
                 .frame(width: 319, height: 56)
                 .background(.white)
         }
-        .buttonStyle(CustomStrokeRoundedButtonStyle())
+        .buttonStyle(CustomWhiteRoundedButton())
         .clipShape(
             RoundedRectangle(cornerRadius: 8)
         )
