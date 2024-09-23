@@ -15,60 +15,39 @@ class PromiseUseCase {
     }
     
     func getPromise(
-        accessToken: String,
-        completion: @escaping (Result<Promise, Error>) -> Void
-    ) {
-        promiseRepository.getPromise(
-            accessToken: accessToken,
-            completion: completion
+        accessToken: String
+    ) async throws -> Promise {
+        return try await promiseRepository.getPromise(
+            accessToken: accessToken
         )
     }
     
     func createPromise(
         name: String,
         address: String,
-        date: String,
-        completion: @escaping (Result<Promise, Error>) -> Void
-    ) {
-        promiseRepository.createPromise(
+        date: String
+    ) async throws -> Promise {
+        return try await promiseRepository.createPromise(
             name: name,
             address: address,
-            date: date,
-            completion: completion
-        )
-    }
-    
-    func createPromise(
-        name: String,
-        address: String,
-        date: String,
-        completion: @escaping (Result<Promise, Error>) -> Void
-    ) {
-        promiseRepository.createPromise(
-            name: name,
-            address: address,
-            date: date,
-            completion: completion
+            date: date
         )
     }
     
     func deletePromise(
         accessToken: String,
         completion: @escaping (Result<Promise, Error>) -> Void
-    ) {
-        promiseRepository.deletePromise(
-            accessToken: accessToken,
-            completion: completion
+    ) async throws -> Promise {
+        return try await promiseRepository.deletePromise(
+            accessToken: accessToken
         )
     }
     
     func inviteUserToPromise(
-        accessToken: String,
-        completion: @escaping (Result<LinkResponse, Error>) -> Void
-    ) {
-        promiseRepository.inviteUserToPromise(
-            accessToken: accessToken,
-            completion: completion
+        accessToken: String
+    ) async throws -> LinkResponse {
+        return try await promiseRepository.inviteUserToPromise(
+            accessToken: accessToken
         )
     }
 }
