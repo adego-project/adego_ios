@@ -17,7 +17,7 @@ struct MainView: View {
             ZStack {
                 MapView(
                     store: Store(
-                        initialState: MapCore.State()
+                        initialState: MapCore.State(promise: store.promise)
                     ) {
                         MapCore()
                     }
@@ -44,9 +44,6 @@ extension MainView {
             Image("Union")
                 .resizable()
                 .frame(width: 28, height: 28)
-                .onTapGesture {
-                    store.send(.setIsHavePromiseTrue)
-                }
             
             Spacer()
             
@@ -55,50 +52,52 @@ extension MainView {
             } label: {
                 Image(systemName: "gearshape")
                     .resizable()
-                    .frame(width: 18, height: 18)
+                    .frame(width: 28, height: 28)
             }
             .buttonStyle(CustomStrokeRoundedButtonStyle())
-            
         }
         .padding(.horizontal, 16)
     }
     
     private var promisePreviewStack: some View {
         ZStack {
-            if store.isHavePromise {
-                PromisePreviewView(
-                    store: Store(
-                        initialState: PromisePreviewCore.State()
-                    ) {
-                        PromisePreviewCore()
-                    }
-                )
-                .frame(maxWidth: .infinity)
-                .padding(.horizontal, 10)
-                .transition(
-                    .asymmetric(
-                        insertion: .move(edge: .trailing),
-                        removal: .move(edge: .leading)
+            Group {
+                if store.isHavePromise {
+                    PromisePreviewView(
+                        store: Store(
+                            initialState: PromisePreviewCore.State()
+                        ) {
+                            PromisePreviewCore()
+                        }
                     )
-                )
-                .navigationBarHidden(true)
-            } else {
-                AppointmentNoneView(
-                    store: Store(
-                        initialState: AppointmentNoneCore.State()
-                    ) {
-                        AppointmentNoneCore()
-                    }
-                )
-                .frame(maxWidth: .infinity)
-                .transition(
-                    .asymmetric(
-                        insertion: .move(edge: .trailing),
-                        removal: .move(edge: .leading)
+                    .frame(maxWidth: .infinity)
+                    .padding(.horizontal, 10)
+                } else {
+                    AppointmentNoneView(
+                        store: Store(
+                            initialState: AppointmentNoneCore.State()
+                        ) {
+                            AppointmentNoneCore()
+                        }
                     )
-                )
-                .navigationBarHidden(true)
+                    .frame(maxWidth: .infinity)
+                }
             }
+            
+            .navigationBarHidden(true)
+            .transition(
+                .asymmetric(
+                    insertion: .move(edge: .trailing),
+                    removal: .move(edge: .leading)
+                )
+            )
+        }
+        .onAppear {
+            print(store.isHavePromise)
+        }
+        .onChange(of: store.isHavePromise) { havePromise in
+            print(store.isHavePromise)
+
         }
     }
 }
