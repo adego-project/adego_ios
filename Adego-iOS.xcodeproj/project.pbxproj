@@ -22,7 +22,7 @@
 		8528CDFB2C69EE5F0070EFA7 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8528CDFA2C69EE5F0070EFA7 /* UserInfo.swift */; };
 		8528CDFE2C6E06970070EFA7 /* CordinateResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8528CDFD2C6E06970070EFA7 /* CordinateResponse.swift */; };
 		8528CE012C6E083F0070EFA7 /* LocationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8528CE002C6E083F0070EFA7 /* LocationRepository.swift */; };
-		8528CE032C6E099A0070EFA7 /* LoationRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8528CE022C6E099A0070EFA7 /* LoationRepositoryImpl.swift */; };
+		8528CE032C6E099A0070EFA7 /* LocationRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8528CE022C6E099A0070EFA7 /* LocationRepositoryImpl.swift */; };
 		8528CE062C6E0AF70070EFA7 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8528CE052C6E0AF70070EFA7 /* LocationService.swift */; };
 		8528CE082C6FBB690070EFA7 /* UserNameResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8528CE072C6FBB690070EFA7 /* UserNameResponse.swift */; };
 		8528CE0B2C70C1360070EFA7 /* ImagePickerCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8528CE0A2C70C1360070EFA7 /* ImagePickerCore.swift */; };
@@ -124,7 +124,7 @@
 		8528CDFA2C69EE5F0070EFA7 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		8528CDFD2C6E06970070EFA7 /* CordinateResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CordinateResponse.swift; sourceTree = "<group>"; };
 		8528CE002C6E083F0070EFA7 /* LocationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationRepository.swift; sourceTree = "<group>"; };
-		8528CE022C6E099A0070EFA7 /* LoationRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoationRepositoryImpl.swift; sourceTree = "<group>"; };
+		8528CE022C6E099A0070EFA7 /* LocationRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationRepositoryImpl.swift; sourceTree = "<group>"; };
 		8528CE052C6E0AF70070EFA7 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		8528CE072C6FBB690070EFA7 /* UserNameResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNameResponse.swift; sourceTree = "<group>"; };
 		8528CE0A2C70C1360070EFA7 /* ImagePickerCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerCore.swift; sourceTree = "<group>"; };
@@ -289,7 +289,7 @@
 			isa = PBXGroup;
 			children = (
 				8528CE002C6E083F0070EFA7 /* LocationRepository.swift */,
-				8528CE022C6E099A0070EFA7 /* LoationRepositoryImpl.swift */,
+				8528CE022C6E099A0070EFA7 /* LocationRepositoryImpl.swift */,
 			);
 			path = Location;
 			sourceTree = "<group>";
@@ -980,7 +980,7 @@
 				85AA46C32C3B247B00F42C63 /* SigninView.swift in Sources */,
 				8528CE082C6FBB690070EFA7 /* UserNameResponse.swift in Sources */,
 				85BAC8842C4041AC006261F8 /* User.swift in Sources */,
-				8528CE032C6E099A0070EFA7 /* LoationRepositoryImpl.swift in Sources */,
+				8528CE032C6E099A0070EFA7 /* LocationRepositoryImpl.swift in Sources */,
 				85ADC27A2BCB17F6008E947E /* WhiteTitleText.swift in Sources */,
 				85AA46D12C3CD3A300F42C63 /* AuthRepository.swift in Sources */,
 				85ADC2542BC8BF70008E947E /* SettingCore.swift in Sources */,
