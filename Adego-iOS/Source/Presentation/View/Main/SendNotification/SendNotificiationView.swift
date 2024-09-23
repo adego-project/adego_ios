@@ -12,6 +12,7 @@ import WrappingHStack
 struct SendNotificationView: View {
     @Perception.Bindable var store: StoreOf<SendNotificationCore>
     
+//    let users = User
     var body: some View {
         WithPerceptionTracking {
             VStack {
@@ -29,7 +30,7 @@ struct SendNotificationView: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
                 
                 sendNotificationList(
-                    data: store.userName
+                    data: store.users
                 )
             }
             .navigationBarHidden(false)
@@ -38,7 +39,7 @@ struct SendNotificationView: View {
 }
 
 extension SendNotificationView {
-    private func sendNotificationList(data: [SendUser]) -> some View {
+    private func sendNotificationList(data: [User]) -> some View {
         ScrollView {
             WrappingHStack(data.indices) { index in
                 Button {
@@ -55,13 +56,13 @@ extension SendNotificationView {
                         }
                         .frame(width: 40, height: 40)
                         .background(.gray60)
-                        .overlay(data[index].num == 1 ? Color.gray.opacity(0.6) : .clear)
+//                        .overlay(data[index].name == 1 ? Color.gray.opacity(0.6) : .clear)
                         .clipShape(Circle())
 
                         
                         Text("알파 메일 최시훈")
                             .font(.wantedSans(14))
-                            .foregroundStyle(data[index].num == 1 ? .gray40 : .gray60)
+//                            .foregroundStyle(data[index].num == 1 ? .gray40 : .gray60)
 
                     }
                     .frame(width: 167.5, height: 64)
@@ -73,8 +74,6 @@ extension SendNotificationView {
         .padding(.horizontal, 16)
     }
 }
-
-
 
 #Preview {
     SendNotificationView(
