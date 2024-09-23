@@ -25,7 +25,7 @@ struct SettingView: View {
                             profileImage
                             
                             Button {
-                                
+
                             } label: {
                                 Text("사진 교체 \(Image(systemName: "arrow.right"))")
                                     .font(.wantedSans(14))
