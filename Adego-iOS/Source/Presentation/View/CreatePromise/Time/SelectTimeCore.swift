@@ -45,7 +45,10 @@ struct SelectTimeCore: Reducer {
                 flow.push(
                     SelectLocationView(
                         store: Store(
-                            initialState: SelectLocationCore.State(promiseTitle: state.promiseTitle, selectedDate: state.formattedDate)
+                            initialState: SelectLocationCore.State(
+                                promiseTitle: state.promiseTitle,
+                                selectedDate: formattedTime
+                            )
                         ) {
                             SelectLocationCore()
                         }
