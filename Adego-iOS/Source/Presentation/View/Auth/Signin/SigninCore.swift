@@ -47,7 +47,6 @@ struct SigninCore: Reducer {
                 return .none
                 
             case .navigation:
-                
                 return .run { send in
                     do {
                         let userRepository = UserRepositoryImpl()
