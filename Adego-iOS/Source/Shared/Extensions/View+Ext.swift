@@ -10,9 +10,4 @@ import SwiftUI
 
 extension View {
     
-    @ViewBuilder
-    func cornerRadius(_ amount: CGFloat) -> some View {
-        self
-            .clipShape(RoundedRectangle(cornerRadius: amount))
-    }
 }

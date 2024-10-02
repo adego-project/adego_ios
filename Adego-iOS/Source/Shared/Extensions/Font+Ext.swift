@@ -42,7 +42,7 @@ extension Font {
         } else {
             print("Failed to load font data")
         }
-        fatalError("Failed to load font named \(fontName)")
+        return UIFont()
     }
 }
 
