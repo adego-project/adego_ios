@@ -18,11 +18,16 @@ struct SettingCore: Reducer {
         var imageUrl: String = ""
         var name: String = "알파 메일 최시훈"
         
-        var selectedImage: UIImage = UIImage()
+        @Shared var profileImage: UIImage?
+        
+        init() {
+            self._profileImage = Shared(nil)
+        }
     }
     
     enum Action {
         case onAppear
+        case refreshProfileImage(UIImage)
         case deletePromise
         case showLogoutAlert
         case showSecessionAlert
@@ -47,18 +52,29 @@ struct SettingCore: Reducer {
                 let userRepository = UserRepositoryImpl()
                 let getUserUseCase = UserUseCase(userRepository: userRepository)
                 
-                return .run { send in
-                    do {
-                        let response = try await getUserUseCase.getUser(accessToken: savedAccessToken)
-                        print("✅SigninCore.getUser id:", response.id)
-                        print("✅SigninCore.getUser name:", response.name ?? "")
-                        await send(.setValue(response))
-                    } catch {
-                        print("🚫SigninCore.getUser error: \(error.localizedDescription)")
-                    }
-                    
-                }
-                
+                return .merge (
+                    Effect.publisher {
+                        state.$profileImage.publisher
+                            .compactMap { profileImage in
+                                profileImage != nil ? Action.refreshProfileImage(profileImage ?? UIImage()) : nil
+                            }
+                    },
+                        .run { send in
+                            do {
+                                let response = try await getUserUseCase.getUser(accessToken: savedAccessToken)
+                                print("✅SigninCore.getUser id:", response.id)
+                                print("✅SigninCore.getUser name:", response.name ?? "")
+                                await send(.setValue(response))
+                            } catch {
+                                print("🚫SigninCore.getUser error: \(error.localizedDescription)")
+                            }
+                            
+                        }
+                    )
+            
+            case .refreshProfileImage(let image):
+                    state.profileImage = image
+                    return .none
                 
             case .deletePromise:
                 

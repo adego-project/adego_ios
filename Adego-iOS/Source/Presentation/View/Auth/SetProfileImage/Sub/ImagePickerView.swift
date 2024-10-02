@@ -6,16 +6,14 @@
 //
 
 import SwiftUI
+import FlowKit
+import ComposableArchitecture
 
 struct ImagePickerView: UIViewControllerRepresentable {
-    
-    @Binding var result: String
-    @Binding var selectedImage: UIImage
-    
-    @Environment(\.presentationMode)  var presentationMode
-    
+    @Perception.Bindable var store: StoreOf<ImagePickerCore>
+        
     var sourceType: UIImagePickerController.SourceType = .photoLibrary
-    
+
     func makeCoordinator() -> Coordinator {
         Coordinator(self)
     }
@@ -35,9 +33,10 @@ struct ImagePickerView: UIViewControllerRepresentable {
     }
 }
 
-
 final class Coordinator: NSObject, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     let parent: ImagePickerView
+    
+    var image: UIImage?
     
     init(_ parent: ImagePickerView) {
         self.parent = parent
@@ -45,12 +44,15 @@ final class Coordinator: NSObject, UIImagePickerControllerDelegate, UINavigation
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         if let selectedImage = info[.originalImage] as? UIImage {
-            parent.selectedImage = selectedImage
+            DispatchQueue.main.async {
+                self.parent.store.send(.didSelectImage(selectedImage))
+                print("imagePickerController.selectedImage")
+            }
         }
-        parent.presentationMode.wrappedValue.dismiss()
+        parent.store.send(.dismiss)
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        parent.presentationMode.wrappedValue.dismiss()
+        parent.store.send(.dismiss)
     }
 }
