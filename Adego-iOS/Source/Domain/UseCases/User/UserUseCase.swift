@@ -18,7 +18,7 @@ class UserUseCase {
         name: String,
         accessToken: String
     ) async throws -> UserNameResponse {
-        userRepository.updateUserName(
+        return try await userRepository.updateUserName(
             name: name,
             accessToken: accessToken
         )

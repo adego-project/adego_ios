@@ -14,6 +14,7 @@ struct SetNameCore: Reducer {
     
     @ObservableState
     struct State: Equatable {
+        var message: String = ""
         var isFormValid: Bool = false
         var name: String = "" {
             didSet {
@@ -21,16 +22,20 @@ struct SetNameCore: Reducer {
             }
         }
         var nameLength: Int = 0 {
-            didSet {
-                if nameLength <= 8 {
-                    isFormValid = false
-                } else if nameLength == 0 {
-                    isFormValid = false
-                } else {
+            didSet(oldVar) {
+                if nameLength > 9 {
                     isFormValid = true
+                    message = "글자가 너무 길어요."
+
+                } else if 0 < nameLength {
+                    isFormValid = false
+                    message = "글자가 너무 적어요."
+                } else {
+                    isFormValid = false
                 }
             }
         }
+    
     }
     
     enum Action: ViewAction {
@@ -54,21 +59,16 @@ struct SetNameCore: Reducer {
                 let userRepository = UserRepositoryImpl()
                 let userUseCase = UserUseCase(userRepository: userRepository)
                 return .run { send in
-                    userUseCase.updateUserName(name: name, accessToken: savedAccessToken) { result in
-                        switch result {
-                        case .success(let response):
+                    do {
+                        let response = try await userUseCase.updateUserName(name: name, accessToken: savedAccessToken)
                             print("✅SetNameCore.next Image: \(response.status)")
                             
-                            DispatchQueue.main.async {
-                                send(.navigateToSetProfileImage)
-                            }
-                            
-                        case .failure(let error):
+                            await send(.navigateToSetProfileImage)
+                        } catch {
                             print("🚫SigninCore.tokenRefresh error: \(error.localizedDescription)")
                             print(error)
                         }
                     }
-                }
 
             case .navigateToSetProfileImage:
                 flow.push(
