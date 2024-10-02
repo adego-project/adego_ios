@@ -25,10 +25,7 @@ struct SelectLocationView: View {
                 )
                 .padding(.leading, 16)
                 .padding(.top, 40)
-                .debounce(value: store.searchWord) { debouncedValue in
-                    print("Debounced Value: \(debouncedValue)")
-                    store.send(.getAddressList)
-                }
+                
                 
                 List(store.serchList.documents, id: \.id) { index in
                     Button {
@@ -38,11 +35,10 @@ struct SelectLocationView: View {
                             Text(index.placeName)
                                 .font(.wantedSans())
                                 .foregroundStyle(.gray100)
-                            
-                            Text(index.roadAddressName)
-                                .font(.wantedSans(14))
-                                .foregroundStyle(.gray70)
-                                .padding(.top, 4)
+                            Text(index.roadAddressName.isEmpty ? index.addressName : index.roadAddressName)
+                                    .font(.wantedSans(14))
+                                    .foregroundStyle(.gray70)
+                                    .padding(.top, 4)
                         }
                     }
                 }

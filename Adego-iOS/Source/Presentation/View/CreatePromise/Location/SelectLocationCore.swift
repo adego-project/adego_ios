@@ -17,14 +17,10 @@ struct SelectLocationCore: Reducer {
     struct State: Equatable {
         
         var searchWord: String = ""
-        var debouncedText: String = ""
         
         var promiseTitle: String = ""
         var selectedAddress: String = ""
         var selectedDate: String = ""
-        
-        var debounceTimer: Timer?
-        let debounceInterval: TimeInterval = 0.5
         
         var promiseResponse: Promise = Promise()
         
