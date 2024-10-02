@@ -24,11 +24,18 @@ struct CreatePromiseCore: Reducer {
             didSet {
                 if titleLength > 12 {
                     isFormValid = true
+                    message = "제목이 너무 길어요."
+
+                } else if 0 < titleLength {
+                    isFormValid = false
+                    message = "제목이 너무 짧아요."
                 } else {
                     isFormValid = false
                 }
             }
         }
+        
+        var message: String = ""
     }
     
     enum Action: ViewAction {
