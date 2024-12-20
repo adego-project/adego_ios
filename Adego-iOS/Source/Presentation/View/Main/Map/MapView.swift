@@ -15,38 +15,13 @@ struct MapView: View {
     var body: some View {
         WithPerceptionTracking {
             ZStack {
-                Map(coordinateRegion: .constant(store.mapRegion),
-                    showsUserLocation: true,
-                    annotationItems: store.locations,
-                    annotationContent: { location in
-                    MapAnnotation(coordinate: location.coordinates) {
-                        MapAnnotationView()
-                            .scaleEffect(store.mapLocation == location ? 1 : 0.7)
-                            .clipShape(Circle())
-                            .overlay(
-                                Circle()
-                                    .stroke()
-                                    .foregroundStyle(.gray80)
-                            )
-                            .onTapGesture {
-                                store.send(.updateMapRegion(location))
-                            }
-                        
-//                            mapDistanceView
-//                                .scaleEffect(store.mapLocation == location ? 1 : 0.7)
-//                                .clipShape(Circle())
-//                                .overlay(
-//                                    Circle()
-//                                        .stroke()
-//                                        .foregroundStyle(.blue)
-//                                )
-                    }
-                })
-                .preferredColorScheme(.dark)
-                .ignoresSafeArea(.all)
-                .onAppear {
-                    store.send(.findCurrentLocation)
-                }
+                Color.black
+            }
+            .onAppear {
+                store.send(.startTimer)
+            }
+            .onDisappear {
+                store.send(.stopTimer)
             }
         }
     }

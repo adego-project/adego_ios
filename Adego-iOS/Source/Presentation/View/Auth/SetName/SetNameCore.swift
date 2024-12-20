@@ -22,12 +22,12 @@ struct SetNameCore: Reducer {
             }
         }
         var nameLength: Int = 0 {
-            didSet(oldVar) {
-                if nameLength > 9 {
+            didSet {
+                if nameLength >= 9 {
                     isFormValid = true
                     message = "글자가 너무 길어요."
 
-                } else if 0 < nameLength {
+                } else if 0 <= nameLength {
                     isFormValid = false
                     message = "글자가 너무 적어요."
                 } else {
@@ -56,20 +56,33 @@ struct SetNameCore: Reducer {
         Reduce { state, action in
             switch action {
             case .next(let name):
-                let userRepository = UserRepositoryImpl()
-                let userUseCase = UserUseCase(userRepository: userRepository)
-                return .run { send in
-                    do {
-                        let response = try await userUseCase.updateUserName(name: name, accessToken: savedAccessToken)
-                            print("✅SetNameCore.next Image: \(response.status)")
-                            
-                            await send(.navigateToSetProfileImage)
-                        } catch {
-                            print("🚫SigninCore.tokenRefresh error: \(error.localizedDescription)")
-                            print(error)
+                if state.nameLength >= 0 {
+                    let userRepository = UserRepositoryImpl()
+                    let userUseCase = UserUseCase(userRepository: userRepository)
+                    return .run { send in
+                        do {
+                            let response = try await userUseCase.updateUserName(name: name, accessToken: savedAccessToken)
+                                print("✅SetNameCore.next Image: \(response.status)")
+                                
+                                await send(.navigateToSetProfileImage)
+                            } catch {
+                                if let errorResponse = error as? ErrorResponse {
+                                    print("🚫SetNameCore.next: \(errorResponse)")
+                                    flow.alert(Alert(title: errorResponse.responseMessage()))
+                                } else {
+                                    print("🚫SetNameCore.next: \(error.localizedDescription)")
+                                    flow.alert(Alert(title: "정의되지 않은 오류입니다. \n잠시후 다시 시작해주세요."))
+                                }
+                            }
                         }
-                    }
-
+                } else {
+                    flow.alert(
+                        Alert(
+                            title: "이름을 1자 이상 입력해주세요"
+                        )
+                    )
+                    return .none
+                }
             case .navigateToSetProfileImage:
                 flow.push(
                     SetProfileImageView(

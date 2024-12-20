@@ -15,6 +15,7 @@ struct ImagePickerCore: Reducer {
     @ObservableState
     struct State {
         @Shared var selectedImage: UIImage?
+        @Shared var isFormValid: Bool?
     }
     
     enum Action: ViewAction {
@@ -36,14 +37,23 @@ struct ImagePickerCore: Reducer {
         Reduce { state, action in
             switch action {
             case .didSelectImage(let image):
+                let userRepository = UserRepositoryImpl()
+                let userUseCase = UserUseCase(userRepository: userRepository)
                 return .run { send in
-//                    DispatchQueue.global().async {
-                    print("asdf")
-                        await send(.changeValue(image))
-//                    }
+                    await send(.changeValue(image))
+                    do {
+                        let response = try await userUseCase.registerProfileImage(profileImage: convertImageToBase64(image), accessToken: savedAccessToken)
+                        print("✅ImagePicker.didselectImage: \(response)")
+                    } catch {
+                        print(convertImageToBase64(image))
+                        print("🚫ImagePicker.didselectImage: \(error.localizedDescription)")
+                    }
+                    
                 }
+                
             case .changeValue(let image):
                 state.selectedImage = image
+                state.isFormValid = false
                 return .none
             case .dismiss:
                 flow.dismiss()
@@ -52,6 +62,15 @@ struct ImagePickerCore: Reducer {
             case .view(.binding):
                 return .none
             }
+            
+            @Sendable
+            func convertImageToBase64(_ image: UIImage) -> String {
+                guard let imageData = image.jpegData(compressionQuality: 1.0) else {
+                    return "이미지 변환에 실패하였습니다."
+                }
+                return imageData.base64EncodedString(options: .lineLength64Characters)
+            }
         }
     }
 }
+

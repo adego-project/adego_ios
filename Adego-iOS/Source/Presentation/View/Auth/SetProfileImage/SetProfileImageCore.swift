@@ -15,15 +15,17 @@ struct SetProfileImageCore {
     
     @ObservableState
     struct State {
-        var isFormValid: Bool = false
         var base64String: String = ""
         
         var isImagePickerPresented: Bool = false
         var isShowPhotoLibrary: Bool = false
         var isShowSearchView: Bool = false
+        
+        @Shared var isFormValid: Bool?
         @Shared var profileImage: UIImage?
         
         init() {
+            self._isFormValid = Shared(nil)
             self._profileImage = Shared(nil)
         }
         
@@ -55,7 +57,7 @@ struct SetProfileImageCore {
                             profileImage != nil ? Action.refreshProfileImage(profileImage) : nil
                         }
                 }
-                
+            
             case .createAccount(let profileImage):
                 print("createAccount")
                 replaceRootToMain()
@@ -63,7 +65,7 @@ struct SetProfileImageCore {
                     let userRepository = UserRepositoryImpl()
                     let userUseCase = UserUseCase(userRepository: userRepository)
                     do {
-                        let response = try await userUseCase.registerProfileImage(profileImage: convertImageToBase64(profileImage)!)
+                        let response = try await userUseCase.registerProfileImage(profileImage: convertImageToBase64(profileImage)!, accessToken: savedAccessToken)
                         print("✅SetProfileImageCore.registerProfileImage Image: \(response)")
                     } catch {
                         print("🚫SigninCore.tokenRefresh error: \(error.localizedDescription)")
@@ -80,7 +82,8 @@ struct SetProfileImageCore {
                     ImagePickerView(
                         store: Store(
                             initialState: ImagePickerCore.State(
-                                selectedImage: state.$profileImage
+                                selectedImage: state.$profileImage,
+                                isFormValid: state.$isFormValid
                             )
                         ) {
                             ImagePickerCore()

@@ -12,13 +12,13 @@ enum UserService {
     case updateUserName(name: String, accessToken: String)
     
     case getUser(accessToken: String)
-    case registerProfileImage(profileImage: String)
+    case registerProfileImage(profileImage: String, accessToken: String)
     case deleteUser(accessToken: String)
 }
 
 extension UserService: TargetType {
     var baseURL: URL {
-        return URL(string: "https://adego.plebea.com")!
+        return URL(string: "https://api.adego.seogaemo.com")!
     }
     
     var path: String {
@@ -46,7 +46,7 @@ extension UserService: TargetType {
         case .getUser:
             return .get
         case .registerProfileImage:
-            return .patch
+            return .put
         case .deleteUser:
             return .delete
         }
@@ -54,8 +54,7 @@ extension UserService: TargetType {
     
     var task: Task {
         switch self {
-            
-        case let .updateUserName(name, accessToken):
+        case let .updateUserName(name, _):
             return .requestParameters(
                 parameters: [
                     "name": name
@@ -71,7 +70,7 @@ extension UserService: TargetType {
                 encoding: URLEncoding.queryString
             )
             
-        case let .registerProfileImage(profileImage):
+        case let .registerProfileImage(profileImage, _):
             return .requestParameters(
                 parameters: [
                     "profileImage": profileImage
@@ -85,7 +84,7 @@ extension UserService: TargetType {
     
     var headers: [String: String]? {
         switch self {
-        case let .updateUserName(name, accessToken):
+        case let .updateUserName(_, accessToken):
             return [
                 "Content-Type": "application/json",
                 "Authorization": "Bearer \(accessToken)"
@@ -96,9 +95,10 @@ extension UserService: TargetType {
                 "Content-Type": "application/json",
                 "Authorization": "Bearer \(accessToken)"
             ]
-        case .registerProfileImage:
+        case let .registerProfileImage(_, accessToken):
             return [
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                "Authorization": "Bearer \(accessToken)"
             ]
         case .deleteUser(let accessToken):
             return [

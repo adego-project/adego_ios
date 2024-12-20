@@ -6,6 +6,7 @@
 //
 
 import ComposableArchitecture
+import FlowKit
 
 @Reducer
 struct SigninCore: Reducer {
@@ -17,6 +18,8 @@ struct SigninCore: Reducer {
     }
     
     enum Action: Equatable {
+        case onAppear
+        case tokenRefresh
         case successSigninWithApple(String)
         case kakaoLogin
         case navigation
@@ -25,6 +28,10 @@ struct SigninCore: Reducer {
     var body: some Reducer<State, Action> {
         Reduce { state, action in
             switch action {
+            case .onAppear:
+                return .run { send in
+                    await send(.tokenRefresh)
+                }
             case .successSigninWithApple(let appleToken):
                 let authRepository = AuthRepositoryImpl()
                 let signinUseCase = SigninUseCase(authRepository: authRepository)
@@ -35,11 +42,28 @@ struct SigninCore: Reducer {
                         print("✅Access Token: \(response.accessToken)")
                         print("✅Refresh Token: \(response.refreshToken)")
                         
-                        await tokenRefresh(accessToken: response.refreshToken)
+                        await send(.tokenRefresh)
+                    } catch {
+                        if let errorResponse = error as? ErrorResponse {
+                            print("🚫SigninCore.successSigninWithApple: \(errorResponse)")
+                            flow.alert(Alert(title: errorResponse.responseMessage()))
+                        } else {
+                            print("🚫SigninCore.successSigninWithApple: \(error.localizedDescription)")
+                            flow.alert(Alert(title: "정의되지 않은 오류입니다. \n잠시후 다시 시작해주세요."))
+                        }
+                    }
+                }
+                
+            case .tokenRefresh:
+                return .run { send in
+                    let authRepository = AuthRepositoryImpl()
+                    let signinUseCase = SigninUseCase(authRepository: authRepository)
+                    do {
+                        let response = try await signinUseCase.tokenRefresh(refreshToken: savedRefreshToken)
+                        print("✅tokenRefresh.Access Token: \(response.accessToken)")
                         await send(.navigation)
                     } catch {
-                        print("🚫Sign in failed: \(error.localizedDescription)")
-                        print(error)
+                        print("🚫Sign in failed: \(error)")
                     }
                 }
             case .kakaoLogin:
@@ -57,8 +81,8 @@ struct SigninCore: Reducer {
                         print("✅SigninCore.getUser name:", response.name ?? "")
                         print("✅SigninCore.getUser planId:", response.planId ?? "")
                         print("✅SigninCore.getUser profileImage:", response.profileImage ?? "")
-                        if ((response.name?.isEmpty) != nil) {
-                            flow.push(
+                        if ((response.name?.isEmpty) == nil) {
+                            await flow.push(
                                 SetNameView(
                                     store: Store(
                                         initialState: SetNameCore.State()
@@ -68,7 +92,8 @@ struct SigninCore: Reducer {
                                 )
                             )
                         } else {
-                            flow.replace(
+                            print("SigninCore.navigation MainView")
+                            await flow.replace(
                                 [
                                     MainView(
                                         store: Store(
@@ -81,25 +106,14 @@ struct SigninCore: Reducer {
                             )
                         }
                     } catch {
-                        print("🚫SigninCore.getUser error: \(error.localizedDescription)")
-                        print(error)
+                        if let errorResponse = error as? ErrorResponse {
+                            print("🚫SigninCore.getUser error: \(errorResponse.responseMessage())")
+                            flow.alert(Alert(title: errorResponse.responseMessage()))
+                        } else {
+                            print("🚫SigninCore.getUser error: \(error.localizedDescription)")
+                            flow.alert(Alert(title: "정의되지 않은 오류입니다. \n잠시후 다시 시작해주세요."))
+                        }
                     }
-                }
-            }
-            
-            // MARK: - func
-            @Sendable 
-            func tokenRefresh(
-                accessToken: String
-            ) async {
-                let authRepository = AuthRepositoryImpl()
-                let signinUseCase = SigninUseCase(authRepository: authRepository)
-                do {
-                    let response = try await signinUseCase.tokenRefresh(accessToken: accessToken)
-                    print("✅tokenRefresh.Access Token: \(response.accessToken)")
-                } catch {
-                    print("🚫SigninCore.tokenRefresh error: \(error.localizedDescription)")
-                    print(error)
                 }
             }
         }

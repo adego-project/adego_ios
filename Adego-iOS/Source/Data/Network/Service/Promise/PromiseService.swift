@@ -17,7 +17,7 @@ enum PromiseService {
 
 extension PromiseService: TargetType {
     var baseURL: URL {
-        return URL(string: "https://adego.plebea.com")!
+        return URL(string: "https://api.adego.seogaemo.com")!
     }
     
     var path: String {

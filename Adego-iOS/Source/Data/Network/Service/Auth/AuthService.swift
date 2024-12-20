@@ -10,12 +10,12 @@ import Moya
 
 enum AuthService {
     case signInWithApple(appleToken: String)
-    case tokenRefresh(accessToken: String)
+    case tokenRefresh(refreshToken: String)
 }
 
 extension AuthService: TargetType {
     var baseURL: URL {
-        return URL(string: "https://adego.plebea.com")!
+        return URL(string: "https://api.adego.seogaemo.com")!
     }
 
     var path: String {
@@ -56,9 +56,9 @@ extension AuthService: TargetType {
             return [
                 "Content-Type": "application/json"
             ]
-        case .tokenRefresh(accessToken: let accessToken):
+        case .tokenRefresh(refreshToken: let refreshToken):
             var headers = ["Content-type": "application/json"]
-            headers["Authorization"] = "Bearer \(accessToken)"
+            headers["Authorization"] = "Bearer \(refreshToken)"
             return headers
         }
     }

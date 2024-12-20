@@ -33,10 +33,12 @@ class UserUseCase {
     }
     
     func registerProfileImage(
-        profileImage: String
+        profileImage: String,
+        accessToken: String
     ) async throws -> ProfileImageResponse {
         return try await userRepository.registerProfileImage(
-            profileImage: profileImage
+            profileImage: profileImage,
+            accessToken: accessToken
         )
     }
     

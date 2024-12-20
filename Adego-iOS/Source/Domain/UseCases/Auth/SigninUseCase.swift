@@ -23,10 +23,10 @@ class SigninUseCase {
     }
     
     func tokenRefresh(
-        accessToken: String
+        refreshToken: String
     ) async throws -> TokenRefresh {
         return try await authRepository.tokenRefresh(
-            accessToken: accessToken
+            refreshToken: refreshToken
         )
     }
 }

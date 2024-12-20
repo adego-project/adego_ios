@@ -7,6 +7,7 @@
 
 import ComposableArchitecture
 import AuthenticationServices
+import FlowKit
 
 class AppleSignInDelegate: NSObject, ASAuthorizationControllerDelegate, ASAuthorizationControllerPresentationContextProviding {
     @Perception.Bindable var store: StoreOf<SigninCore>
@@ -14,6 +15,8 @@ class AppleSignInDelegate: NSObject, ASAuthorizationControllerDelegate, ASAuthor
     init(store: StoreOf<SigninCore>) {
         self.store = store
     }
+    
+    @Dependency(\.flow) var flow
     
     func performSignIn() {
         let request = ASAuthorizationAppleIDProvider().createRequest()
@@ -51,6 +54,9 @@ class AppleSignInDelegate: NSObject, ASAuthorizationControllerDelegate, ASAuthor
     // MARK: - Error
     func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
         print("authorizationController: didCompleteWithError - \(error.localizedDescription)")
+        if error.localizedDescription == "The operation couldn’t be completed. (com.apple.AuthenticationServices.AuthorizationError error 1001.)" {
+            flow.alert(Alert(title: "로그인이 취소 되었습니다."))
+        }
     }
     
     func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {

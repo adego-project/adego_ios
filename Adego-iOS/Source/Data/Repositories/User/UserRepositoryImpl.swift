@@ -50,7 +50,8 @@ class UserRepositoryImpl: UserRepository {
     func getUser(
         accessToken: String
     ) async throws -> User {
-        try await withCheckedThrowingContinuation { continuation in        provider.request(.getUser(accessToken: accessToken)) { result in
+        try await withCheckedThrowingContinuation { continuation in
+            provider.request(.getUser(accessToken: accessToken)) { result in
             switch result {
             case let .success(response):
                 do {
@@ -77,10 +78,11 @@ class UserRepositoryImpl: UserRepository {
     }
     
     func registerProfileImage(
-        profileImage: String
+        profileImage: String,
+        accessToken: String
     ) async throws -> ProfileImageResponse {
         try await withCheckedThrowingContinuation { continuation in
-            provider.request(.registerProfileImage(profileImage: profileImage)) { result in
+            provider.request(.registerProfileImage(profileImage: profileImage, accessToken: accessToken)) { result in
                 switch result {
                 case let .success(response):
                     do {

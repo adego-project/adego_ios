@@ -14,24 +14,18 @@ struct MapCore: Reducer {
     
     @ObservableState
     struct State: Equatable {
-        var locations = [Location]()
-        var mapRegion = MKCoordinateRegion()
-        var mapLocation: Location?
-        var promiseTitle: String = ""
+        var timer: Timer?
         
-        var promise: Promise
-        
-        static func == (lhs: MapCore.State, rhs: MapCore.State) -> Bool {
-            lhs.locations == rhs.locations
-        }
+        var lat: String = ""
+        var lan: String = ""
     }
     
-    
     enum Action: ViewAction {
-        case findCurrentLocation
-        case updateMapRegion(Location?)
+        case getDestination
+        case startTimer
+        case stopTimer
         case view(View)
-
+        case updateDestination(lat: String, lan: String)
     }
     
     @CasePathable
@@ -41,65 +35,47 @@ struct MapCore: Reducer {
     
     @Dependency(\.flow) var flow
     
-    var locationManager: CLLocationManager?
-
     var body: some ReducerOf<Self> {
         BindingReducer(action: \.view)
         Reduce { state, action in
             switch action {
-            case .findCurrentLocation:
-                startTask()
-                return .none
+            case .getDestination:
+                let locationRepository = LocationRepositoryImpl()
+                let locationUseCase = LocationUseCase(locationRepository: locationRepository)
+                return .run { send in
+                    do {
+                        let response = try await locationUseCase.getDestination(accessToken: savedAccessToken)
+                        await send(.updateDestination(lat: response.userid.lat, lan: response.userid.lan))
+                    } catch {
+                        print("MapCore")
+                    }
+                }
                 
-            case .updateMapRegion(let location):
-                guard let location = location else { return .none }
-                state.mapRegion = MKCoordinateRegion(
-                    center: location.coordinates,
-                    span: MKCoordinateSpan(
-                        latitudeDelta: 0.1, longitudeDelta: 0.1
-                    )
-                )
+            case .updateDestination(let lat, let lan):
+                state.lat = lat
+                state.lan = lan
                 return .none
+            
+            case .startTimer:
+                return .run { send in
+                    while true {
+                        try await Task.sleep(nanoseconds: 5_000_000_000)
+                        await send(.getDestination)
+                        print("MapCore.action startTimer")
+                    }
+                }
+                .cancellable(id: TimerID(), cancelInFlight: true)
                 
+                
+            case .stopTimer:
+                print("MapCore.action stopTimer")
+                return .cancel(id: TimerID())
+            
             case .view(.binding):
                 return .none
-            }
-            
-            func startTask() {
-                print("MainCore: startTask")
-                let locationManager = CLLocationManager()
-                let authorizationStatus = locationManager.authorizationStatus
-                
-                switch authorizationStatus {
-                case .authorizedAlways, .authorizedWhenInUse:
-                    getCurrentLocation()
-                case .denied:
-                    DispatchQueue.main.async {
-                        UIApplication.shared.open(
-                            URL(string: UIApplication.openSettingsURLString)!)
-                    }
-                case .restricted, .notDetermined:
-                    locationManager.requestWhenInUseAuthorization()
-                    getCurrentLocation()
-                @unknown default:
-                    return
-                }
-            }
-            
-            func getCurrentLocation() {
-                let manager = CLLocationManager()
-                manager.desiredAccuracy = kCLLocationAccuracyBest
-                manager.requestWhenInUseAuthorization()
-                
-                guard let coordinate = manager.location?.coordinate else { return }
-                
-                state.mapRegion = MKCoordinateRegion(
-                    center: coordinate,
-                    span: MKCoordinateSpan(
-                        latitudeDelta: 0.1, longitudeDelta: 0.1
-                    )
-                )
             }
         }
     }
 }
+
+struct TimerID: Hashable {}

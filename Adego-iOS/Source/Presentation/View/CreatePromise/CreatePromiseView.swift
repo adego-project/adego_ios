@@ -19,9 +19,9 @@ struct CreatePromiseView: View {
                 )
                 
                 CustomInputTextField(
-                    text: "약속이름 (1/12)",
+                    text: "약속이름 (\(store.titleLength)/12)",
                     input: $store.promiseTitle,
-                    placeholder: "약속 이름을 정해주세요.", 
+                    placeholder: "약속 이름을 정해주세요.",
                     isFormValid: store.isFormValid
                 )
                 
@@ -42,8 +42,7 @@ struct CreatePromiseView: View {
                 }
                 .buttonStyle(CustomWhiteRoundedButton())
                 .padding(.bottom, 10)
-                
-            }     
+            }
             .navigationBarHidden(false)
         }
     }

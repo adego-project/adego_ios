@@ -18,7 +18,8 @@ protocol UserRepository {
     ) async throws -> User
     
     func registerProfileImage(
-        profileImage: String
+        profileImage: String,
+        accessToken: String
     ) async throws -> ProfileImageResponse
 
     func deleteUser(

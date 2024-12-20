@@ -20,18 +20,22 @@ struct CustomInputTextField: View {
                 .foregroundStyle(isFormValid ? .red : .gray60)
                 .padding(.top, 40)
             
-            TextField("",
-                      text: input,
-                      prompt: Text(placeholder)
-                .placeholderStyle()
-            )
-            .foregroundStyle(isFormValid ? .red : .gray100)
-            .frame(width: 343)
-            .padding(.top, 4)
+            ZStack(alignment: .leading) {
+                Text(input.wrappedValue.isEmpty ? placeholder : input.wrappedValue)
+                    .foregroundColor(isFormValid ? .red : .gray)
+                    .opacity(input.wrappedValue.isEmpty ? 0.5 : 1.0)
+                
+                TextField("",
+                          text: input
+                )
+                .foregroundColor(.clear)
+                .frame(width: 343)
+                .opacity(1)
+            }
             
             Rectangle()
-                .frame(width: 343, height: 1)
                 .foregroundStyle(isFormValid ? .red : .gray100)
+                .frame(width: 343, height: 1)
         }
     }
 }

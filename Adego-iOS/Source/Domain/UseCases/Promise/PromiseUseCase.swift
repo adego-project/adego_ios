@@ -35,8 +35,7 @@ class PromiseUseCase {
     }
     
     func deletePromise(
-        accessToken: String,
-        completion: @escaping (Result<Promise, Error>) -> Void
+        accessToken: String
     ) async throws -> Promise {
         return try await promiseRepository.deletePromise(
             accessToken: accessToken

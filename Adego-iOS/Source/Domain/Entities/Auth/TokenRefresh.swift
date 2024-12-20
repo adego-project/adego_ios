@@ -9,4 +9,5 @@ import Foundation
 
 struct TokenRefresh: Equatable, Codable {
     var accessToken: String
+    var refreshToken: String
 }

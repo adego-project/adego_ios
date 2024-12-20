@@ -83,7 +83,7 @@ struct CreatePromiseCompleteView: View {
             }
         }
         .onAppear {
-            store.send(.onApear)
+            store.send(.onAppear)
         }
     }
 }

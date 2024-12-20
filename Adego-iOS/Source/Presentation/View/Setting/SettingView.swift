@@ -23,9 +23,14 @@ struct SettingView: View {
                     HStack {
                         VStack {
                             profileImage
+                                .frame(width: 48, height: 48)
+                                .foregroundStyle(.gray80)
+                                .clipShape(
+                                    Circle()
+                                )
                             
                             Button {
-
+                                store.send(.navigateToImagePickerView)
                             } label: {
                                 Text("사진 교체 \(Image(systemName: "arrow.right"))")
                                     .font(.wantedSans(14))
@@ -109,6 +114,9 @@ struct SettingView: View {
                 }
                 .padding(.top, 20)
                 .navigationBarHidden(false)
+                .onAppear {
+                    store.send(.onAppear)
+                }
             }
         }
     }
@@ -116,24 +124,25 @@ struct SettingView: View {
 
 extension SettingView {
     private var profileImage: some View {
-        AsyncImage(
-            url: URL(
-                string: store.imageUrl
-            )
-        ) { image in
-            image
-                .resizable()
-        } placeholder: {
-            Image(systemName: "person.fill")
-                .resizable()
-                .frame(width: 48, height: 48)
-                .foregroundStyle(.gray80)
-                .clipShape(
-                    Circle()
-                )
+        Group {
+            if store.profileImage != nil {
+                Image(uiImage: store.profileImage!)
+                    .resizable()
+            } else {
+                AsyncImage(
+                    url: URL(
+                        string: store.imageUrl
+                    )
+                ) { image in
+                    image
+                        .resizable()
+                } placeholder: {
+                    Image(systemName: "person.fill")
+                        .resizable()
+                }
+            }
         }
     }
-    
 }
 
 #Preview {

@@ -46,7 +46,6 @@ final class Coordinator: NSObject, UIImagePickerControllerDelegate, UINavigation
         if let selectedImage = info[.originalImage] as? UIImage {
             DispatchQueue.main.async {
                 self.parent.store.send(.didSelectImage(selectedImage))
-                print("imagePickerController.selectedImage")
             }
         }
         parent.store.send(.dismiss)

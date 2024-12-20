@@ -26,7 +26,13 @@ struct SigninView: View {
                 
                 Spacer()
                 
-                appleLoginButton
+//                appleLoginButton
+                Button {
+//                    store.send(.navigation)
+                    appleSignInDelegate.performSignIn()
+                } label: {
+                    Image("AppleLoginImage")
+                }
                 
                 Button {
                     store.send(.kakaoLogin)
@@ -37,18 +43,21 @@ struct SigninView: View {
             }
             .padding(.top, 285)
             .navigationBarBackButtonHidden(true)
+            .onAppear {
+                store.send(.onAppear)
+            }
         }
     }
 }
 	
 extension SigninView {
-    private var appleLoginButton: some View {
-        Button {
-            appleSignInDelegate.performSignIn()
-        } label: {
-            Image("AppleLoginImage")
-        }
-    }
+//    private var appleLoginButton: some View {
+//        Button {
+//            appleSignInDelegate.performSignIn()
+//        } label: {
+//            Image("AppleLoginImage")
+//        }
+//    }
 }
 
 #Preview {

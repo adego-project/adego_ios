@@ -24,11 +24,6 @@ struct SetNameView: View {
                     placeholder: "사용자 이름을 입력해주세요",
                     isFormValid: store.isFormValid
                 )
-                .onChange(of: store.nameLength) { _ in
-                    print("isFormValid:", store.isFormValid)
-                    print("nameLength:", store.nameLength)
-                    print("name:", store.name)
-                }
                 
                 if store.isFormValid {
                     Text("글자가 너무 길어요.")

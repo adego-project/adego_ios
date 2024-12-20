@@ -20,7 +20,7 @@ struct SendNotificationCore: Reducer {
     }
     
     enum Action: ViewAction {
-        case onApear
+        case onAppear
         case setValue(Promise)
         case view(View)
     }
@@ -34,7 +34,7 @@ struct SendNotificationCore: Reducer {
         BindingReducer(action: \.view)
         Reduce { state, action in
             switch action {
-            case .onApear:
+            case .onAppear:
                 let promiseRepository = PromiseRepositoryImpl()
                 let promiseUseCase = PromiseUseCase(promiseRepository: promiseRepository)
                 return .run { send in
@@ -42,7 +42,7 @@ struct SendNotificationCore: Reducer {
                         let response = try await promiseUseCase.getPromise(accessToken: savedAccessToken)
                         await send(.setValue(response))
                     } catch {
-                        print("🚫SendNotificationCore.onApear.getPromise error:", error)
+                        print("🚫SendNotificationCore.onAppear.getPromise error:", error)
                     }
                 }
             case .setValue(let response):

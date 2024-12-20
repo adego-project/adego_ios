@@ -11,7 +11,6 @@ import ComposableArchitecture
 struct SetProfileImageView: View {
     @Perception.Bindable private var store: StoreOf<SetProfileImageCore>
     
-    
     init(store: StoreOf<SetProfileImageCore>) {
         self.store = store
     }
@@ -59,6 +58,10 @@ struct SetProfileImageView: View {
                 }
                 .buttonStyle(CustomWhiteRoundedButton())
                 .padding(.bottom, 10)
+                .disabled(store.isFormValid ?? true ? true : false)
+                .onTapGesture {
+                    print(store.isFormValid)
+                }
             }
         }
     }

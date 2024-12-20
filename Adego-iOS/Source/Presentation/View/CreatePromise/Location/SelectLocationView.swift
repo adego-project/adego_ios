@@ -25,7 +25,9 @@ struct SelectLocationView: View {
                 )
                 .padding(.leading, 16)
                 .padding(.top, 40)
-                
+                .onChange(of: store.searchWord) { newValue in
+                    store.send(.getAddressList)
+                }
                 
                 List(store.serchList.documents, id: \.id) { index in
                     Button {

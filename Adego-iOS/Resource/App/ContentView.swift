@@ -6,123 +6,90 @@
 //
 
 import SwiftUI
-
+import ComposableArchitecture
 struct ContentView: View {
-    @State private var selectedDate = Date()
-    @State private var currentMonth: Date = Date()
-
+    @State private var confirmDialogShowing: Bool = false
+    @State private var rating: Float = 0
+    @State private var contentInput: String = ""
+    @State private var contentInputLengthCount: String = "0/1000"
+    
     var body: some View {
-        VStack {
-            Text("약속날을 정해주세요.")
-                .font(.title)
-                .foregroundColor(.white)
-                .padding()
+        NavigationView {
             
-            HStack {
-                Button(action: { withAnimation { previousMonth() } }) {
-                    Image(systemName: "chevron.left")
-                        .foregroundColor(.white)
-                }
-                
-                Text(monthYearString(from: currentMonth))
-                    .foregroundColor(.white)
-                    .padding(.horizontal, 20)
-                
-                Button(action: { withAnimation { nextMonth() } }) {
-                    Image(systemName: "chevron.right")
-                        .foregroundColor(.white)
-                }
-            }
-            .padding(.bottom, 10)
-            
-            daysOfWeekView()
-            
-            VStack {
-                ForEach(weeksInMonth(), id: \.self) { week in
-                    HStack {
-                        ForEach(week, id: \.self) { date in
-                            calendarDayView(date: date, currentMonth: currentMonth, isSelected: isSelected(date: date))
-                                .onTapGesture {
-                                    withAnimation {
-                                        selectedDate = date
-                                    }
-                                }
-                        }
-                    }
-                }
-            }
-        }
-        .padding()
-    }
+            ZStack {
+                VStack(spacing: 0) {
+                    ScrollView {
+                        LazyVStack (spacing: 36) {
+                            VStack(alignment: .center, spacing: 4) {
+                                Text("다른 사람들에게도 이 아티스트의")
+                                Text("공연이 어땠는지 들려주세요!")
     
-    func daysOfWeekView() -> some View {
-            let daysOfWeek = ["일", "월", "화", "수", "목", "금", "토"]
-            
-            return HStack {
-                ForEach(daysOfWeek, id: \.self) { day in
-                    Text(day)
-                        .foregroundColor(.white)
-                        .frame(maxWidth: .infinity)
-                }
-            }
-        }
+                            }
+                            .frame(maxWidth: .infinity)
+                            .padding(.bottom, 20)
 
-        func calendarDayView(date: Date, currentMonth: Date, isSelected: Bool) -> some View {
-            let dayString: String = {
-                let formatter = DateFormatter()
-                formatter.dateFormat = "d"
-                return formatter.string(from: date)
-            }()
-            
-            let isCurrentMonth: Bool = {
-                Calendar.current.isDate(date, equalTo: currentMonth, toGranularity: .month)
-            }()
-            
-            return Text(dayString)
-                .foregroundColor(isSelected ? .black : (isCurrentMonth ? .white : .gray))
-                .padding(8)
-                .background(isSelected ? Color.white : Color.clear)
-                .clipShape(Circle())
-                .frame(maxWidth: .infinity)
-        }
-    
-    private func previousMonth() {
-        currentMonth = Calendar.current.date(byAdding: .month, value: -1, to: currentMonth) ?? Date()
-    }
-    
-    private func nextMonth() {
-        currentMonth = Calendar.current.date(byAdding: .month, value: 1, to: currentMonth) ?? Date()
-    }
-    
-    private func monthYearString(from date: Date) -> String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "YYYY년 M월"
-        return formatter.string(from: date)
-    }
-    
-    private func weeksInMonth() -> [[Date]] {
-        guard let monthInterval = Calendar.current.dateInterval(of: .month, for: currentMonth),
-              let monthFirstWeek = Calendar.current.dateInterval(of: .weekOfMonth, for: monthInterval.start)
-        else {
-            return []
-        }
-        
-        var weeks: [[Date]] = []
-        var startOfWeek = monthFirstWeek.start
-        
-        while startOfWeek < monthInterval.end {
-            let week = (0..<7).compactMap { day -> Date? in
-                Calendar.current.date(byAdding: .day, value: day, to: startOfWeek)
+                            VStack(alignment: .center, spacing: 0) {
+                                Color.yellow
+                                  .onChange(of: rating) { newRating in
+                                    print(newRating)
+                                  }
+                                  .frame(width: 360, height: 40)
+                                
+                                Text("별점을 선택해주세요.")
+                                    .foregroundColor(.gray)
+                            }
+                            .frame(maxWidth: .infinity)
+                            
+                            VStack(spacing: 0) {
+                                ZStack(alignment: .bottomTrailing) {
+                                    Color.green
+                                    .frame(maxWidth: .infinity, maxHeight: 200)
+
+                                    Text(reverseAttributedString($contentInputLengthCount.wrappedValue, "/1000"))
+                                        .foregroundStyle(.white)
+                                        .frame(alignment: .bottomTrailing)
+                                        .padding(.init(top: 0, leading: 0, bottom: 10, trailing: 10))
+                                }
+                                .frame(maxWidth: .infinity, maxHeight: 200)
+
+                            }
+                            .frame(maxWidth: .infinity)
+                        }
+                        .frame(maxWidth: .infinity)
+                    }
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    
+                    Spacer()
+                    
+                    HStack(spacing: 0) {
+                        Button(action: {
+                            confirmDialogShowing = true
+                        }) {
+                            Text("공연 종료 확인")
+                                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        }
+                        .padding(.init(top: 0, leading: 18, bottom: 20, trailing: 18))
+                    }
+                    .frame(height: 52)
+                    .padding(.horizontal, 18)
+                }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
-            weeks.append(week)
-            startOfWeek = Calendar.current.date(byAdding: .weekOfMonth, value: 1, to: startOfWeek) ?? Date()
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
-        
-        return weeks
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(Color("backgroundNormal").ignoresSafeArea(.container, edges: .all))
+        .environment(\.colorScheme, .dark)
     }
     
-    private func isSelected(date: Date) -> Bool {
-        Calendar.current.isDate(date, inSameDayAs: selectedDate)
+    private func reverseAttributedString(_ baseText: String, _ removeAccentText: String) -> AttributedString {
+        var text: AttributedString = .init(stringLiteral: "\(baseText)")
+        
+        let colorAccentRange = text.range(of: removeAccentText)!
+        
+        text[colorAccentRange].foregroundColor = Color.init(white: 1 - 0.22)
+        
+        return text
     }
 }
 

@@ -45,15 +45,17 @@ class AuthRepositoryImpl: AuthRepository {
     
     
     func tokenRefresh(
-        accessToken: String
+        refreshToken accessToken: String
     ) async throws -> TokenRefresh {
         try await withCheckedThrowingContinuation { continuation in
-            provider.request(.tokenRefresh(accessToken: accessToken)) { result in
+            provider.request(.tokenRefresh(refreshToken: savedRefreshToken)) { result in
                 switch result {
                 case let .success(response):
                     do {
                         let tokens = try JSONDecoder().decode(TokenRefresh.self, from: response.data)
                         continuation.resume(returning: tokens)
+                        savedAccessToken = tokens.accessToken
+                        savedRefreshToken = tokens.refreshToken
                     } catch {
                         do {
                             let decodedError = try JSONDecoder().decode(ErrorResponse.self, from: response.data)

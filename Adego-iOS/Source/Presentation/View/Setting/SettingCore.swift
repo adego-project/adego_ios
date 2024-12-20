@@ -18,9 +18,12 @@ struct SettingCore: Reducer {
         var imageUrl: String = ""
         var name: String = "알파 메일 최시훈"
         
+        @Shared var isFormValid: Bool?
         @Shared var profileImage: UIImage?
         
+        
         init() {
+            self._isFormValid = Shared(nil)
             self._profileImage = Shared(nil)
         }
     }
@@ -28,11 +31,11 @@ struct SettingCore: Reducer {
     enum Action {
         case onAppear
         case refreshProfileImage(UIImage)
+        case refreshUserInfo(User)
         case deletePromise
         case showLogoutAlert
         case showSecessionAlert
-        //        case navigate(String, UIImage)
-        case setValue(User)
+        case navigateToImagePickerView
         case navigateToEditView
         case view(View)
     }
@@ -59,44 +62,46 @@ struct SettingCore: Reducer {
                                 profileImage != nil ? Action.refreshProfileImage(profileImage ?? UIImage()) : nil
                             }
                     },
-                        .run { send in
-                            do {
-                                let response = try await getUserUseCase.getUser(accessToken: savedAccessToken)
-                                print("✅SigninCore.getUser id:", response.id)
-                                print("✅SigninCore.getUser name:", response.name ?? "")
-                                await send(.setValue(response))
-                            } catch {
-                                print("🚫SigninCore.getUser error: \(error.localizedDescription)")
-                            }
-                            
+                    .run { send in
+                        do {
+                            let response = try await getUserUseCase.getUser(accessToken: savedAccessToken)
+                            print("✅SettingCore.onAppear id:", response.id)
+                            print("✅SettingCore.onAppear name:", response.name ?? "")
+                            await send(.refreshUserInfo(response))
+                        } catch {
+                            print("🚫SigninCore.getUser error: \(error.localizedDescription)")
                         }
-                    )
-            
+                        
+                    }
+                )
+                
             case .refreshProfileImage(let image):
-                    state.profileImage = image
-                    return .none
+                state.profileImage = image
+                return .none
+                
+            case .refreshUserInfo(let response):
+                state.name = response.name ?? ""
+                state.imageUrl = response.profileImage!
+                return .none
                 
             case .deletePromise:
-                
                 return .run { send in
                     flow.alert(
                         Alert(
-                            title: "약속에서 나가시겠습니까?"
-                            //                            primaryButton: .destructive(
-                            //                                "나가기",
-                            //                                action: {
-                            //                                    let promiseRepository = PromiseRepositoryImpl()
-                            //                                    let promiseUseCase = PromiseUseCase(promiseRepository: promiseRepository)
-                            //                                    promiseUseCase.deletePromise(accessToken: savedAccessToken) { result in
-                            //                                        switch result {
-                            //                                        case .success:
-                            //                                            flow.popToRoot()
-                            //                                        case .failure(let error):
-                            //                                            print("🚫MainViewCore.getPromise error: \(error.localizedDescription)")
-                            //                                        }
-                            //                                    }
-                            //                                }
-                            //                            ), secondaryButton: .cancel()
+                            title: "약속에서 나가시겠습니까?",
+                            primaryButton: .destructive(
+                                "나가기",
+                                action: {
+                                    let promiseRepository = PromiseRepositoryImpl()
+                                    let promiseUseCase = PromiseUseCase(promiseRepository: promiseRepository)
+                                    do {
+                                        let _ = try await promiseUseCase.deletePromise(accessToken: savedAccessToken)
+                                        flow.popToRoot()
+                                    } catch {
+                                        print("🚫SettingCore.getPromise error: \(error.localizedDescription)")
+                                    }
+                                }
+                            ), secondaryButton: .cancel()
                         )
                     )
                 }
@@ -132,31 +137,21 @@ struct SettingCore: Reducer {
                     )
                 }
                 
-                //            case let .navigate(result, selectedImage):
-                //                flow.sheet(
-                //                    ImagePickerView(
-                //                        store: Store(
-                //                            initialState: ImagePickerCore.State(
-                //                                result: result,
-                //                                selectedImage: selectedImage
-                //                            )
-                //                        ) {
-                //                            ImagePickerCore()
-                //                        },
-                //                        setting: Store(
-                //                            initialState: SettingCore.State()
-                //                        ) {
-                //                            SettingCore()
-                //                        },
-                //                        sourceType: .photoLibrary
-                //                    )
-                //                )
-                //                return .none
-                
-            case .setValue(let response):
-                state.name = response.name ?? ""
+            case .navigateToImagePickerView:
+                flow.sheet(
+                    ImagePickerView(
+                        store: Store(
+                            initialState: ImagePickerCore.State(
+                                selectedImage: state.$profileImage,
+                                isFormValid: state.$isFormValid
+                            )
+                        ) {
+                            ImagePickerCore()
+                        }
+                    )
+                )
                 return .none
-                
+                        
             case .navigateToEditView:
                 flow.push(
                     EditView(
@@ -173,7 +168,7 @@ struct SettingCore: Reducer {
                 return .none
             }
             
-            @Sendable 
+            @Sendable
             func deleteUser() async {
                 let userRepository = UserRepositoryImpl()
                 let getUserUseCase = UserUseCase(userRepository: userRepository)
@@ -181,7 +176,7 @@ struct SettingCore: Reducer {
                     _ = try await getUserUseCase.deleteUser(accessToken: savedAccessToken)
                     replaceToSigninView()
                 } catch {
-                    print("🚫SigninCore.deleteUser error: \(error.localizedDescription)")
+                    print("🚫SettingCore.deleteUser error: \(error.localizedDescription)")
                 }
             }
             

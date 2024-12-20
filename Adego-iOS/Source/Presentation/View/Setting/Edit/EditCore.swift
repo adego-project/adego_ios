@@ -16,26 +16,25 @@ struct EditCore: Reducer {
     @ObservableState
     struct State: Equatable {
         
-        //        var message: String = ""
+        var message: String = ""
         var isFormValid: Bool = false
         var name: String = "" {
             didSet {
                 nameLength = name.count
             }
         }
-        
         var nameLength: Int = 0 {
             didSet {
-                //                if nameLength > 9 {
-                //                    isFormValid = true
-                //                    message = "글자가 너무 길어요."
-                //
-                //                } else if 0 < nameLength {
-                //                    isFormValid = false
-                //                    message = "글자가 너무 적어요."
-                //                } else {
-                //                    isFormValid = false
-                //                }
+                if nameLength >= 9 {
+                    isFormValid = true
+                    message = "글자가 너무 길어요."
+
+                } else if 0 <= nameLength {
+                    isFormValid = false
+                    message = "글자가 너무 적어요."
+                } else {
+                    isFormValid = false
+                }
             }
         }
     }

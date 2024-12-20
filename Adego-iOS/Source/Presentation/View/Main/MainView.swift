@@ -15,13 +15,18 @@ struct MainView: View {
     var body: some View {
         WithPerceptionTracking {
             ZStack {
-                MapView(
-                    store: Store(
-                        initialState: MapCore.State(promise: store.promise)
-                    ) {
-                        MapCore()
-                    }
-                )
+//                MapView(
+//                    store: Store(
+//                        initialState: MapCore.State(
+//                            MapEnvironment(
+//                                locationManager: LocationManager(),
+//                                mainQueue: DispatchQueue.main.eraseToAnyScheduler()
+//                            ) {
+//                                MapCore()
+//                            }
+//                        )
+//                    )
+//                )
                 
                 VStack {
                     header
@@ -97,7 +102,7 @@ extension MainView {
         }
         .onChange(of: store.isHavePromise) { havePromise in
             print(store.isHavePromise)
-
+            
         }
     }
 }

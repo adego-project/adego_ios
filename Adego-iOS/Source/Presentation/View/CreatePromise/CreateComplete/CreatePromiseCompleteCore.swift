@@ -31,7 +31,7 @@ struct CreatePromiseCompleteCore: Reducer {
     }
     
     enum Action: ViewAction {
-        case onApear
+        case onAppear
         case setLink(LinkResponse)
         case returnButton
         case getPromise
@@ -47,7 +47,7 @@ struct CreatePromiseCompleteCore: Reducer {
         BindingReducer(action: \.view)
         Reduce { state, action in
             switch action {
-            case .onApear:
+            case .onAppear:
                 print("state.promiseDay", state.promiseResponse.date)
                 state.id = state.promiseResponse.id
                 state.promiseTitle = state.promiseResponse.name

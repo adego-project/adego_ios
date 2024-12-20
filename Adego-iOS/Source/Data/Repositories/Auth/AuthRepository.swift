@@ -13,6 +13,6 @@ protocol AuthRepository {
     ) async throws -> OAuthTokens
     
     func tokenRefresh(
-        accessToken: String
+        refreshToken: String
     ) async throws -> TokenRefresh
 }

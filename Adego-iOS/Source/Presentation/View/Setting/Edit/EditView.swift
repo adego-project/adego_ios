@@ -15,18 +15,18 @@ struct EditView: View {
         WithPerceptionTracking {
             VStack {
                 CustomInputTextField(
-                    text: "사용자 이름 (1/8)",
+                    text: "사용자 이름 (\(store.nameLength)/8)",
                     input: $store.name,
                     placeholder: "수정할 이름을 입력해주세요",
                     isFormValid: store.isFormValid
                 )
-//                
-//                if store.isFormValid {
-//                    Text(store.message)
-//                        .font(.wantedSans())
-//                        .foregroundStyle(.red)
-//                        .padding(.top, 10)
-//                }
+                
+                if store.isFormValid {
+                    Text(store.message)
+                        .font(.wantedSans())
+                        .foregroundStyle(.red)
+                        .padding(.top, 10)
+                }
                 
                 Spacer()
                 

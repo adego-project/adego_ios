@@ -37,7 +37,7 @@ struct Adego_iOSApp: App {
     @Dependency(\.flow) var flow
     var body: some Scene {
         WindowGroup {
-            
+//            ContentView()
             flow.present()
                 .ignoresSafeArea()
                 .onOpenURL(perform: { url in
