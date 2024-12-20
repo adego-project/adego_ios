@@ -19,6 +19,8 @@ struct PromisePreviewCore: Reducer {
         var promiseDay: String = ""
         var promiseTime: String = ""
         
+        var promiseUrl: String = ""
+        
         var promiseLocation: String = ""
         var isPromiseValid: Bool = false
         var promiseTimeRemaingUntil: String = ""
@@ -26,6 +28,8 @@ struct PromisePreviewCore: Reducer {
     
     enum Action: ViewAction {
         case onAppear
+        case compareDate(Promise)
+        case setLink(LinkResponse)
         case navigateToSendNotificationView
         case setValue(Promise)
         case view(View)
@@ -47,19 +51,42 @@ struct PromisePreviewCore: Reducer {
                 let promiseUseCase = PromiseUseCase(promiseRepository: promiseRepository)
                 return .run { send in
                     do {
-                        let response = try await promiseUseCase.getPromise(accessToken: savedAccessToken)
-                        await send(.setValue(response))
+                        
+                        let promiseResponse = try await promiseUseCase.getPromise(accessToken: savedAccessToken)
+                        await send(.setValue(promiseResponse))
+                        await send(.compareDate(promiseResponse))
+                        
+                        let linkResponse = try await promiseUseCase.inviteUserToPromise(accessToken: savedAccessToken)
+                        await send(.setLink(linkResponse))
+                        
                     } catch {
                         print("🚫PromisePreviewCore.getPromise error: \(error.localizedDescription)")
                         print(error)
                     }
+                   
                 }
+                
+            case .compareDate(let promiseResponse):
+                if let promiseDate = formatDateObject(from: promiseResponse.date) {
+                    let currentDate = Date()
+                    
+                    if currentDate > promiseDate {
+                        state.isPromiseValid = true
+                    } else {
+                        state.isPromiseValid = false
+                    }
+                }
+                return .none
+            case .setLink(let linkResponse):
+                state.promiseUrl = linkResponse.link
+                return .none
             case .setValue(let response):
                 state.promiseTitle = response.name
                 state.promiseLocation = response.place.address
                 state.promiseDate = response.date
                 state.promiseDay = formatDate(response.date)
                 state.promiseTime = formatTime(response.date)
+//                state.promiseUrl = response
                 return .none
                 
             case .navigateToSendNotificationView:
@@ -107,5 +134,11 @@ struct PromisePreviewCore: Reducer {
     
     private func save(response: Promise) {
         
+    }
+    
+    func formatDateObject(from dateString: String) -> Date? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        return dateFormatter.date(from: dateString)
     }
 }

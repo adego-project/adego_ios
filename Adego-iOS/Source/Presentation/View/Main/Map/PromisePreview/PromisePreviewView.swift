@@ -56,39 +56,46 @@ extension PromisePreviewView {
     private var makeNotificationButton: some View {
         HStack {
             if store.isPromiseValid {
-                shereButton
+                shareButton
             } else {
                 sendNotificationViewButton
             }
         }
     }
     
-    private var shereButton: some View {
+    private var shareButton: some View {
         HStack {
-            Button {
-                store.isPromiseValid.toggle()
-            } label: {
-                Text(store.promiseTimeRemaingUntil)
-                    .foregroundStyle(.white)
-                    .frame(width: 259, height: 56)
-                    .background(.gray30)
-                    .clipShape(
+            Text(store.promiseTimeRemaingUntil)
+                .foregroundColor(.white)
+                .frame(width: 259, height: 56)
+                .background(Color("gray30"))
+                .clipShape(RoundedRectangle(cornerRadius: 8))
+
+            // ShareLink for sharing a URL
+            if let url = URL(string: store.promiseUrl) {
+                ShareLink(
+                    item: url,
+                    subject: Text("링크를 공유하고 친구를 깨우세요!"),
+                    message: Text(store.promiseUrl)
+                ) {
+                    VStack {
+                        Image(systemName: "square.and.arrow.up")
+                            .frame(width: 24, height: 24)
+                            .foregroundColor(.white)
+                    }
+                    .frame(width: 56, height: 56)
+                    .background(Color("gray20"))
+                    .clipShape(RoundedRectangle(cornerRadius: 8))
+                    .overlay(
                         RoundedRectangle(cornerRadius: 8)
+                            .stroke(
+                                Color("gray30"),
+                                lineWidth: 1
+                            )
                     )
-            }
-            
-            Button {
-                
-            } label: {
-                VStack {
-                    Image(systemName: "square.and.arrow.up")
-                        .frame(width: 24, height: 24)
-                        .foregroundStyle(.white)
+                    .buttonStyle(CustomWhiteRoundedButton())
                 }
-                .frame(width: 56, height: 56)
-                .buttonStyle(
-                    CustomWhiteRoundedButton()
-                )
+                .frame(alignment: .center)
             }
         }
     }
@@ -96,7 +103,6 @@ extension PromisePreviewView {
     
     private var sendNotificationViewButton: some View {
         Button {
-            store.isPromiseValid.toggle()
             store.send(.navigateToSendNotificationView)
         } label: {
             Text("알림 울리러 가기 \(Image(systemName: "arrow.right"))")

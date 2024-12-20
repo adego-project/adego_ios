@@ -7,5 +7,5 @@
 
 import Foundation
 
-var savedAccessToken = KeychainManager.shared.loadString(key: "accessToken")!
-var savedRefreshToken = KeychainManager.shared.loadString(key: "refreshToken")!
+var savedAccessToken = KeychainManager.shared.loadString(key: "accessToken") ?? ""
+var savedRefreshToken = KeychainManager.shared.loadString(key: "refreshToken") ?? ""

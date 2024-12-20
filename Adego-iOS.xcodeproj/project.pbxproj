@@ -49,6 +49,7 @@
 		8598F9E42BC0361200132DE6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8598F9E32BC0361200132DE6 /* Assets.xcassets */; };
 		8598F9E72BC0361200132DE6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8598F9E62BC0361200132DE6 /* Preview Assets.xcassets */; };
 		859E470E2CAF49490021932E /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859E470D2CAF49490021932E /* LocationManager.swift */; };
+		85A24AC12D15A2DD00BDE8CF /* PromiseInviteUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A24AC02D15A2DD00BDE8CF /* PromiseInviteUrl.swift */; };
 		85A64D1D2BDD59A60095C46C /* View+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A64D1C2BDD59A60095C46C /* View+Ext.swift */; };
 		85A64D202BDEC9CA0095C46C /* AppointmentNoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A64D1F2BDEC9CA0095C46C /* AppointmentNoneView.swift */; };
 		85A64D222BDEC9F10095C46C /* AppointmentNoneCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A64D212BDEC9F10095C46C /* AppointmentNoneCore.swift */; };
@@ -154,6 +155,7 @@
 		8598F9E32BC0361200132DE6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8598F9E62BC0361200132DE6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		859E470D2CAF49490021932E /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		85A24AC02D15A2DD00BDE8CF /* PromiseInviteUrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromiseInviteUrl.swift; sourceTree = "<group>"; };
 		85A64D1C2BDD59A60095C46C /* View+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Ext.swift"; sourceTree = "<group>"; };
 		85A64D1F2BDEC9CA0095C46C /* AppointmentNoneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentNoneView.swift; sourceTree = "<group>"; };
 		85A64D212BDEC9F10095C46C /* AppointmentNoneCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentNoneCore.swift; sourceTree = "<group>"; };
@@ -279,6 +281,7 @@
 			children = (
 				8528CDFA2C69EE5F0070EFA7 /* UserInfo.swift */,
 				8528CE0E2C72E2300070EFA7 /* ProfileImageManager.swift */,
+				85A24AC02D15A2DD00BDE8CF /* PromiseInviteUrl.swift */,
 			);
 			path = UserInfo;
 			sourceTree = "<group>";
@@ -1016,6 +1019,7 @@
 				8592998C2C4101A2005EB807 /* Promise.swift in Sources */,
 				85AA46CF2C3CD38C00F42C63 /* SigninUseCase.swift in Sources */,
 				85ADC2682BCB0A87008E947E /* SelectDayView.swift in Sources */,
+				85A24AC12D15A2DD00BDE8CF /* PromiseInviteUrl.swift in Sources */,
 				858DE69F2C4FB5EA00340648 /* AdressRepositoryImpl.swift in Sources */,
 				858DE69D2C4FB5E000340648 /* AddressRepository.swift in Sources */,
 				85BAC8772C403E4F006261F8 /* UserRepository.swift in Sources */,
