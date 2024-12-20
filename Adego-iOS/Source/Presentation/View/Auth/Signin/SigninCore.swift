@@ -43,6 +43,7 @@ struct SigninCore: Reducer {
                         print("✅Refresh Token: \(response.refreshToken)")
                         
                         await send(.tokenRefresh)
+                        await send(.navigation)
                     } catch {
                         if let errorResponse = error as? ErrorResponse {
                             print("🚫SigninCore.successSigninWithApple: \(errorResponse)")
